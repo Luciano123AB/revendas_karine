@@ -10,12 +10,10 @@
 
     @include("layouts.partials.styles")
 </head>
-<body class="bg-info fst-italic">
+<body class="bg-danger fst-italic">
     @include("layouts.header")
 
-    <div class="vh-100">
-        @yield("content")
-    </div>
+    @yield("content")
 
     @include("layouts.footer")
 
