@@ -6,13 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Nota extends Model
+class Compra extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-        "titulo",
-        "texto",
+        "produto",
+        "quantidade",
+        "preco",
+        "data_compra",
+        "status",
         "user_id"
     ];
 

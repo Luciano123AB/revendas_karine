@@ -19,6 +19,10 @@ class MainController extends Controller
             Boot::dependencias();
         }
 
-        return view("index");
+        return view("index")->with("pagina", "Início");
+    }
+
+    public function home() {
+        return view("home")->with("pagina", "Home");
     }
 }

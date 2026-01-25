@@ -20,7 +20,11 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input): User
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => [
+                'required',
+                'string',
+                'max:120'
+            ],
             'email' => [
                 'required',
                 'string',
@@ -29,12 +33,34 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
+            'password_confirmation' => 'required',
+            'phone' => [
+                'required',
+                'string',
+                'max:11'
+            ]
+        ], [
+            "name.required" => "O campo nome é obrigatório.",
+            "name.max" => "O campo nome deve ter no máximo 120 caracteres.",
+            "email.required" => "O campo email é obrigatório.",
+            "email.max" => "O campo email deve ter no máximo 255 caracteres.",
+            "email.email" => "O campo email deve ser um endereço de email válido.",
+            "email.unique" => "O email informado já está em uso.",
+            "password.required" => "O campo senha é obrigatório.",
+            "password.min" => "O campo senha deve ter no mínimo 8 caracteres.",
+            "password.letters" => "O campo senha deve conter pelo menos uma letra.",
+            "password.numbers" => "O campo senha deve conter pelo menos um número.",
+            "password.confirmed" => "A confirmação da senha não corresponde.",
+            "password_confirmation.required" => "O campo de confirmação de senha é obrigatório.",
+            "phone.required" => "O campo telefone é obrigatório.",
+            "phone.max" => "O campo telefone deve ter no máximo 11 caracteres."
         ])->validate();
 
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            'phone' => $input['phone']
         ]);
     }
 }

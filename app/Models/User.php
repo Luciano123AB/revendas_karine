@@ -3,22 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 
-class User extends Model implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail
 {
+    use Notifiable, MustVerifyEmailTrait;
+
     protected $fillable = [
         "name",
         "email",
         "password",
-        "data_nascimento",
-        "foto",
-        "permissao",
-        "ultimo_acesso"
+        "phone",
     ];
-    
-    public function notas(): HasMany {
-        return $this->hasMany(Nota::class);
+
+    public function compras(): HasMany {
+        return $this->hasMany(Compra::class);
     }
 }

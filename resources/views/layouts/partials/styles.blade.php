@@ -4,13 +4,13 @@
         padding: 0;
     }
 
-    .navbar {
+    #barra {
         padding-left: 5%;
         padding-right: 5%;
     }
 
-    .opcoes {
-        display: flex;
+    .carrossel {
+        height: 25vh;
     }
 
     .carousel-indicators [data-bs-target] {
@@ -19,18 +19,18 @@
         border-radius: 50%;
     }
 
-    .produto {
+    .produtos {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
 
-    @media (max-width: 430px) {
-        .navbar {
+    #direitos {
+        display: flex;
+    }
+
+    @media (max-width: 480px) {
+        #barra {
             padding-left: 0%;
             padding-right: 0%;
-        }
-
-        .opcoes {
-            display: grid;
         }
 
         .carousel-control-prev span,
@@ -38,8 +38,12 @@
             display: none;
         }
 
-        .produto {
+        .produtos {
             grid-template-columns: 1fr 1fr;
+        }
+
+        #direitos {
+            display: grid;
         }
     }
 </style>
