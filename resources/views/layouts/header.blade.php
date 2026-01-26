@@ -8,12 +8,18 @@
 
         <div class="d-flex align-items-center gap-2">
             @auth
-                <span>Cliente: {{ Auth::user()->name }}</span>
+                <div class="d-grid">
+                    <span>Cliente: {{ Auth::user()->name }}</span>
+                    <span>Email: {{ Auth::user()->email }}</span>
+                </div>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     
                     <button type="submit" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Sair</button>
-                </form>    
+                </form>
+                @if ($pagina != "Home")
+                    <a href="{{ route("home") }}" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Lista Completa</a>
+                @endif
             @else
                 <a href="{{ route("login") }}" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Entre</a>
                 <a href="{{ route("register") }}" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Criar Conta</a>
