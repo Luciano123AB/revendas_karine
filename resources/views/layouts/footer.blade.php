@@ -28,7 +28,7 @@
             <span>
                 Pagamentos:
                 <br>
-                <img src="{{ asset('assets/images/PIX.png') }}" style="max-height: 50px;">
+                <img src="{{ asset('assets/images/pix.png') }}" style="max-height: 50px;">
             </span>
         </div>
     </div>

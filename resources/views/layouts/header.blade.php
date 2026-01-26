@@ -1,7 +1,7 @@
-<nav id="barra" class="navbar bg-warning shadow-lg">
+<nav id="barra" class="navbar bg-warning shadow-lg border-5 border-bottom border-black">
     <div class="container-fluid">
         <a href="{{ route("inicial") }}" class="navbar-brand text-decoration-none text-light fs-2 fw-bold">
-            <i class="bi bi-card-image fs-1"></i>
+            <img src="{{ asset('assets/images/icons/icone.png') }}" width="70" height="70">
             <span>{{ config("app.name") }}</span>
             <span>- {{ $pagina }}</span>
         </a>

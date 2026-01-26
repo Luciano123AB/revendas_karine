@@ -4,6 +4,12 @@
         padding: 0;
     }
 
+    body {
+        background-image: url("{{ asset('assets/images/carrinho.png') }}");
+        background-repeat: repeat;
+        background-size: 200px;
+    }
+
     #barra {
         padding-left: 5%;
         padding-right: 5%;
@@ -20,6 +26,7 @@
     }
 
     .produtos {
+        max-height: 55vh;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
 
@@ -27,7 +34,7 @@
         display: flex;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 430px) {
         #barra {
             padding-left: 0%;
             padding-right: 0%;

@@ -12,13 +12,13 @@
         
                 <div class="carousel-inner shadow">
                     <div class="carousel-item active">
-                        <img src="{{ asset("assets/images/banners/exemplo01.png") }}" class="carrossel d-block border border-black w-100">
+                        <img src="{{ asset("assets/images/banners/ofertas01.png") }}" class="carrossel d-block border border-black w-100">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset("assets/images/banners/exemplo02.png") }}" class="carrossel d-block border border-black w-100">
+                        <img src="{{ asset("assets/images/banners/ofertas02.png") }}" class="carrossel d-block border border-black w-100">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset("assets/images/banners/exemplo03.png") }}" class="carrossel d-block border border-black w-100">
+                        <img src="{{ asset("assets/images/banners/ofertas03.png") }}" class="carrossel d-block border border-black w-100">
                     </div>
                 </div>
         
@@ -35,17 +35,17 @@
                 <div class="carousel slide h-50 pb-1" data-bs-ride="carousel">
                     <div class="carousel-inner shadow h-100">
                         <div class="carousel-item active border border-black h-100">
-                            <img src="{{ asset("assets/images/banners/exemplo01.png") }}" class="d-block w-100 h-100">
+                            <img src="{{ asset("assets/images/banners/ofertas01.png") }}" class="d-block w-100 h-100">
                         </div>
                         <div class="carousel-item border border-black h-100">
-                            <img src="{{ asset("assets/images/banners/exemplo02.png") }}" class="d-block w-100 h-100">
+                            <img src="{{ asset("assets/images/banners/ofertas02.png") }}" class="d-block w-100 h-100">
                         </div>
                         <div class="carousel-item border border-black h-100">
-                            <img src="{{ asset("assets/images/banners/exemplo03.png") }}" class="d-block w-100 h-100">
+                            <img src="{{ asset("assets/images/banners/ofertas03.png") }}" class="d-block w-100 h-100">
                         </div>
                     </div>
                 </div>
-                <img src="{{ asset("assets/images/banners/exemplo03.png") }}" class="border border-black shadow h-50">
+                <img src="{{ asset("assets/images/banners/ofertas03.png") }}" class="border border-black shadow h-50">
             </div>
         </div>
 
@@ -53,10 +53,10 @@
             <i class="bi bi-fire"></i>
             <span>OFERTAS DO DIA:</span>
         </h1>
-        <div class="produtos d-grid mb-5 gap-3">
-            @for ($i = 0; $i < 7; $i++)
+        <div class="produtos d-grid mb-5 gap-3 overflow-auto">
+            @for ($i = 0; $i < 12; $i++)
                 <div class="card bg-light shadow">
-                    <img src="https://static.vecteezy.com/system/resources/previews/014/918/179/non_2x/plastic-shop-cart-icon-flat-isolated-vector.jpg" class="card-img-top border-bottom">
+                    <img src="{{ asset("assets/images/icons/icone_produtos.png") }}" class="card-img-top border-bottom w-100" height="200">
                     <h5 class="card-title text-center">Nome do Produto</h5>
 
                     <div class="card-body">
