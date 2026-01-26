@@ -44,7 +44,7 @@
 
                     <div class="form-group">
                         <label><i class="bi bi-telephone"></i> Telefone: DDD + Número</label>
-                        <input type="text" id="phone" class="form-control" name="phone" placeholder="(55)99999-9999" value="{{ old('phone') }}">
+                        <input type="text" id="phone" class="form-control" name="phone" placeholder="(55) 99999-9999" value="{{ old('phone') }}">
                         @error('phone')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

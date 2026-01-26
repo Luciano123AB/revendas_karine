@@ -6,9 +6,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/", [MainController::class, "inicial"])->name("inicial");
 
-Route::middleware(["auth"])->group(function() {
+Route::middleware(["auth", "verified"])->group(function() {
     Route::prefix("/")->group(function () {
         Route::get("home", [MainController::class, "home"])->name("home");
+        Route::get("comprar", [MainController::class, "comprar"])->name("comprar");
     });
 });
 

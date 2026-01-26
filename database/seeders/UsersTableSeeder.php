@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
                 "name" => "Admin",
                 "email" => "admin@gmail.com",
                 "password" => bcrypt("admin123456"),
-                "phone" => 55999999999,
+                "phone" => "55999999999",
                 "email_verified_at" => now(),
                 "created_at" => now()
             ]

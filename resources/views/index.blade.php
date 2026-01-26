@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="card-footer text-center">
-                        <a href="#" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">COMPRAR</a>
+                        <a href="{{ route('comprar') }}" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">COMPRAR</a>
                     </div>
                 </div>
             @endfor

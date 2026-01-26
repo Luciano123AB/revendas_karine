@@ -1,15 +1,21 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        Inputmask({
+        
+        let telefone = document.getElementById("phone");
+
+        let im = new Inputmask({
             mask: ["(99) 9999-9999", "(99) 99999-9999"],
-            keepStatic: true
-        }).mask("#phone");
+            keepStatic: true,
+            clearIncomplete: false
+        });
 
-        document.getElementById("form").addEventListener("submit", function () {
+        im.mask(telefone);
 
-            let phone = document.getElementById("phone");
+        document.getElementById("formulario").addEventListener("submit", function () {
             
-            phone.value = phone.value.replace(/\D/g, "");
+            let numeros = telefone.inputmask.unmaskedvalue();
+
+            telefone.value = numeros;
         });
     });
 

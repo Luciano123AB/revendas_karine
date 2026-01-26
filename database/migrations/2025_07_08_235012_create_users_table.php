@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("name", 120);
             $table->string("email", 255)->unique();
             $table->string("password", 255);
-            $table->string("phone", 11)->comment("55999999999");
+            $table->string("phone", 11)->unique()->comment("55999999999");
             $table->timestamp("email_verified_at")->nullable();
             $table->timestamps();
             $table->softDeletes();

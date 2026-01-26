@@ -23,6 +23,10 @@ class MainController extends Controller
     }
 
     public function home() {
-        return view("home")->with("pagina", "Home");
+        return view("home")->with("pagina", "Lista");
+    }
+
+    public function comprar() {
+        return redirect()->back();
     }
 }

@@ -17,8 +17,10 @@
                     
                     <button type="submit" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Sair</button>
                 </form>
-                @if ($pagina != "Home")
+                @if ($pagina != "Lista Completa")
                     <a href="{{ route("home") }}" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Lista Completa</a>
+                @else
+                    <a href="{{ route("inicial") }}" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Início</a>
                 @endif
             @else
                 <a href="{{ route("login") }}" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Entre</a>
