@@ -12,7 +12,7 @@
                 <div class="card-body d-grid gap-3">
                     <div class="form-group">
                         <label><i class="bi bi-envelope"></i> Email:</label>
-                        <input type="email" class="form-control" name="email" placeholder="endereco@gmail.com" value="{{ old('email') }}" autofocus>
+                        <input type="email" class="form-control focus-ring focus-ring-danger" name="email" placeholder="endereco@gmail.com" value="{{ old('email') }}" autofocus>
                         @error('email')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -20,16 +20,16 @@
 
                     <div class="form-group">
                         <label><i class="bi bi-key"></i> Senha:</label>
-                        <input type="password" class="form-control" name="password" placeholder="***" value="{{ old('password') }}">
+                        <input type="password" class="form-control focus-ring focus-ring-danger" name="password" placeholder="***" value="{{ old('password') }}">
                         @error('password')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
 
-                <div class="card-footer text-center">
-                    <button type="button" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger" onclick="limparCampos()">Limpar</button>
-                    <button type="submit" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Entrar</button>
+                <div class="card-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger" onclick="limparCampos()">Limpar</button>
+                    <button type="submit" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Entrar</button>
                 </div>
             </form>
         </div>

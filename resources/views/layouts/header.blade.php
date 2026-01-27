@@ -15,16 +15,16 @@
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     
-                    <button type="submit" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Sair</button>
+                    <button type="submit" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Sair</button>
                 </form>
-                @if ($pagina != "Lista Completa")
-                    <a href="{{ route("home") }}" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Lista Completa</a>
+                @if ($pagina != "Lista")
+                    <a href="{{ route("home") }}" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Lista Completa</a>
                 @else
-                    <a href="{{ route("inicial") }}" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Início</a>
+                    <a href="{{ route("inicial") }}" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Início</a>
                 @endif
             @else
-                <a href="{{ route("login") }}" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Entre</a>
-                <a href="{{ route("register") }}" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Criar Conta</a>
+                <a href="{{ route("login") }}" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Entre</a>
+                <a href="{{ route("register") }}" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Criar Conta</a>
             @endauth
         </div>
     </div>

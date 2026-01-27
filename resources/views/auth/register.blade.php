@@ -12,7 +12,7 @@
                 <div class="card-body d-grid gap-3">
                     <div class="form-group">
                         <label><i class="bi bi-person"></i> Usuário:</label>
-                        <input type="text" class="form-control" name="name" placeholder="..." value="{{ old('name') }}" autofocus>
+                        <input type="text" class="form-control focus-ring focus-ring-danger" name="name" placeholder="..." value="{{ old('name') }}" autofocus>
                         @error('name')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -20,7 +20,7 @@
 
                     <div class="form-group">
                         <label><i class="bi bi-envelope"></i> Email:</label>
-                        <input type="email" class="form-control" name="email" placeholder="endereco@gmail.com" value="{{ old('email') }}">
+                        <input type="email" class="form-control focus-ring focus-ring-danger" name="email" placeholder="endereco@gmail.com" value="{{ old('email') }}">
                         @error('email')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -28,7 +28,7 @@
 
                     <div class="form-group">
                         <label><i class="bi bi-key"></i> Senha:</label>
-                        <input type="password" class="form-control" name="password" placeholder="***">
+                        <input type="password" class="form-control focus-ring focus-ring-danger" name="password" placeholder="***">
                         @error('password')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -36,7 +36,7 @@
 
                     <div class="form-group">
                         <label><i class="bi bi-key"></i> Confirmar Senha:</label>
-                        <input type="password" class="form-control" name="password_confirmation" placeholder="***">
+                        <input type="password" class="form-control focus-ring focus-ring-danger" name="password_confirmation" placeholder="***">
                         @error('password_confirmation')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -44,16 +44,16 @@
 
                     <div class="form-group">
                         <label><i class="bi bi-telephone"></i> Telefone: DDD + Número</label>
-                        <input type="text" id="phone" class="form-control" name="phone" placeholder="(55) 99999-9999" value="{{ old('phone') }}">
+                        <input type="text" id="phone" class="form-control focus-ring focus-ring-danger" name="phone" placeholder="(55) 99999-9999" value="{{ old('phone') }}">
                         @error('phone')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
 
-                <div class="card-footer text-center">
-                    <button type="button" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger" onclick="limparCampos()">Limpar</button>
-                    <button type="submit" class="btn btn-outline-danger border border-danger shadow focus-ring focus-ring-danger">Cadastrar</button>
+                <div class="card-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger" onclick="limparCampos()">Limpar</button>
+                    <button type="submit" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Cadastrar</button>
                 </div>
             </form>
         </div>
