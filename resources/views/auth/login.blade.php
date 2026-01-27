@@ -20,7 +20,7 @@
 
                     <div class="form-group">
                         <label><i class="bi bi-key"></i> Senha:</label>
-                        <input type="password" class="form-control focus-ring focus-ring-danger" name="password" placeholder="***" value="{{ old('password') }}">
+                        <input type="password" class="form-control focus-ring focus-ring-danger" name="password" placeholder="***">
                         @error('password')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -29,7 +29,10 @@
 
                 <div class="card-footer d-flex justify-content-between">
                     <button type="button" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger" onclick="limparCampos()">Limpar</button>
-                    <button type="submit" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Entrar</button>
+                    <div class="d-flex align-items-center gap-2">
+                        <a href="{{ route('password.request') }}">Esqueci minha senha!</a>
+                        <button type="submit" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Entrar</button>
+                    </div>
                 </div>
             </form>
         </div>
