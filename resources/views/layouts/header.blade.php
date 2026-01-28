@@ -3,7 +3,7 @@
         <a href="{{ route("inicio") }}" class="navbar-brand text-decoration-none text-light fs-2 fw-bold">
             <img src="{{ asset('assets/images/icons/icone.png') }}" width="70" height="70">
             <span>{{ config("app.name") }}</span>
-            <span>- {{ $pagina }}</span>
+            <span id="pagina">- {{ $pagina }}</span>
         </a>
 
         <div class="d-flex align-items-center gap-2">

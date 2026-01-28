@@ -56,15 +56,15 @@
         @forelse ($ofertas as $oferta)
             <div class="card bg-light shadow">
                 <img src="{{ asset("assets/images/icons/icone_produtos.png") }}" class="card-img-top border-bottom w-100" height="200">
-                <h5 class="card-title text-center">{{ $oferta->nome }}</h5>
+                <h5 class="card-title text-center p-2">{{ $oferta->nome }}</h5>
 
                 <div class="card-body">
                     <p class="text-decoration-line-through m-0">R$ {{ number_format($oferta->preco, 2, ',', '.') }}</p>
-                    <h4 class="card-text">R$ {{ number_format($oferta->preco, 2, ',', '.') }} <span class="bg-success fs-5">-{{ $oferta->desconto }}%</span></h4>
+                    <h4 class="card-text">R$ {{ number_format($oferta->preco - ($oferta->preco * $oferta->desconto / 100), 2, ',', '.') }} <span class="bg-success fs-5">-{{ $oferta->desconto }}%</span></h4>
                 </div>
 
                 <div class="card-footer text-center">
-                    <a href="{{ route('comprar') }}" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">COMPRAR</a>
+                    <a href="{{ route('escolher', ["id" => Crypt::encrypt($oferta->id)]) }}" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">ESCOLHER</a>
                 </div>
             </div>        
         @empty

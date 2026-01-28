@@ -10,15 +10,21 @@
             @forelse ($produtos as $produto)
                 <div class="card bg-light shadow">
                     <img src="{{ asset("assets/images/icons/icone_produtos.png") }}" class="card-img-top border-bottom w-100" height="200">
-                    <h5 class="card-title text-center">{{ $produto->nome }}</h5>
+                    <h5 class="card-title text-center p-2">{{ $produto->nome }}</h5>
 
                     <div class="card-body">
-                        <p class="text-decoration-line-through m-0">R$ {{ number_format($produto->preco, 2, ',', '.') }}</p>
-                        <h4 class="card-text">R$ {{ number_format($produto->preco, 2, ',', '.') }} @if ($produto->desconto > 0) <span class="bg-success fs-5">-{{ $produto->desconto }}%</span> @endif</h4>
+                        @if ($produto->desconto > 0)
+                            <p class="text-decoration-line-through m-0">R$ {{ number_format($produto->preco, 2, ',', '.') }}</p>
+                        @endif
+                        <h4 class="card-text">R$ {{ number_format($produto->preco - ($produto->preco * $produto->desconto / 100), 2, ',', '.') }}
+                            @if ($produto->desconto > 0)
+                                <span class="bg-success fs-5">-{{ $produto->desconto }}%</span>
+                            @endif
+                        </h4>
                     </div>
 
                     <div class="card-footer text-center">
-                        <a href="{{ route('comprar') }}" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">COMPRAR</a>
+                        <a href="{{ route('escolher', ["id" => Crypt::encrypt($produto->id)]) }}" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">ESCOLHER</a>
                     </div>
                 </div>
             @empty

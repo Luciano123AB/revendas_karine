@@ -39,6 +39,10 @@
             padding-right: 0%;
         }
 
+        #pagina {
+            font-size: medium;
+        }
+
         .carousel-control-prev span,
         .carousel-control-next span {
             display: none;
