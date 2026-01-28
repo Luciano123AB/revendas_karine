@@ -26,7 +26,6 @@
     }
 
     .produtos {
-        max-height: 55vh;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
 

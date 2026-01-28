@@ -4,7 +4,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Middleware\Checar;
 use Illuminate\Support\Facades\Route;
 
-Route::get("/", [MainController::class, "inicial"])->name("inicial");
+Route::get("/", [MainController::class, "inicio"])->name("inicio");
 
 Route::middleware(["auth", "verified"])->group(function() {
     Route::prefix("/")->group(function () {
@@ -14,5 +14,5 @@ Route::middleware(["auth", "verified"])->group(function() {
 });
 
 Route::fallback(function() {
-    return redirect()->route("inicial");
+    return redirect()->route("inicio");
 });

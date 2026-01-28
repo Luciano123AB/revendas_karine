@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produto;
 use App\Services\Boot;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function inicial() {
+    public function inicio() {
 
         $banco = Boot::testarConexao();
         
@@ -19,11 +20,24 @@ class MainController extends Controller
             Boot::dependencias();
         }
 
-        return view("index")->with("pagina", "Início");
+        $ofertas = Produto::where("desconto", ">", 0)->get();
+        $total = Produto::count();
+
+        return view("index")
+            ->with("pagina", "Início")
+            ->with("ofertas", $ofertas)
+            ->with("total", $total);
     }
 
     public function home() {
-        return view("home")->with("pagina", "Lista");
+
+        $produtos = Produto::all();
+        $total = Produto::count();
+
+        return view("home")
+            ->with("pagina", "Lista")
+            ->with("produtos", $produtos)
+            ->with("total", $total);
     }
 
     public function comprar() {

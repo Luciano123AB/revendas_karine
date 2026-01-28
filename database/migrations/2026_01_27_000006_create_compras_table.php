@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
             $table->string("produto");
+            $table->decimal("preco", 9, 2);
             $table->integer("quantidade");
-            $table->decimal("preco");
-            $table->dateTime("data_compra");
             $table->string("status")->comment("pendente, concluido, cancelado");
+            $table->foreignId("produto_id")->constrained()->cascadeOnDelete();
             $table->foreignId("user_id")->constrained()->cascadeOnDelete();
+            $table->timestamp("data_compra");
             $table->timestamps();
             $table->softDeletes();
         });

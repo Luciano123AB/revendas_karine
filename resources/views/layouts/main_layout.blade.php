@@ -13,7 +13,15 @@
 <body class="bg-danger fst-italic">
     @include("layouts.header")
 
-    @yield("content")
+    <div class="container">
+        @if ($pagina != "Início" && $pagina != "Lista")
+            <div class="d-flex justify-content-center align-items-center vh-100">
+        @endif
+            @yield("content")
+        @if ($pagina != "Início" && $pagina != "Lista")
+            </div>
+        @endif
+    </div>
 
     @include("layouts.footer")
 
