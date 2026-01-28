@@ -39,8 +39,4 @@ class MainController extends Controller
             ->with("produtos", $produtos)
             ->with("total", $total);
     }
-
-    public function comprar() {
-        return redirect()->back();
-    }
 }
