@@ -7,16 +7,26 @@
         </a>
 
         <div class="d-flex align-items-center gap-2">
-            @auth
-                <div class="d-grid">
-                    <span>Cliente: {{ Auth::user()->name }}</span>
-                    <span>Email: {{ Auth::user()->email }}</span>
-                </div>
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    
-                    <button type="submit" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Sair</button>
-                </form>
+            @auth                
+                <div class="btn-group">
+                    <div class="d-grid btn bg-danger">
+                        <span>Cliente: {{ Auth::user()->email }}</span>
+                    </div>
+                    <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end bg-warning">
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                
+                                <button type="submit" class="dropdown-item btn btn-outline-danger border-top border-bottom border-danger focus-ring focus-ring-danger">Sair</button>
+                            </form>
+                        </li>
+                        <li>
+                            <a href="{{ route("historico") }}" class="dropdown-item btn btn-outline-danger border-bottom border-danger focus-ring focus-ring-danger">Histórico</a>
+                        </li>
+                    </ul>
+                </div>                
                 @if ($pagina != "Lista")
                     <a href="{{ route("home") }}" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Lista Completa</a>
                 @else

@@ -11,6 +11,7 @@ Route::middleware(["auth", "verified"])->group(function() {
         Route::controller(MainController::class)->group(function() {
             Route::get("home", "home")->name("home");
             Route::post("pesquisar/{categoria}", "pesquisar")->name("pesquisar");
+            Route::get("historico", "historico")->name("historico");
         });
         Route::controller(Compras::class)->group(function() {
             Route::get("escolher/{id}", "escolher")->name("escolher");

@@ -40,7 +40,7 @@ class MainController extends Controller
             ->with("total", $total);
     }
 
-    public function comprar() {
+    public function historico() {
         return redirect()->back();
     }
 }
