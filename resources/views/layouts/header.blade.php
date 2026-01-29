@@ -15,15 +15,17 @@
                     <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end bg-warning">
+                        @if ($pagina != "Atualizar Dados")
+                            <li>
+                                <a href="{{ route("editar") }}" class="dropdown-item btn btn-outline-danger border-top border-danger focus-ring focus-ring-danger">Editar</a>
+                            </li>
+                        @endif
                         <li>
-                            <form action="{{ route('logout') }}" method="POST">
+                            <form action="{{ route("logout") }}" method="POST">
                                 @csrf
                                 
                                 <button type="submit" class="dropdown-item btn btn-outline-danger border-top border-bottom border-danger focus-ring focus-ring-danger">Sair</button>
                             </form>
-                        </li>
-                        <li>
-                            <a href="{{ route("historico") }}" class="dropdown-item btn btn-outline-danger border-bottom border-danger focus-ring focus-ring-danger">Histórico</a>
                         </li>
                     </ul>
                 </div>                

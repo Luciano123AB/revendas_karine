@@ -20,7 +20,7 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input): User
     {
 
-        $input['phone'] = preg_replace('/\D/', '', $input['phone']);
+        $input['telefone'] = preg_replace('/\D/', '', $input['telefone']);
         
         Validator::make($input, [
             'name' => [
@@ -38,7 +38,7 @@ class CreateNewUser implements CreatesNewUsers
             ],
             'password' => $this->passwordRules(),
             'password_confirmation' => 'required',
-            'phone' => [
+            'telefone' => [
                 'required',
                 'regex:/^\d{10,11}$/',
                 Rule::unique(User::class)
@@ -57,16 +57,16 @@ class CreateNewUser implements CreatesNewUsers
             "password.numbers" => "O campo senha deve conter pelo menos um número.",
             "password.confirmed" => "A confirmação da senha não corresponde.",
             "password_confirmation.required" => "O campo de confirmação de senha é obrigatório.",
-            "phone.required" => "O campo telefone é obrigatório.",
-            "phone.regex" => "O telefone deve conter 10 ou 11 números.",
-            "phone.unique" => "O telefone informado já está em uso."
+            "telefone.required" => "O campo telefone é obrigatório.",
+            "telefone.regex" => "O telefone deve conter 10 ou 11 números.",
+            "telefone.unique" => "O telefone informado já está em uso."
         ])->validate();
 
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'phone' => $input['phone']
+            'telefone' => $input['telefone']
         ]);
     }
 }

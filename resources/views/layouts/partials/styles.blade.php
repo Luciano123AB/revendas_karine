@@ -29,6 +29,10 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
 
+    .imagem {
+        border-right: 1px solid var(--bs-border-color);
+    }
+
     #direitos {
         display: flex;
     }
@@ -50,6 +54,11 @@
 
         .produtos {
             grid-template-columns: 1fr 1fr;
+        }
+
+        .imagem {
+            border-right: none;
+            border-bottom: 1px solid var(--bs-border-color);
         }
 
         #direitos {

@@ -1,26 +1,16 @@
 @extends("layouts.main_layout")
 
 @section("content")
-    <form action="{{ route('register') }}" id="formulario" class="card bg-warning shadow w-100" method="POST">
+    <form action="{{ route("atualizar") }}" id="formulario" class="card bg-warning shadow w-100" method="POST">
         @csrf
 
         <div class="card-header text-center">
-            <h3 class="card-title">CRIAR CONTA</h3>
+            <h3 class="card-title">ATUALIZAR CONTA</h3>
         </div>            
         <div class="card-body d-grid gap-3">
             <div class="form-group">
-                <label><i class="bi bi-person"></i> Usuário:</label>
-                <input type="text" class="form-control focus-ring focus-ring-danger" name="name" placeholder="..." value="{{ old('name') }}" autofocus>
-                @error('name')
-                    <div class="form-control bg-danger-subtle">
-                        <span class="text-danger">{{ $message }}</span>
-                    </div>
-                @enderror
-            </div>
-
-            <div class="form-group">
                 <label><i class="bi bi-envelope"></i> Email:</label>
-                <input type="email" class="form-control focus-ring focus-ring-danger" name="email" placeholder="endereco@gmail.com" value="{{ old('email') }}">
+                <input type="email" id="email" class="form-control focus-ring focus-ring-danger" name="email" placeholder="endereco@gmail.com" value="{{ $dados["email"] }}">
                 @error('email')
                     <div class="form-control bg-danger-subtle">
                         <span class="text-danger">{{ $message }}</span>
@@ -30,8 +20,8 @@
 
             <div class="form-group">
                 <label><i class="bi bi-key"></i> Senha:</label>
-                <input type="password" class="form-control focus-ring focus-ring-danger" name="password" placeholder="***">
-                @error('password')
+                <input type="password" class="form-control focus-ring focus-ring-danger" name="senha" placeholder="***">
+                @error('senha')
                     <div class="form-control bg-danger-subtle">
                         <span class="text-danger">{{ $message }}</span>
                     </div>
@@ -40,8 +30,8 @@
 
             <div class="form-group">
                 <label><i class="bi bi-key"></i> Confirmar Senha:</label>
-                <input type="password" class="form-control focus-ring focus-ring-danger" name="password_confirmation" placeholder="***">
-                @error('password_confirmation')
+                <input type="password" class="form-control focus-ring focus-ring-danger" name="senha_confirmation" placeholder="***">
+                @error('senha_confirmation')
                     <div class="form-control bg-danger-subtle">
                         <span class="text-danger">{{ $message }}</span>
                     </div>
@@ -50,7 +40,7 @@
 
             <div class="form-group">
                 <label><i class="bi bi-telephone"></i> Telefone: DDD + Número</label>
-                <input type="text" id="telefone" class="form-control focus-ring focus-ring-danger" name="telefone" placeholder="(55) 99999-9999" value="{{ old('telefone') }}">
+                <input type="text" id="telefone" class="form-control focus-ring focus-ring-danger" name="telefone" placeholder="(55) 99999-9999" value="{{ $dados["telefone"] }}">
                 @error('telefone')
                     <div class="form-control bg-danger-subtle">
                         <span class="text-danger">{{ $message }}</span>
@@ -58,10 +48,20 @@
                 @enderror
             </div>
         </div>
+        @error('falha')
+            <div class="form-control bg-danger-subtle">
+                <span class="text-danger">{{ $message }}</span>
+            </div>
+        @enderror
+        @session('sucesso')
+            <div class="form-control bg-success-subtle">
+                <span class="text-success">{{ session("sucesso") }}</span>
+            </div>
+        @endsession
 
         <div class="card-footer d-flex justify-content-between">
             <button type="button" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger" onclick="limparCampos()">Limpar</button>
-            <button type="submit" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Cadastrar</button>
+            <button type="submit" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Atualizar</button>
         </div>
     </form>
 @endsection

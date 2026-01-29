@@ -10,8 +10,9 @@ Route::middleware(["auth", "verified"])->group(function() {
     Route::prefix("/")->group(function () {
         Route::controller(MainController::class)->group(function() {
             Route::get("home", "home")->name("home");
+            Route::get("editar", "editar")->name("editar");
+            Route::post("atualizar", "atualizar")->name("atualizar");
             Route::post("pesquisar/{categoria}", "pesquisar")->name("pesquisar");
-            Route::get("historico", "historico")->name("historico");
         });
         Route::controller(Compras::class)->group(function() {
             Route::get("escolher/{id}", "escolher")->name("escolher");
