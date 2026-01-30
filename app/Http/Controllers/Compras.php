@@ -7,6 +7,7 @@ use App\Models\Produto;
 use App\Services\DadosPix;
 use App\Services\GerarPayload;
 use App\Services\GerarQRCode;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -52,7 +53,7 @@ class Compras extends Controller
         $nova_compra->valor = $valor_pagar;        
         $nova_compra->status = "Pendente";
         $nova_compra->user_id = Auth::user()->id;
-        $nova_compra->data_compra = now();
+        $nova_compra->data_compra = Carbon::now();
 
         $salvar = DB::transaction(function () use ($nova_compra, $produto, $valor_pagar) {
             $nova_compra->save();

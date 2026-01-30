@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -19,8 +20,8 @@ class UsersTableSeeder extends Seeder
                 "email" => "admin@gmail.com",
                 "password" => Hash::make("admin123456"),
                 "telefone" => "55999999999",
-                "email_verified_at" => now(),
-                "created_at" => now()
+                "email_verified_at" => Carbon::now(),
+                "created_at" => Carbon::now()
             ]
         ]);
     }

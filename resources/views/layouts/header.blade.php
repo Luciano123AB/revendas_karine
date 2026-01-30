@@ -20,6 +20,11 @@
                                 <a href="{{ route("editar") }}" class="dropdown-item btn btn-outline-danger border-top border-danger focus-ring focus-ring-danger">Editar</a>
                             </li>
                         @endif
+                        @if ($pagina != "Pedidos")
+                            <li>
+                                <a href="{{ route("pedidos") }}" class="dropdown-item btn btn-outline-danger border-top border-danger focus-ring focus-ring-danger">Pedidos</a>
+                            </li>
+                        @endif
                         <li>
                             <form action="{{ route("logout") }}" method="POST">
                                 @csrf

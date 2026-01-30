@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Produto;
 use App\Models\User;
 use App\Services\Boot;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -99,12 +100,23 @@ class MainController extends Controller
         }
 
         $dados->password = Hash::make($senha);
-        $dados->updated_at = now();
+        $dados->updated_at = Carbon::now();
 
         if (!$dados->save()) {
             return redirect()->back()->withErrors(["falha", "Falha ao atualizar os dados! Tente novamente."]);
         }
 
         return redirect()->back()->with("sucesso", "Dados atualizados com sucesso!");
+    }
+
+    public function pedidos() {
+
+        $id = Auth::user()->id;
+        $cliente = User::find($id);
+        $pedidos = $cliente->compras->where("status", "Pendente");
+
+        return view("pedidos")
+            ->with("pagina", "Pedidos")
+            ->with("pedidos", $pedidos);
     }
 }

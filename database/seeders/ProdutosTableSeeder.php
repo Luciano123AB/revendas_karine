@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -28,8 +29,8 @@ class ProdutosTableSeeder extends Seeder
                     'desconto' => $tem_desconto ? rand(5, 30) : 0,
                     'estoque' => rand(10, 200),
                     'categoria_id' => $categoria->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ];
             }
         }

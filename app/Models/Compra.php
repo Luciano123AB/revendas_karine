@@ -20,6 +20,16 @@ class Compra extends Model
         "data_compra"
     ];
 
+    protected $casts = [
+        "produto" => "string",
+        "quantidade" => "integer",
+        "valor" => "float",
+        "pix" => "string",
+        "status" => "string",
+        "user_id" => "integer",
+        "data_compra" => "datetime"
+    ];
+
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);
     }

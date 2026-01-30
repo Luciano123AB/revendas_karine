@@ -13,6 +13,7 @@ Route::middleware(["auth", "verified"])->group(function() {
             Route::get("editar", "editar")->name("editar");
             Route::post("atualizar", "atualizar")->name("atualizar");
             Route::post("pesquisar/{categoria}", "pesquisar")->name("pesquisar");
+            Route::get("pedidos", "pedidos")->name("pedidos");
         });
         Route::controller(Compras::class)->group(function() {
             Route::get("escolher/{id}", "escolher")->name("escolher");

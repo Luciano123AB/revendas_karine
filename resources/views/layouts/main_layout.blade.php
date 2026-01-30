@@ -14,11 +14,11 @@
     @include("layouts.header")
 
     <div class="container">
-        @if ($pagina != "Início" && $pagina != "Lista")
+        @if ($pagina != "Início" && $pagina != "Lista" && $pagina != "Pedidos")
             <div class="d-flex justify-content-center align-items-center vh-100">
         @endif
             @yield("content")
-        @if ($pagina != "Início" && $pagina != "Lista")
+        @if ($pagina != "Início" && $pagina != "Lista" && $pagina != "Pedidos")
             </div>
         @endif
     </div>

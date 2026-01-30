@@ -17,7 +17,18 @@ class User extends Authenticatable implements MustVerifyEmail
         "name",
         "email",
         "password",
+        "remember_token",
         "telefone",
+        "email_verified_at"
+    ];
+
+    protected $casts = [
+        "name" => "string",
+        "email" => "string",
+        "password" => "string",
+        "remember_token" => "string",
+        "telefone" => "string",
+        "email_verified_at" => "datetime"
     ];
 
     public function compras(): HasMany {

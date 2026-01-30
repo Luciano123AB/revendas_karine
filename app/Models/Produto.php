@@ -15,8 +15,17 @@ class Produto extends Model
         'descricao',
         'preco',
         'desconto',
-        'categoria_id',
-        'estoque'
+        'estoque',
+        'categoria_id'
+    ];
+
+    protected $casts = [
+        "nome" => "string",
+        "descricao" => "string",
+        "preco" => "float",
+        "desconto" => "integer",
+        "estoque" => "integer",
+        "categoria_id" => "integer"
     ];
 
     public function categoria(): BelongsTo {

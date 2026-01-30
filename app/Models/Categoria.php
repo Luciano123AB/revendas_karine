@@ -11,6 +11,10 @@ class Categoria extends Model
         "nome"
     ];
 
+    protected $casts = [
+        "nome" => "string",
+    ];
+
     public function produtos(): HasMany {
         return $this->hasMany(Produto::class)->withTrashed();
     }
