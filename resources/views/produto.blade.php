@@ -1,7 +1,7 @@
 @extends("layouts.main_layout")
 
 @section("content")
-    <form action="{{ route('comprar') }}" id="formulario" class="card shadow w-100" method="POST">
+    <form action="{{ route("comprar", ["id" => Crypt::encrypt($produto->id)]) }}" id="formulario" class="card shadow w-100" method="POST">
         @csrf
 
         <div class="row g-0">
@@ -14,7 +14,7 @@
                     <p class="card-text border-bottom">Descrição: {{ $produto->descricao }}</p>
                     <p class="card-text border-bottom"><small class="text-body-secondary">Categoria: {{ $produto->categoria->nome }}</small></p>
                     <p class="card-text border-bottom"><small class="text-body-secondary">Estoque: {{ $produto->estoque }}</small></p>
-                    <div class="d-flex gap-1">
+                    <div class="d-flex gap-1 mb-3">
                         <div class="align-content-center">
                             <h4>Preço:</h4>
                         </div>
@@ -28,6 +28,17 @@
                                 @endif
                             </h4>
                         </div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-1">
+                        <div class="align-content-center">
+                            <h5>Quantidade:</h5>
+                        </div>
+                        <input type="number" class="form-control focus-ring focus-ring-danger w-25" name="quantidade" placeholder="1" value="1" min="1" max="{{ $produto->estoque }}">
+                        @error('quantidade')
+                            <div class="form-control bg-danger-subtle">
+                                <span class="text-danger">{{ $message }}</span>
+                            </div>
+                        @enderror
                     </div>
                 </div>
             </div>

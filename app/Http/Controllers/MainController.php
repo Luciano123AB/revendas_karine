@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Services\Boot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
@@ -83,7 +82,7 @@ class MainController extends Controller
             $dados->email = $email;
         } else {
             if ($email_existe) {
-                return redirect()->back()->withErrors("email", "Esse email já está sendo usado! Tente outro.");
+                return redirect()->back()->withErrors(["email", "Esse email já está sendo usado! Tente outro."]);
             }
 
             $dados->email = $email;
@@ -93,7 +92,7 @@ class MainController extends Controller
             $dados->telefone = $telefone;
         } else {
             if ($telefone_existe) {
-                return redirect()->back()->withErrors("telefone", "Esse telefone já está sendo usado! Tente outro.");                
+                return redirect()->back()->withErrors(["telefone", "Esse telefone já está sendo usado! Tente outro."]);                
             }
 
             $dados->telefone = preg_replace('/\D/', '', $request->telefone);
@@ -103,7 +102,7 @@ class MainController extends Controller
         $dados->updated_at = now();
 
         if (!$dados->save()) {
-            return redirect()->back()->withErrors("falha", "Falha ao atualizar os dados! Tente novamente.");
+            return redirect()->back()->withErrors(["falha", "Falha ao atualizar os dados! Tente novamente."]);
         }
 
         return redirect()->back()->with("sucesso", "Dados atualizados com sucesso!");

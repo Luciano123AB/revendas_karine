@@ -33,6 +33,10 @@
         border-right: 1px solid var(--bs-border-color);
     }
 
+    #qrcode {
+        width: 30%;
+    }
+
     #direitos {
         display: flex;
     }
@@ -59,6 +63,10 @@
         .imagem {
             border-right: none;
             border-bottom: 1px solid var(--bs-border-color);
+        }
+
+        #qrcode {
+            width: 100%;
         }
 
         #direitos {

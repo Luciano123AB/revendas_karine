@@ -11,17 +11,14 @@ class Compra extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        "produto",
         "quantidade",
-        "preco",
-        "data_compra",
+        "valor",
+        "pix",
         "status",
-        "produto_id",
-        "user_id"
+        "user_id",
+        "data_compra"
     ];
-
-    public function produto(): BelongsTo {
-        return $this->belongsTo(Produto::class);
-    }
 
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);

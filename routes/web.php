@@ -16,8 +16,9 @@ Route::middleware(["auth", "verified"])->group(function() {
         });
         Route::controller(Compras::class)->group(function() {
             Route::get("escolher/{id}", "escolher")->name("escolher");
-            Route::post("comprar", "comprar")->name("comprar");
-        });        
+            Route::post("comprar/{id}", "comprar")->name("comprar");
+            Route::get("qrcode/{id}", "qrcode")->name("qrcode");
+        });
     });
 });
 
