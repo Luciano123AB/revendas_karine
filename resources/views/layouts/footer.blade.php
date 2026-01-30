@@ -11,11 +11,11 @@
         <div class="d-grid">
             <span class="mb-1">Siga-nos:</span>
             <div class="d-flex justify-content-center gap-3">
-                <a href="#" target="_blank" class="btn btn-outline-light text-decoration-none text-dark shadow fs-4"><i class="bi bi-instagram"></i></a>
-                <a href="#" target="_blank" class="btn btn-outline-light text-decoration-none text-dark shadow fs-4"><i class="bi bi-facebook"></i></a>
-                <a href="#" target="_blank" class="btn btn-outline-light text-decoration-none text-dark shadow fs-4"><i class="bi bi-twitter-x"></i></a>
-                <a href="#" target="_blank" class="btn btn-outline-light text-decoration-none text-dark shadow fs-4"><i class="bi bi-tiktok"></i></a>
-                <a href="#" target="_blank" class="btn btn-outline-light text-decoration-none text-dark shadow fs-4"><i class="bi bi-threads"></i></a>
+                <a href="#" target="_blank" class="fundo btn border border-dark text-decoration-none text-dark focus-ring focus-ring-danger fs-4"><i class="bi bi-instagram"></i></a>
+                <a href="#" target="_blank" class="fundo btn border border-dark text-decoration-none text-dark focus-ring focus-ring-danger fs-4"><i class="bi bi-facebook"></i></a>
+                <a href="#" target="_blank" class="fundo btn border border-dark text-decoration-none text-dark focus-ring focus-ring-danger fs-4"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" target="_blank" class="fundo btn border border-dark text-decoration-none text-dark focus-ring focus-ring-danger fs-4"><i class="bi bi-tiktok"></i></a>
+                <a href="#" target="_blank" class="fundo btn border border-dark text-decoration-none text-dark focus-ring focus-ring-danger fs-4"><i class="bi bi-threads"></i></a>
             </div>
             
             <div class="mt-1">

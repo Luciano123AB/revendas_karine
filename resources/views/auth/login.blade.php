@@ -1,7 +1,7 @@
 @extends("layouts.main_layout")
 
 @section("content")
-    <form action="{{ route('login') }}" id="formulario" class="card bg-warning shadow w-100" method="POST">
+    <form action="{{ route('login') }}" id="formulario" class="fundo card shadow w-100" method="POST">
         @csrf
 
         <div class="card-header text-center">
@@ -30,10 +30,10 @@
         </div>
 
         <div class="card-footer d-flex justify-content-between">
-            <button type="button" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger" onclick="limparCampos()">Limpar</button>
+            <button type="button" class="btn btn-secondary border border-black focus-ring focus-ring-secondary" onclick="limparCampos()">Limpar</button>
             <div class="d-flex align-items-center gap-2">
                 <a href="{{ route('password.request') }}">Esqueci minha senha!</a>
-                <button type="submit" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Entrar</button>
+                <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger">Entrar</button>
             </div>
         </div>
     </form>

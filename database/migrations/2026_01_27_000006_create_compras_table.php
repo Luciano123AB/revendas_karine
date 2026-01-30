@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer("quantidade");
             $table->decimal("valor", 10, 2);
             $table->longText("pix")->nullable()->comment("...BR.GOV.BCB.PIX...");
-            $table->string("status")->comment("Pendente|Concluido|Cancelado");
+            $table->string("status")->comment("Pendente|Concluído|Cancelado");
             $table->foreignId("user_id")->constrained()->cascadeOnDelete();
             $table->timestamp("data_compra");
             $table->timestamps();

@@ -29,6 +29,10 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
 
+    .fundo {
+        background-color: #fd7e14;
+    }
+
     .imagem {
         border-right: 1px solid var(--bs-border-color);
     }

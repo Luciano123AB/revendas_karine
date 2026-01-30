@@ -11,14 +11,16 @@
     @include("layouts.partials.styles")
 </head>
 <body class="bg-danger fst-italic">
+    @include("layouts.alerta")
+    
     @include("layouts.header")
 
     <div class="container">
-        @if ($pagina != "Início" && $pagina != "Lista" && $pagina != "Pedidos")
+        @if ($pagina != "Início" && $pagina != "Lista" && $pagina != "Pedidos" && $pagina != "Histórico")
             <div class="d-flex justify-content-center align-items-center vh-100">
         @endif
             @yield("content")
-        @if ($pagina != "Início" && $pagina != "Lista" && $pagina != "Pedidos")
+        @if ($pagina != "Início" && $pagina != "Lista" && $pagina != "Pedidos" && $pagina != "Histórico")
             </div>
         @endif
     </div>

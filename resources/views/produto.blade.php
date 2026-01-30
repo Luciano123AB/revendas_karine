@@ -1,7 +1,7 @@
 @extends("layouts.main_layout")
 
 @section("content")
-    <form action="{{ route("comprar", ["id" => Crypt::encrypt($produto->id)]) }}" id="formulario" class="card shadow w-100" method="POST">
+    <form action="{{ route("comprar", ["id" => Crypt::encrypt($produto->id)]) }}" id="formulario" class="fundo card shadow w-100" method="POST">
         @csrf
 
         <div class="row g-0">
@@ -43,8 +43,8 @@
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-between">
-                <a href="{{ route("home") }}" type="button" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Voltar</a>
-                <button type="submit" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Comprar</button>
+                <a href="{{ route("home") }}" type="button" class="btn btn-warning border border-black focus-ring focus-ring-warning">Voltar</a>
+                <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger">Comprar</button>
             </div>
         </div>
     </form>

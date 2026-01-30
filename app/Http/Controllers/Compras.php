@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Compra;
 use App\Models\Produto;
+use App\Models\User;
 use App\Services\DadosPix;
 use App\Services\GerarPayload;
 use App\Services\GerarQRCode;
@@ -84,4 +85,22 @@ class Compras extends Controller
 
         return view("pix", ["qrcode" => $qrcode])->with("pagina", "Pagamento");
     }
+
+    public function confirmarCancelar($id) {
+
+        session()->flash("confirmacao_pedido", $id);
+
+        return redirect()->back();
+    }
+
+    public function cancelarCompra($id) {
+
+        $id = Crypt::decrypt($id);
+        $compra = Compra::find($id);
+
+        $compra->status = "Cancelado";
+        $compra->save();
+
+        return redirect()->back();
+    }    
 }

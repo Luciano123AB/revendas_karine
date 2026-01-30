@@ -119,4 +119,15 @@ class MainController extends Controller
             ->with("pagina", "Pedidos")
             ->with("pedidos", $pedidos);
     }
+
+    public function historico() {
+
+        $id = Auth::user()->id;
+        $cliente = User::find($id);
+        $compras = $cliente->compras->whereNotIn("status", ["Pendente"]);
+
+        return view("historico")
+            ->with("pagina", "Histórico")
+            ->with("compras", $compras);
+    }
 }

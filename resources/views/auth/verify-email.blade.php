@@ -1,7 +1,7 @@
 @extends("layouts.main_layout")
 
 @section("content")
-    <form action="{{ route('verification.send') }}" id="formulario" class="card bg-warning shadow w-100" method="POST">
+    <form action="{{ route('verification.send') }}" id="formulario" class="fundo card shadow w-100" method="POST">
         @csrf
 
         <div class="card-header text-center">
@@ -12,7 +12,7 @@
                 <label><i class="bi bi-envelope"></i> Email:</label>
                 <div class="d-flex gap-2">
                     <input type="email" class="form-control" name="email" placeholder="endereco@gmail.com" autofocus required value="{{ auth()->user()->email }}">
-                    <button type="submit" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">Enviar</button>
+                    <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger">Enviar</button>
                 </div>
                 @if (session('status') == 'verification-link-sent')
                     <div class="form-control bg-success-subtle">

@@ -1,7 +1,7 @@
 @extends("layouts.main_layout")
 
 @section("content")
-    <div class="card" id="qrcode">
+    <div class="fundo card" id="qrcode">
         <h5 class="card-header text-center">QRCode</h5>
         <img src="{{ $qrcode }}">
         <div class="card-body">

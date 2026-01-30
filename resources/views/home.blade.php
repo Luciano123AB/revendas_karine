@@ -8,11 +8,11 @@
     <div class="vh-100 mb-5">
         <div style="max-height: 100vh;" class="@if ($total > 0) produtos @endif d-grid gap-3 overflow-auto">
             @forelse ($produtos as $produto)
-                <div class="card bg-light shadow">
-                    <img src="{{ asset("assets/images/icons/icone_produtos.png") }}" class="card-img-top border-bottom w-100" height="200">
-                    <h5 class="card-title text-center p-2">{{ $produto->nome }}</h5>
+                <div class="fundo card shadow">
+                    <img src="{{ asset("assets/images/icons/icone_produtos.png") }}" class="card-img-top bg-warning w-100" height="200">
+                    <h5 class="card-header text-center">{{ $produto->nome }}</h5>
 
-                    <div class="card-body">
+                    <div class="card-body align-content-center">
                         @if ($produto->desconto > 0)
                             <p class="text-decoration-line-through m-0">R$ {{ number_format($produto->preco, 2, ',', '.') }}</p>
                         @endif
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="card-footer text-center">
-                        <a href="{{ route('escolher', ["id" => Crypt::encrypt($produto->id)]) }}" class="btn btn-outline-danger border border-danger focus-ring focus-ring-danger">ESCOLHER</a>
+                        <a href="{{ route('escolher', ["id" => Crypt::encrypt($produto->id)]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">ESCOLHER</a>
                     </div>
                 </div>
             @empty

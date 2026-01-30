@@ -14,11 +14,14 @@ Route::middleware(["auth", "verified"])->group(function() {
             Route::post("atualizar", "atualizar")->name("atualizar");
             Route::post("pesquisar/{categoria}", "pesquisar")->name("pesquisar");
             Route::get("pedidos", "pedidos")->name("pedidos");
+            Route::get("historico", "historico")->name("historico");
         });
         Route::controller(Compras::class)->group(function() {
             Route::get("escolher/{id}", "escolher")->name("escolher");
             Route::post("comprar/{id}", "comprar")->name("comprar");
             Route::get("qrcode/{id}", "qrcode")->name("qrcode");
+            Route::get("confirmar_cancelar/{id}", "confirmarCancelar")->name("confirmar_cancelar");
+            Route::get("cancelar_compra/{id}", "cancelarCompra")->name("cancelar_compra");            
         });
     });
 });
