@@ -10,6 +10,7 @@
                     <th scope="col"><span class="fs-5 fw-bold">Valor(R$)</span></th>
                     <th scope="col"><span class="fs-5 fw-bold">Data/Hora</span></th>
                     <th scope="col"><span class="fs-5 fw-bold">Status</span></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -20,10 +21,11 @@
                         <td class="align-content-center">{{ number_format($compra->valor, 2, ",") }}</td>
                         <td class="align-content-center">{{ $compra->data_efetuacao }}</td>
                         <td class="align-content-center"><span class="badge text-bg-{{ $compra->status == "Cancelado" ? "danger" : "success" }} fs-5">{{ $compra->status }}</span></td>
+                        <td class="align-content-center"><a href="{{ route("apagar", ["id" => Crypt::encrypt($compra->id)]) }}" class="btn btn-outline-danger border border-black focus-ring focus-ring-danger"><i class="bi bi-trash"></i></a></td>
                     </tr>
                 @empty
                     <tr>
-                        <td class="text-center" colspan="5">Nenhuma compra feita no momento.</td>
+                        <td class="text-center" colspan="6">Nenhuma compra feita no momento.</td>
                     </tr>
                 @endforelse
             </tbody>

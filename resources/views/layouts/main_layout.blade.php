@@ -11,7 +11,7 @@
     @include("layouts.partials.styles")
 </head>
 <body class="bg-danger fst-italic">
-    @include("layouts.alerta")
+    @include("layouts.alertas")
     
     @include("layouts.header")
 

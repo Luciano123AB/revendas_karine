@@ -26,14 +26,10 @@ class Compras extends Controller
             ->with("produto", $produto);
     }
 
-    public function comprar($id, Request $request) {
-
-        $id = Crypt::decrypt($id);
-        $produto = Produto::find($id);
-
+    public function confirmarComprar($id, $estoque, Request $request) {
         $request->validate(
             [
-                'quantidade' => 'required|integer|min:1|max:' . $produto->estoque
+                'quantidade' => 'required|integer|min:1|max:' . $estoque
             ],
 
             [
@@ -45,13 +41,27 @@ class Compras extends Controller
         );
 
         $quantidade = $request->input("quantidade");
+
+        session()->flash("confirmar", [
+            "acao" => "comprar",
+            "id" => $id,
+            "quantidade" => $quantidade
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function comprar($id, $quantidade) {
+
+        $id = Crypt::decrypt($id);
+        $produto = Produto::find($id);
         $valor = $produto->preco - ($produto->preco * $produto->desconto / 100);
         $valor_pagar = $valor * $quantidade;
-
         $nova_compra = new Compra();
+
         $nova_compra->produto = $produto->nome;
         $nova_compra->quantidade = $quantidade;
-        $nova_compra->valor = $valor_pagar;        
+        $nova_compra->valor = $valor_pagar;
         $nova_compra->status = "Pendente";
         $nova_compra->user_id = Auth::user()->id;
         $nova_compra->data_compra = Carbon::now();
@@ -88,7 +98,10 @@ class Compras extends Controller
 
     public function confirmarCancelar($id) {
 
-        session()->flash("confirmacao_pedido", $id);
+        session()->flash("confirmar", [
+            "acao" => "cancelar",
+            "id" => $id
+        ]);
 
         return redirect()->back();
     }
@@ -104,5 +117,15 @@ class Compras extends Controller
         $compra->save();
 
         return redirect()->back();
-    }    
+    }
+
+    public function apagar($id) {
+
+        $id = Crypt::decrypt($id);
+        $compra = Compra::find($id);
+
+        $compra->delete();
+
+        return redirect()->back();
+    }
 }

@@ -18,10 +18,12 @@ Route::middleware(["auth", "verified"])->group(function() {
         });
         Route::controller(Compras::class)->group(function() {
             Route::get("escolher/{id}", "escolher")->name("escolher");
-            Route::post("comprar/{id}", "comprar")->name("comprar");
+            Route::post("confirmar_comprar/{id}/{estoque}", "confirmarComprar")->name("confirmar_comprar");
+            Route::get("comprar/{id}/{quantidade}", "comprar")->name("comprar");
             Route::get("qrcode/{id}", "qrcode")->name("qrcode");
             Route::get("confirmar_cancelar/{id}", "confirmarCancelar")->name("confirmar_cancelar");
-            Route::get("cancelar_compra/{id}", "cancelarCompra")->name("cancelar_compra");            
+            Route::get("cancelar_compra/{id}", "cancelarCompra")->name("cancelar_compra");
+            Route::get("apagar/{id}", "apagar")->name("apagar");
         });
     });
 });
