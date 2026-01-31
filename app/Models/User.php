@@ -13,6 +13,8 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, MustVerifyEmailTrait, SoftDeletes;
 
+    const UPDATED_AT = null;
+
     protected $fillable = [
         "name",
         "email",

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string("status")->comment("Pendente|Concluído|Cancelado");
             $table->foreignId("user_id")->constrained()->cascadeOnDelete();
             $table->timestamp("data_compra");
+            $table->timestamp("data_efetuacao")->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

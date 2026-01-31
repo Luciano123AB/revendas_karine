@@ -1,7 +1,7 @@
 @extends("layouts.main_layout")
 
 @section("content")
-    <div class="fundo vh-100 my-5 shadow overflow-x-auto">
+    <div class="fundo vh-100 my-5 shadow overflow-auto">
         <table class="table table-bordered table-warning table-hover border border-black text-center shadow">
             <thead class="table-dark border border-bottom-0 border-black">
                 <tr>
@@ -27,7 +27,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td class="text-center" colspan="6">Nenhum pedido feito no momento.</td>
+                        <td class="text-center" colspan="7">Nenhum pedido feito no momento.</td>
                     </tr>
                 @endforelse
             </tbody>

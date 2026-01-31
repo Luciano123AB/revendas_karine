@@ -12,7 +12,7 @@
                 <label><i class="bi bi-envelope"></i> Email:</label>
                 <div class="d-flex gap-2">
                     <input type="email" class="form-control" name="email" placeholder="endereco@gmail.com" autofocus required value="{{ auth()->user()->email }}">
-                    <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger">Enviar</button>
+                    <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger">Reenviar</button>
                 </div>
                 @if (session('status') == 'verification-link-sent')
                     <div class="form-control bg-success-subtle">

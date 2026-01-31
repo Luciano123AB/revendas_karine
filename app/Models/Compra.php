@@ -10,6 +10,8 @@ class Compra extends Model
 {
     use SoftDeletes;
 
+    const UPDATED_AT = null;
+
     protected $fillable = [
         "produto",
         "quantidade",
@@ -17,7 +19,8 @@ class Compra extends Model
         "pix",
         "status",
         "user_id",
-        "data_compra"
+        "data_compra",
+        "data_efetuacao"
     ];
 
     protected $casts = [
@@ -27,7 +30,8 @@ class Compra extends Model
         "pix" => "string",
         "status" => "string",
         "user_id" => "integer",
-        "data_compra" => "datetime"
+        "data_compra" => "datetime",
+        "data_efetuacao" => "datetime"
     ];
 
     public function user(): BelongsTo {

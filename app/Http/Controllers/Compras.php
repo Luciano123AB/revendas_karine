@@ -99,6 +99,8 @@ class Compras extends Controller
         $compra = Compra::find($id);
 
         $compra->status = "Cancelado";
+        $compra->data_efetuacao = Carbon::now();
+        $compra->updated_at = Carbon::now();
         $compra->save();
 
         return redirect()->back();
