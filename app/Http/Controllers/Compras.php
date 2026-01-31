@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Compra;
 use App\Models\Produto;
-use App\Models\User;
 use App\Services\DadosPix;
 use App\Services\GerarPayload;
 use App\Services\GerarQRCode;
