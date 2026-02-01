@@ -9,7 +9,7 @@
         <div style="max-height: 100vh;" class="@if ($total > 0) produtos overflow-auto @endif d-grid gap-3">
             @forelse ($produtos as $produto)
                 <div class="fundo card shadow">
-                    <img src="{{ asset("assets/images/icons/icone_produtos.png") }}" class="card-img-top bg-warning w-100" height="200">
+                    <img src="{{ $produto->imagem == null ? asset("assets/images/icons/icone_produtos.png") : "$produto->imagem" }}" class="card-img-top bg-warning w-100" height="200">
                     <h5 class="card-header text-center">{{ $produto->nome }}</h5>
 
                     <div class="card-body align-content-center">

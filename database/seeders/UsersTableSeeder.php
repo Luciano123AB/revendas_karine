@@ -22,6 +22,15 @@ class UsersTableSeeder extends Seeder
                 "telefone" => "55999999999",
                 "email_verified_at" => Carbon::now(),
                 "created_at" => Carbon::now()
+            ],
+
+            [
+                "name" => "Luciano123AB",
+                "email" => "luciano@gmail.com",
+                "password" => Hash::make("luciano123456"),
+                "telefone" => "55999999998",
+                "email_verified_at" => Carbon::now(),
+                "created_at" => Carbon::now()
             ]
         ]);
     }

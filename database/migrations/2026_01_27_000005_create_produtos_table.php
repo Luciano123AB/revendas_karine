@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
+            $table->text('imagem')->nullable();
             $table->string('nome');
             $table->text('descricao')->nullable();
             $table->decimal('preco', 9, 2);

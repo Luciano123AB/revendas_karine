@@ -11,6 +11,7 @@ class Produto extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'imagem',
         'nome',
         'descricao',
         'preco',
@@ -20,6 +21,7 @@ class Produto extends Model
     ];
 
     protected $casts = [
+        "imagem" => "string",
         "nome" => "string",
         "descricao" => "string",
         "preco" => "float",

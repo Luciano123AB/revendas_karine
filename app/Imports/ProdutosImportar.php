@@ -22,6 +22,7 @@ class ProdutosImportar implements
         }
 
         return new Produto([
+            "imagem" => $row["imagem"],
             "nome" => $row["nome"],
             "descricao" => $row["descricao"],
             "preco" => $row["preco"],

@@ -55,7 +55,7 @@
     <div id="ofertas" class="@if($total > 0) produtos overflow-auto @endif d-grid mb-5 gap-3">
         @forelse ($ofertas as $oferta)
             <div class="fundo card shadow">
-                <img src="{{ asset("assets/images/icons/icone_produtos.png") }}" class="card-img-top bg-warning w-100" height="200">
+                <img src="{{ $oferta->imagem == null ? asset("assets/images/icons/icone_produtos.png") : "$oferta->imagem" }}" class="card-img-top bg-warning w-100" height="200">
                 <h5 class="card-header text-center">{{ $oferta->nome }}</h5>
 
                 <div class="card-body">
