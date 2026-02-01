@@ -1,7 +1,7 @@
 @extends("layouts.main_layout")
 
 @section("content")
-    <div class="fundo vh-100 my-5 shadow overflow-auto">
+    <div class="fundo vh-100 shadow overflow-auto">
         <table class="table table-bordered table-warning table-hover border border-black text-center shadow">
             <thead class="table-dark border border-bottom-0 border-black">
                 <tr>

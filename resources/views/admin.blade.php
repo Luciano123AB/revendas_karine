@@ -1,7 +1,7 @@
 @extends("layouts.main_layout")
 
 @section("content")
-    <div class="admin vh-100 my-5 gap-3">
+    <div class="admin vh-100 gap-3">
         <div>
             <div class="fundo card shadow">
                 <h3 class="card-header text-center">PRODUTOS</h3>

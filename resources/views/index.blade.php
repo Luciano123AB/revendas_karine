@@ -1,7 +1,7 @@
 @extends("layouts.main_layout")
 
 @section("content")    
-    <div class="carrossel d-flex gap-1 my-5">
+    <div class="carrossel d-flex gap-1">
         <div id="carousel_ofertas" class="carousel slide w-75">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carousel_ofertas" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
