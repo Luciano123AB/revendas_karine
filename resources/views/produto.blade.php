@@ -6,12 +6,12 @@
 
         <div class="row g-0">
             <div class="col-md-4">
-                <img style="width: 500px; height: 500px;" src="{{ $produto->imagem == null ? asset("assets/images/icons/icone_produtos.png") : "$produto->imagem" }}" class="imagem bg-white img-fluid rounded border-black p-3">
+                <img src="{{ $produto->imagem == null ? asset("assets/images/icons/icone_produtos.png") : "$produto->imagem" }}" class="imagem bg-white img-fluid rounded border-black p-3">
             </div>
             <div class="col-md-8">
+                <h5 class="card-header text-center">Nome: {{ $produto->nome }}</h5>
                 <div class="card-body">
-                    <h5 class="card-title text-center mb-5">Nome: {{ $produto->nome }}</h5>
-                    <p class="card-text border-bottom border-black">Descrição: {{ $produto->descricao }}</p>
+                    <p id="descricao" class="card-text border-bottom border-black overflow-auto">Descrição: {{ $produto->descricao }}</p>
                     <p class="card-text border-bottom border-black"><small class="text-body-secondary">Categoria: {{ $produto->categoria->nome }}</small></p>
                     <p class="card-text border-bottom border-black"><small class="text-body-secondary">Estoque: {{ $produto->estoque }}</small></p>
                     <div class="d-flex gap-1 mb-3">

@@ -72,7 +72,7 @@
                 </div>
             </div>        
         @empty
-            <div style="height: 55vh">
+            <div id="nenhuma_oferta">
                 <div class="card bg-light shadow text-center p-1">
                     <h4 class="card-title">Nenhuma oferta disponível no momento. Volte mais tarde!</h4>
                 </div>

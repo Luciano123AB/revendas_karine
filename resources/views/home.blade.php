@@ -6,7 +6,7 @@
         <span>TODOS OS PRODUTOS:</span>
     </h1>
     <div class="vh-100 mb-5">
-        <div style="max-height: 100vh;" class="@if ($total > 0) produtos overflow-auto @endif d-grid gap-3">
+        <div class="@if ($total > 0) produtos overflow-auto @endif d-grid gap-3">
             @forelse ($produtos as $produto)
                 <div class="fundo card shadow">
                     <img src="{{ $produto->imagem == null ? asset("assets/images/icons/icone_produtos.png") : "$produto->imagem" }}" class="card-img-top {{ $produto->imagem == null ? "bg-warning" : "bg-white p-3" }} w-100" height="200">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             @empty
-                <div style="height: 100vh">
+                <div id="nenhum_produto">
                     <div class="card bg-light shadow text-center p-1">
                         <h4 class="card-title">Nenhuma produto disponível no momento. Volte mais tarde!</h4>
                     </div>

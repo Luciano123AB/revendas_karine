@@ -29,8 +29,21 @@
         max-height: 70vh;
     }
 
+    #nenhuma_oferta {
+        height: 55vh;
+    }
+
+    #nenhum_produto {
+        height: 100vh;
+    }
+
     .produtos {
+        max-height: 100vh;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    #descricao {
+        max-height: 60px;
     }
 
     .fundo {
@@ -38,7 +51,9 @@
     }
 
     .imagem {
-        border-right: 1px solid var(--bs-border-color);
+        width: 500px;
+        height: 500px;
+        border-right: 1px solid black;
     }
 
     #qrcode {
@@ -48,6 +63,10 @@
     .admin {
         display: grid;
         grid-template-columns: 1fr 1fr;
+    }
+
+    #pix {
+        max-height: 50px;
     }
 
     #direitos {
@@ -75,7 +94,7 @@
 
         .imagem {
             border-right: none;
-            border-bottom: 1px solid var(--bs-border-color);
+            border-bottom: 1px solid black;
         }
 
         #qrcode {
