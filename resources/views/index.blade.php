@@ -64,7 +64,11 @@
                 </div>
 
                 <div class="card-footer text-center">
-                    <a href="{{ route('escolher', ["id" => Crypt::encrypt($oferta->id)]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">ESCOLHER</a>
+                    @auth
+                        @if (Auth::user()->name != "Admin")
+                            <a href="{{ route('escolher', ["id" => Crypt::encrypt($oferta->id)]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">ESCOLHER</a>
+                        @endif
+                    @endauth
                 </div>
             </div>        
         @empty
