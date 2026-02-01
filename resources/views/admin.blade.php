@@ -25,7 +25,7 @@
                                 @enderror
                                 @if(session('sucesso_importar'))
                                     <div class="form-control bg-danger-subtle">
-                                        <span class="text-danger">{{ session('sucesso_importar') }}</span>
+                                        <span class="text-success">{{ session('sucesso_importar') }}</span>
                                     </div>
                                 @endif
                             </div>
