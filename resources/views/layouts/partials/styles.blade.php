@@ -25,6 +25,10 @@
         border-radius: 50%;
     }
 
+    #ofertas {
+        max-height: 70vh;
+    }
+
     .produtos {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
@@ -39,6 +43,11 @@
 
     #qrcode {
         width: 30%;
+    }
+
+    .admin {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
 
     #direitos {
@@ -71,6 +80,10 @@
 
         #qrcode {
             width: 100%;
+        }
+
+        .admin {
+            grid-template-columns: 1fr;
         }
 
         #direitos {

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome');
             $table->text('descricao')->nullable();
             $table->decimal('preco', 9, 2);
-            $table->integer('desconto')->default(0);
+            $table->integer('desconto')->nullable();
             $table->integer('estoque');
             $table->foreignId("categoria_id")->constrained()->cascadeOnDelete();
             $table->timestamps();

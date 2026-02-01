@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Compra;
 use App\Models\Produto;
 use App\Models\User;
 use App\Services\Boot;
@@ -24,7 +25,7 @@ class MainController extends Controller
             Boot::dependencias();
         }
 
-        $ofertas = Produto::where("desconto", ">", 0)->get();
+        $ofertas = Produto::where("desconto", "!=", null)->get();
         $total = Produto::count();
 
         return view("index")
@@ -129,5 +130,14 @@ class MainController extends Controller
         return view("historico")
             ->with("pagina", "Histórico")
             ->with("compras", $compras);
+    }
+
+    public function admin() {
+
+        $pedidos = Compra::all()->where("status", "==", "Pendente");
+
+        return view("admin")
+            ->with("pagina", "Administrador")
+            ->with("pedidos", $pedidos);
     }
 }

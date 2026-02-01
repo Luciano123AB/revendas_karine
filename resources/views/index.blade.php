@@ -52,7 +52,7 @@
         <i class="bi bi-fire"></i>
         <span>OFERTAS DO DIA:</span>
     </h1>
-    <div style="max-height: 50vh;" class="@if($total > 0) produtos @endif d-grid mb-5 gap-3 overflow-auto">
+    <div id="ofertas" class="@if($total > 0) produtos overflow-auto @endif d-grid mb-5 gap-3">
         @forelse ($ofertas as $oferta)
             <div class="fundo card shadow">
                 <img src="{{ asset("assets/images/icons/icone_produtos.png") }}" class="card-img-top bg-warning w-100" height="200">

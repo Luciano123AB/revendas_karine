@@ -34,10 +34,6 @@ class Boot
             "--force" => true
         ]);
         Artisan::call("db:seed", [
-            "--class" => "ProdutosTableSeeder",
-            "--force" => true
-        ]);
-        Artisan::call("db:seed", [
             "--class" => "UsersTableSeeder",
             "--force" => true
         ]);        

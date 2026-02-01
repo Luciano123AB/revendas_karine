@@ -7,7 +7,11 @@
         </a>
 
         <div class="d-flex align-items-center gap-2">
-            @auth                
+            @if ($pagina != "Administrador")
+                <a href="{{ route("admin") }}" class="btn btn-danger border border-black focus-ring focus-ring-danger"><i class="bi bi-gear"></i></a>
+            @endif
+
+            @auth
                 <div class="btn-group">
                     <div class="d-grid bg-danger btn border border-black">
                         <span class="text-white">Cliente: {{ Auth::user()->email }}</span>

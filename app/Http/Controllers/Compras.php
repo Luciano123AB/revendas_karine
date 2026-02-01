@@ -118,6 +118,29 @@ class Compras extends Controller
         return redirect()->back();
     }
 
+    public function confirmarAprovar($id) {
+
+        session()->flash("confirmar", [
+            "acao" => "aprovar",
+            "id" => $id
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function aprovar($id) {
+
+        $id = Crypt::decrypt($id);
+        $compra = Compra::find($id);
+
+        $compra->status = "Aprovado";
+        $compra->data_efetuacao = Carbon::now();
+        $compra->updated_at = Carbon::now();
+        $compra->save();
+
+        return redirect()->back();
+    }
+
     public function apagar($id) {
 
         $id = Crypt::decrypt($id);

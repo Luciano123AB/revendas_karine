@@ -13,7 +13,7 @@ class Registros extends Controller
         $cliente = User::find($id);
         $pedidos = $cliente->compras->where("status", "Pendente");
 
-        return view("pedidos")
+        return view("registros.pedidos")
             ->with("pagina", "Pedidos")
             ->with("pedidos", $pedidos);
     }
@@ -24,7 +24,7 @@ class Registros extends Controller
         $cliente = User::find($id);
         $compras = $cliente->compras->whereNotIn("status", ["Pendente"]);
 
-        return view("historico")
+        return view("registros.historico")
             ->with("pagina", "Histórico")
             ->with("compras", $compras);
     }

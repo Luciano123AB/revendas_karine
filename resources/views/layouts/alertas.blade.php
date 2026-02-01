@@ -7,8 +7,8 @@
             background: "#ffc107",
             showConfirmButton: false,
             footer: "<div class='d-flex gap-2'>" +
-                        @if(session("confirmar.acao") == "comprar")
-                            "<a href='{{ route('comprar', ['id' => session('confirmar.id'), 'quantidade' => session('confirmar.quantidade')]) }}' class='btn btn-success border border-black focus-ring focus-ring-success'>Confirmar</a>" +
+                        @if(session("confirmar.acao") == "comprar" || session("confirmar.acao") == "aprovar")
+                            "<a href='{{ route(session('confirmar.acao'), ['id' => session('confirmar.id'), 'quantidade' => session('confirmar.quantidade')]) }}' class='btn btn-success border border-black focus-ring focus-ring-success'>Confirmar</a>" +
                         @elseif(session("confirmar.acao") == "cancelar")
                             "<a href='{{ route('cancelar_compra', ['id' => session('confirmar.id')]) }}' class='btn btn-success border border-black focus-ring focus-ring-success'>Confirmar</a>" +
                         @endif

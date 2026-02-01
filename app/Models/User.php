@@ -11,7 +11,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, MustVerifyEmailTrait, SoftDeletes;
+    use Notifiable,
+        MustVerifyEmailTrait,
+        SoftDeletes;
 
     const UPDATED_AT = null;
 
