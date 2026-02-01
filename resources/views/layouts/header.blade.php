@@ -18,8 +18,7 @@
                     <div class="d-grid bg-danger btn border border-black">
                         <span class="text-white">Cliente: {{ Auth::user()->email }}</span>
                     </div>
-                    <button type="button" class="dropdown-toggle btn btn-danger border border-black focus-ring focus-ring-danger" data-bs-toggle="dropdown" aria-expanded="false">
-                    </button>
+                    <button type="button" class="dropdown-toggle btn btn-danger border border-black focus-ring focus-ring-danger" data-bs-toggle="dropdown" aria-expanded="false"></button>
                     <ul class="dropdown-menu dropdown-menu-end bg-warning">
                         @if ($pagina != "Atualizar Dados")
                             <li>
