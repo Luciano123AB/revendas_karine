@@ -10,6 +10,8 @@ class Produto extends Model
 {
     use SoftDeletes;
 
+    const UPDATED_AT = null;
+
     protected $fillable = [
         'imagem',
         'nome',

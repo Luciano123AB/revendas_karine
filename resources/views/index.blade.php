@@ -1,7 +1,7 @@
 @extends("layouts.main_layout")
 
-@section("content")    
-    <div class="carrossel d-flex gap-1">
+@section("content")
+    <div class="carrossel d-flex gap-1 mb-5">
         <div id="carousel_ofertas" class="carousel slide w-75">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carousel_ofertas" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -55,7 +55,7 @@
     <div id="ofertas" class="@if($total > 0) produtos overflow-auto @endif d-grid mb-5 gap-3">
         @forelse ($ofertas as $oferta)
             <div class="fundo card shadow">
-                <img src="{{ $oferta->imagem == null ? asset("assets/images/icons/icone_produtos.png") : "$oferta->imagem" }}" class="card-img-top bg-warning w-100" height="200">
+                <img src="{{ $oferta->imagem == null ? asset("assets/images/icons/icone_produtos.png") : "$oferta->imagem" }}" class="card-img-top bg-white w-100 p-3" height="200">
                 <h5 class="card-header text-center">{{ $oferta->nome }}</h5>
 
                 <div class="card-body">

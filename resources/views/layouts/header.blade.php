@@ -20,7 +20,7 @@
                     </div>
                     <button type="button" class="dropdown-toggle btn btn-danger border border-black focus-ring focus-ring-danger" data-bs-toggle="dropdown" aria-expanded="false"></button>
                     <ul class="dropdown-menu dropdown-menu-end bg-warning">
-                        @if ($pagina != "Atualizar Dados")
+                        @if ($pagina != "Atualizar Dados" && Auth::user()->name != "Admin")
                             <li>
                                 <a href="{{ route("editar") }}" class="dropdown-item btn btn-danger border-top border-danger focus-ring focus-ring-danger">Editar</a>
                             </li>

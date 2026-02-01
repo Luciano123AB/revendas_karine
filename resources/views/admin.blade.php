@@ -23,13 +23,14 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     </div>
                                 @enderror
-                                @if(session('sucesso_importar'))
-                                    <div class="form-control bg-danger-subtle">
-                                        <span class="text-success">{{ session('sucesso_importar') }}</span>
-                                    </div>
-                                @endif
                             </div>
                         </div>
+                        @if(session('sucesso_importar'))
+                            <div class="form-control bg-success-subtle">
+                                <span class="text-success">{{ session('sucesso_importar') }}</span>
+                            </div>
+                        @endif
+
                         <div class="card-footer">
                             <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger w-100">Importar</button>
                         </div>

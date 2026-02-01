@@ -6,7 +6,7 @@
 
         <div class="row g-0">
             <div class="col-md-4">
-                <img style="width: 500px; height: 500px;" src="{{ $produto->imagem == null ? asset("assets/images/icons/icone_produtos.png") : "$produto->imagem" }}" class="imagem img-fluid rounded border-black">
+                <img style="width: 500px; height: 500px;" src="{{ $produto->imagem == null ? asset("assets/images/icons/icone_produtos.png") : "$produto->imagem" }}" class="imagem bg-white img-fluid rounded border-black p-3">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
