@@ -1,9 +1,28 @@
 @extends("layouts.main_layout")
 
 @section("content")
-    <h1 class="card-title mb-1 mt-5">
-        <i class="bi bi-box-seam-fill"></i>
-        <span>TODOS OS PRODUTOS:</span>
+    <h1 class="card-title d-flex flex-wrap align-items-center gap-1 mb-1 mt-5">
+        <div class="me-2">
+            <i class="bi bi-box-seam-fill"></i>
+            <span>TODOS OS PRODUTOS:</span>
+        </div>
+
+        <div class="btn-group">
+            <div class="fundo d-grid btn btn-warning border border-black">
+                <span class="text-white fs-5 overflow-auto">Categoria: {{ $categoria . " (" . $total . ")" }}</span>
+            </div>
+            <button type="button" class="dropdown-toggle fundo btn btn-lg btn-warning border border-black focus-ring focus-ring-warning" data-bs-toggle="dropdown" aria-expanded="false"></button>
+            <ul class="dropdown-menu dropdown-menu-end fundo">
+                <li class="fundo">
+                    <a href="{{ route("home", ["categoria" => "Todos"]) }}" class="dropdown-item btn btn-danger border-top border-bottom border-danger focus-ring focus-ring-warning">Todos</a>
+                </li>
+                @foreach ($categorias as $categoria)
+                    <li class="fundo">
+                        <a href="{{ route("home", ["categoria" => $categoria->nome]) }}" class="dropdown-item btn btn-danger border-bottom border-danger focus-ring focus-ring-warning">{{ $categoria->nome }}</a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
     </h1>
     <div class="vh-100 mb-5">
         <div class="@if ($total > 0) produtos overflow-auto @endif d-grid gap-3">

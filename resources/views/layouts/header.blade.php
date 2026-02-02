@@ -43,9 +43,9 @@
                             </form>
                         </li>
                     </ul>
-                </div>                
+                </div>
                 @if ($pagina != "Lista")
-                    <a href="{{ route("home") }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Lista Completa</a>
+                    <a href="{{ route("home", ["categoria" => "Todos"]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Lista Completa</a>
                 @else
                     <a href="{{ route("inicio") }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Início</a>
                 @endif

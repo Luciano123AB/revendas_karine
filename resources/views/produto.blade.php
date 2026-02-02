@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-between">
-                <a href="{{ route("home") }}" type="button" class="btn btn-warning border border-black focus-ring focus-ring-warning">Voltar</a>
+                <a href="{{ route("home", ["categoria" => "Todos"]) }}" type="button" class="btn btn-warning border border-black focus-ring focus-ring-warning">Voltar</a>
                 <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger">Comprar</button>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Compra;
 use App\Models\Produto;
 use App\Models\User;
@@ -25,7 +26,9 @@ class MainController extends Controller
             Boot::dependencias();
         }
 
-        $ofertas = Produto::where("desconto", "!=", null)->get();
+        $ofertas = Produto::where("desconto", "!=", null)
+                            ->orderBy("nome")
+                            ->get();
         $total = Produto::count();
 
         return view("index")
@@ -34,14 +37,26 @@ class MainController extends Controller
             ->with("total", $total);
     }
 
-    public function home() {
+    public function home($categoria) {
 
-        $produtos = Produto::all();
-        $total = Produto::count();
+        $produtos = null;
+
+        if ($categoria == "Todos") {
+            $produtos = Produto::orderBy("nome")->get();
+        } else {
+            $produtos = Produto::whereRelation("categoria", "nome", $categoria)
+                                ->orderBy("nome")
+                                ->get();
+        }
+
+        $categorias = Categoria::all();
+        $total = $produtos->count();
 
         return view("home")
             ->with("pagina", "Lista")
             ->with("produtos", $produtos)
+            ->with("categoria", $categoria)
+            ->with("categorias", $categorias)
             ->with("total", $total);
     }
 
@@ -134,7 +149,9 @@ class MainController extends Controller
 
     public function admin() {
 
-        $pedidos = Compra::all()->where("status", "==", "Pendente");
+        $pedidos = Compra::where("status", "Pendente")
+                        ->orderBy("data_compra", "desc")
+                        ->get();
 
         return view("admin")
             ->with("pagina", "Administrador")
