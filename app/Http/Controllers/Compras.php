@@ -115,6 +115,11 @@ class Compras extends Controller
         $compra->updated_at = Carbon::now();
         $compra->save();
 
+        $produto = Produto::where("nome", $compra->produto)->first();
+
+        $produto->estoque = $produto->estoque + 1;
+        $produto->save();
+
         return redirect()->back();
     }
 

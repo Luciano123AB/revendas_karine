@@ -65,8 +65,14 @@
 
                 <div class="card-footer text-center">
                     @auth
-                        @if (Auth::user()->name != "Admin")
-                            <a href="{{ route('escolher', ["id" => Crypt::encrypt($oferta->id)]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">ESCOLHER</a>
+                        @if ($oferta->estoque > 0)
+                            @if (Auth::user()->name != "Admin")
+                                <a href="{{ route('escolher', ["id" => Crypt::encrypt($oferta->id)]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">ESCOLHER</a>
+                            @endif
+                        @else
+                            @if (Auth::user()->name != "Admin")
+                                <button class="btn btn-secondary border border-black" disabled>ESGOTADO</button>
+                            @endif
                         @endif
                     @endauth
                 </div>
