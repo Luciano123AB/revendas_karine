@@ -10,6 +10,7 @@ use App\Services\Boot;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
@@ -147,14 +148,13 @@ class MainController extends Controller
             ->with("compras", $compras);
     }
 
-    public function admin() {
+    public function apagar($id) {
 
-        $pedidos = Compra::where("status", "Pendente")
-                        ->orderBy("data_compra", "desc")
-                        ->get();
+        $id = Crypt::decrypt($id);
+        $compra = Compra::find($id);
 
-        return view("admin")
-            ->with("pagina", "Administrador")
-            ->with("pedidos", $pedidos);
-    }
+        $compra->delete();
+
+        return redirect()->back();
+    }    
 }

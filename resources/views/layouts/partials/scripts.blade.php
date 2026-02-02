@@ -19,9 +19,25 @@
         });
     });
 
+    document.getElementById("exibir_ocultar").addEventListener("click", function () {
+
+        let botao = document.getElementById("botao");
+        let senha = document.getElementById("senha");
+
+        if (senha.type == "password") {
+            senha.type = "text";
+            botao.classList.remove("bi-eye");
+            botao.classList.add("bi-eye-slash");
+        } else {
+            senha.type = "password";
+            botao.classList.remove("bi-eye-slash");
+            botao.classList.add("bi-eye");
+        }
+    })
+
     document.getElementById("cancelar").addEventListener("click", function () {
         Swal.close();
-    })
+    })    
 
     function limparCampos() {
         document.getElementById("formulario").reset();

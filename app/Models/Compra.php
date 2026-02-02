@@ -13,26 +13,30 @@ class Compra extends Model
     const UPDATED_AT = null;
 
     protected $fillable = [
-        "produto",
         "quantidade",
         "valor",
         "pix",
         "status",
+        "produto_id",
         "user_id",
         "data_compra",
         "data_efetuacao"
     ];
 
     protected $casts = [
-        "produto" => "string",
         "quantidade" => "integer",
         "valor" => "float",
         "pix" => "string",
         "status" => "string",
+        "produto_id" => "integer",
         "user_id" => "integer",
         "data_compra" => "datetime",
         "data_efetuacao" => "datetime"
     ];
+
+    public function produto(): BelongsTo {
+        return $this->belongsTo(Produto::class);
+    }
 
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);

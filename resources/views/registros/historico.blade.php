@@ -17,7 +17,7 @@
                 @forelse ($compras as $compra)
                     <tr>
                         <th scope="row" class="align-content-center">{{ $loop->index + 1 }}</th>
-                        <td class="align-content-center">{{ $compra->produto }}</td>
+                        <td class="align-content-center">{{ $compra->produto->nome }}</td>
                         <td class="align-content-center">{{ number_format($compra->valor, 2, ",") }}</td>
                         <td class="align-content-center">{{ $compra->data_efetuacao }}</td>
                         <td class="align-content-center"><span class="badge text-bg-{{ $compra->status == "Cancelado" ? "danger" : "success" }} fs-5">{{ $compra->status }}</span></td>

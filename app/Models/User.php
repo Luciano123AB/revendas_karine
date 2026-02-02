@@ -18,6 +18,7 @@ class User extends Authenticatable implements MustVerifyEmail
     const UPDATED_AT = null;
 
     protected $fillable = [
+        "permissao",
         "name",
         "email",
         "password",
@@ -27,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected $casts = [
+        "permissao" => "boolean",
         "name" => "string",
         "email" => "string",
         "password" => "string",

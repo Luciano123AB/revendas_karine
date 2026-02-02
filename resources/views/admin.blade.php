@@ -68,7 +68,7 @@
                             <tr>
                                 <th scope="row" class="align-content-center">{{ $loop->index + 1 }}</th>
                                 <td class="align-content-center">{{ $pedido->user->name }}</td>
-                                <td class="align-content-center">{{ $pedido->produto }}</td>
+                                <td class="align-content-center">{{ $pedido->produto->nome }}</td>
                                 <td class="align-content-center">{{ number_format($pedido->valor, 2, ",") }}</td>
                                 <td class="align-middle">
                                     <div class="admin gap-1">

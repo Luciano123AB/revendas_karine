@@ -4,14 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Compra;
 use App\Models\Produto;
-use App\Services\DadosPix;
-use App\Services\GerarPayload;
 use App\Services\GerarQRCode;
+use App\Services\Salvar;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\DB;
 
 class Compras extends Controller
 {
@@ -58,26 +55,7 @@ class Compras extends Controller
         $valor_pagar = $valor * $quantidade;
         $nova_compra = new Compra();
 
-        $nova_compra->produto = $produto->nome;
-        $nova_compra->quantidade = $quantidade;
-        $nova_compra->valor = $valor_pagar;
-        $nova_compra->status = "Pendente";
-        $nova_compra->user_id = Auth::user()->id;
-        $nova_compra->data_compra = Carbon::now();
-
-        $salvar = DB::transaction(function () use ($nova_compra, $produto, $valor_pagar) {
-            $nova_compra->save();
-
-            $dados = $nova_compra->pix = DadosPix::dados($valor_pagar, $nova_compra->id);
-
-            $nova_compra->pix = (new GerarPayload())->gerarPixPayload($dados);
-            $nova_compra->save();
-
-            $produto->estoque = $produto->estoque - $nova_compra->quantidade;
-            $produto->save();
-
-            return true;
-        });
+        $salvar = Salvar::comprar($nova_compra, $quantidade, $produto, $valor_pagar);
 
         if (!$salvar) {
             return redirect()->back()->withErrors(['falha' => 'Falha ao realizar a compra! Tente novamente.']);
@@ -115,44 +93,12 @@ class Compras extends Controller
         $compra->updated_at = Carbon::now();
         $compra->save();
 
-        $produto = Produto::where("nome", $compra->produto)->first();
+        $id_produto = $compra->produto_id;
+        $produto = Produto::find($id_produto);
 
         $produto->estoque = $produto->estoque + 1;
         $produto->save();
 
         return redirect()->back();
-    }
-
-    public function confirmarAprovar($id) {
-
-        session()->flash("confirmar", [
-            "acao" => "aprovar",
-            "id" => $id
-        ]);
-
-        return redirect()->back();
-    }
-
-    public function aprovar($id) {
-
-        $id = Crypt::decrypt($id);
-        $compra = Compra::find($id);
-
-        $compra->status = "Aprovado";
-        $compra->data_efetuacao = Carbon::now();
-        $compra->updated_at = Carbon::now();
-        $compra->save();
-
-        return redirect()->back();
-    }
-
-    public function apagar($id) {
-
-        $id = Crypt::decrypt($id);
-        $compra = Compra::find($id);
-
-        $compra->delete();
-
-        return redirect()->back();
-    }
+    }    
 }

@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
     {
         DB::table("users")->insert([
             [
+                "permissao" => true,
                 "name" => "Admin",
                 "email" => "admin@gmail.com",
                 "password" => Hash::make("admin123456"),
@@ -25,6 +26,7 @@ class UsersTableSeeder extends Seeder
             ],
 
             [
+                "permissao" => false,
                 "name" => "Luciano123AB",
                 "email" => "luciano@gmail.com",
                 "password" => Hash::make("luciano123456"),

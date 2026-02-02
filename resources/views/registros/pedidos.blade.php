@@ -18,7 +18,7 @@
                 @forelse ($pedidos as $pedido)
                     <tr>
                         <th scope="row" class="align-content-center">{{ $loop->index + 1 }}</th>
-                        <td class="align-content-center">{{ $pedido->produto }}</td>
+                        <td class="align-content-center">{{ $pedido->produto->nome }}</td>
                         <td class="align-content-center">{{ number_format($pedido->valor, 2, ",") }}</td>
                         <td class="align-content-center">{{ $pedido->data_compra }}</td>
                         <td class="align-content-center"><span class="badge text-bg-secondary fs-5">{{ $pedido->status }}</span></td>
