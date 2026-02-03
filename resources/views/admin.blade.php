@@ -1,8 +1,8 @@
 @extends("layouts.main_layout")
 
 @section("content")
-    <div class="admin vh-100 gap-3">
-        <div>
+    <div class="admin vh-100 gap-3 overflow-auto">
+        <div class="d-grid align-items-start gap-3">
             <div class="fundo card shadow">
                 <h3 class="card-header text-center">PRODUTOS</h3>
         
@@ -48,6 +48,95 @@
                     </div>
                 </div>
             </div>
+
+            <form action="{{ route('novo_produto') }}" id="formulario" class="fundo card shadow h-100" method="POST">
+                @csrf
+
+                <div class="card-header text-center">
+                    <h3 class="card-title">NOVO PRODUTO</h3>
+                </div>            
+                <div class="card-body d-grid gap-3">
+                    <div class="form-group">
+                        <label><i class="bi bi-image"></i> Imagem:</label>
+                        <input type="url" class="form-control focus-ring focus-ring-danger" name="imagem" placeholder="https://..." value="{{ old('imagem') }}">
+                        @error('imagem')
+                            <div class="form-control bg-danger-subtle">
+                                <span class="text-danger">{{ $message }}</span>
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="bi bi-box-seam"></i> Nome:</label>
+                        <input type="text" class="form-control focus-ring focus-ring-danger" name="nome" placeholder="..." value="{{ old('nome') }}">
+                        @error('nome')
+                            <div class="form-control bg-danger-subtle">
+                                <span class="text-danger">{{ $message }}</span>
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="bi bi-file-earmark-text"></i> Descrição:</label>
+                        <textarea class="form-control focus-ring focus-ring-danger" rows="4" name="descricao" placeholder="...">{{ old('descricao') }}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="bi bi-cash-stack"></i> Preço:</label>
+                        <input type="text" class="form-control focus-ring focus-ring-danger" name="preco" placeholder="000,00" value="{{ old('preco') }}">
+                        @error('preco')
+                            <div class="form-control bg-danger-subtle">
+                                <span class="text-danger">{{ $message }}</span>
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="bi bi-cash-coin"></i> Desconto:</label>
+                        <input type="number" class="form-control focus-ring focus-ring-danger" name="desconto" placeholder="00" value="{{ old('desconto') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="bi bi-boxes"></i> Estoque:</label>
+                        <input type="number" class="form-control focus-ring focus-ring-danger" name="estoque" placeholder="000" value="{{ old('estoque') }}">
+                        @error('estoque')
+                            <div class="form-control bg-danger-subtle">
+                                <span class="text-danger">{{ $message }}</span>
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="bi bi-pen"></i> Categoria:</label>
+                        <select class="form-control focus-ring focus-ring-danger" name="categoria">
+                            <option value="Selecione" selected>Selecione a categoria...</option>
+                            @foreach ($categorias as $categoria)
+                                <option value="{{ $categoria->id }}" {{ old("categoria") == "$categoria->id" ? "selected" : "" }}>{{ $categoria->nome }}</option>
+                            @endforeach
+                        </select>
+                        @error('categoria')
+                            <div class="form-control bg-danger-subtle">
+                                <span class="text-danger">{{ $message }}</span>
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                @error('existe')
+                    <div class="form-control bg-danger-subtle">
+                        <span class="text-danger">{{ $message }}</span>
+                    </div>
+                @enderror
+                @session('sucesso')
+                    <div class="form-control bg-success-subtle">
+                        <span class="text-success">{{ session("sucesso") }}</span>
+                    </div>
+                @endsession
+
+                <div class="card-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-secondary border border-black focus-ring focus-ring-secondary" onclick="limparCampos()">Limpar</button>
+                    <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger">Salvar</button>
+                </div>
+            </form>
         </div>
 
         <div class="fundo card shadow overflow-auto">

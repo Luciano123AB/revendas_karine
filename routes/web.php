@@ -40,6 +40,7 @@ Route::middleware(["auth", "verified"])->group(function() {
                 Route::get("admin", "admin")->name("admin");
                 Route::get("confirmar_aprovar/{id}", "confirmarAprovar")->name("confirmar_aprovar");
                 Route::get("aprovar/{id}", "aprovar")->name("aprovar");
+                Route::post("novo_produto", "novoProduto")->name("novo_produto");
             });
         });
     });
