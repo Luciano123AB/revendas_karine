@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CompraStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -27,7 +28,7 @@ class Compra extends Model
         "quantidade" => "integer",
         "valor" => "float",
         "pix" => "string",
-        "status" => "string",
+        "status" => CompraStatus::class,
         "produto_id" => "integer",
         "user_id" => "integer",
         "data_compra" => "datetime",

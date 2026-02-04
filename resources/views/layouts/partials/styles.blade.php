@@ -56,6 +56,11 @@
         border-right: 1px solid black;
     }
 
+    .swal2-icon.swal2-warning {
+        border-color: #fd7e14;
+        color: #fd7e14;
+    }
+
     #qrcode {
         width: 30%;
     }
@@ -63,6 +68,10 @@
     .admin {
         display: grid;
         grid-template-columns: 1fr 1fr;
+    }
+
+    .tabela {
+        max-height: 500px;
     }
 
     #pix {

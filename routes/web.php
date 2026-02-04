@@ -15,8 +15,7 @@ Route::middleware(["auth", "verified"])->group(function() {
         Route::controller(MainController::class)->group(function() {
             Route::get("home/{categoria}", "home")->name("home");
             Route::get("editar", "editar")->name("editar");
-            Route::post("atualizar", "atualizar")->name("atualizar");
-            Route::post("pesquisar/{categoria}", "pesquisar")->name("pesquisar");
+            Route::post("atualizar", "atualizar")->name("atualizar");            
             Route::get("apagar/{id}", "apagar")->name("apagar");            
         });
         Route::controller(Compras::class)->group(function() {
@@ -41,6 +40,9 @@ Route::middleware(["auth", "verified"])->group(function() {
                 Route::get("confirmar_aprovar/{id}", "confirmarAprovar")->name("confirmar_aprovar");
                 Route::get("aprovar/{id}", "aprovar")->name("aprovar");
                 Route::post("novo_produto", "novoProduto")->name("novo_produto");
+                Route::get("confirmar_resetar", "confirmarResetar")->name("confirmar_resetar");
+                Route::get("resetar", "resetar")->name("resetar");
+                Route::post("pesquisar", "pesquisar")->name("pesquisar");
             });
         });
     });

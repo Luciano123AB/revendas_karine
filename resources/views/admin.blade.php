@@ -2,7 +2,7 @@
 
 @section("content")
     <div class="admin vh-100 gap-3 overflow-auto">
-        <div class="d-grid align-items-start gap-3">
+        <div class="d-grid align-self-baseline gap-3">
             <div class="fundo card shadow">
                 <h3 class="card-header text-center">PRODUTOS</h3>
         
@@ -37,14 +37,29 @@
                     </form>
                     
                     <div class="card">
-                        <div class="card-body">
-                            <a href="{{ route("exportar") }}" class="btn btn-danger border border-black focus-ring focus-ring-danger w-100">Exportar</a>
-                            @error('falha_exportar')
-                                <div class="form-control bg-danger-subtle">
-                                    <span class="text-danger">{{ $message }}</span>
-                                </div>
-                            @enderror
+                        <div class="admin card-body gap-3">
+                            <div class="d-grid">
+                                <a href="{{ route("exportar") }}" class="btn btn-danger border border-black focus-ring focus-ring-danger w-100">Exportar</a>                                
+                            </div>
+                            <div class="d-grid">
+                                <a href="{{ route("confirmar_resetar") }}" class="btn btn-danger border border-black focus-ring focus-ring-danger w-100">Resetar</a>
+                            </div>
                         </div>
+                        @error('falha_exportar')
+                            <div class="form-control bg-danger-subtle">
+                                <span class="text-danger">{{ $message }}</span>
+                            </div>
+                        @enderror
+                        @error('falha_resetar')
+                            <div class="form-control bg-danger-subtle">
+                                <span class="text-danger">{{ $message }}</span>
+                            </div>
+                        @enderror
+                        @session('sucesso_resetar')
+                            <div class="form-control bg-success-subtle">
+                                <span class="text-success">{{ session("sucesso_resetar") }}</span>
+                            </div>
+                        @endsession
                     </div>
                 </div>
             </div>
@@ -68,7 +83,7 @@
 
                     <div class="form-group">
                         <label><i class="bi bi-box-seam"></i> Nome:</label>
-                        <input type="text" class="form-control focus-ring focus-ring-danger" name="nome" placeholder="..." value="{{ old('nome') }}">
+                        <input type="text" class="form-control focus-ring focus-ring-danger" name="nome" placeholder="..." max="150" value="{{ old('nome') }}">
                         @error('nome')
                             <div class="form-control bg-danger-subtle">
                                 <span class="text-danger">{{ $message }}</span>
@@ -83,7 +98,7 @@
 
                     <div class="form-group">
                         <label><i class="bi bi-cash-stack"></i> Preço:</label>
-                        <input type="text" class="form-control focus-ring focus-ring-danger" name="preco" placeholder="000,00" value="{{ old('preco') }}">
+                        <input type="text" class="form-control focus-ring focus-ring-danger" name="preco" placeholder="000.00" min="1" value="{{ old('preco') }}">
                         @error('preco')
                             <div class="form-control bg-danger-subtle">
                                 <span class="text-danger">{{ $message }}</span>
@@ -94,11 +109,16 @@
                     <div class="form-group">
                         <label><i class="bi bi-cash-coin"></i> Desconto:</label>
                         <input type="number" class="form-control focus-ring focus-ring-danger" name="desconto" placeholder="00" value="{{ old('desconto') }}">
+                        @error('desconto')
+                            <div class="form-control bg-danger-subtle">
+                                <span class="text-danger">{{ $message }}</span>
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label><i class="bi bi-boxes"></i> Estoque:</label>
-                        <input type="number" class="form-control focus-ring focus-ring-danger" name="estoque" placeholder="000" value="{{ old('estoque') }}">
+                        <input type="number" class="form-control focus-ring focus-ring-danger" name="estoque" placeholder="000" min="1" value="{{ old('estoque') }}">
                         @error('estoque')
                             <div class="form-control bg-danger-subtle">
                                 <span class="text-danger">{{ $message }}</span>
@@ -109,7 +129,7 @@
                     <div class="form-group">
                         <label><i class="bi bi-pen"></i> Categoria:</label>
                         <select class="form-control focus-ring focus-ring-danger" name="categoria">
-                            <option value="Selecione" selected>Selecione a categoria...</option>
+                            <option selected disabled>Selecione a categoria...</option>
                             @foreach ($categorias as $categoria)
                                 <option value="{{ $categoria->id }}" {{ old("categoria") == "$categoria->id" ? "selected" : "" }}>{{ $categoria->nome }}</option>
                             @endforeach
@@ -139,40 +159,108 @@
             </form>
         </div>
 
-        <div class="fundo card shadow overflow-auto">
-            <h3 class="card-header text-center">PEDIDOS</h3>
-            <div class="overflow-auto pt-3">
-                <table class="table table-bordered table-warning table-hover border border-black text-center shadow">
-                    <thead class="table-dark border border-bottom-0 border-black">
-                        <tr>
-                            <th scope="col"><span class="fs-5 fw-bold">Nº</span></th>
-                            <th scope="col"><span class="fs-5 fw-bold">Cliente</span></th>
-                            <th scope="col"><span class="fs-5 fw-bold">Produto</span></th>
-                            <th scope="col"><span class="fs-5 fw-bold">Valor(R$)</span></th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                        @forelse ($pedidos as $pedido)
+        <div class="d-grid align-self-baseline gap-3">
+            <div class="fundo tabela card shadow overflow-auto">
+                <h3 class="card-header text-center">PEDIDOS</h3>
+                <div class="overflow-auto pt-3">
+                    <table class="table table-bordered table-warning table-hover border border-black text-center shadow">
+                        <thead class="table-dark border border-bottom-0 border-black">
                             <tr>
-                                <th scope="row" class="align-content-center">{{ $loop->index + 1 }}</th>
-                                <td class="align-content-center">{{ $pedido->user->name }}</td>
-                                <td class="align-content-center">{{ $pedido->produto->nome }}</td>
-                                <td class="align-content-center">{{ number_format($pedido->valor, 2, ",") }}</td>
-                                <td class="align-middle">
-                                    <div class="admin gap-1">
-                                        <a href="{{ route("confirmar_cancelar", ["id" => Crypt::encrypt($pedido->id)]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Cancelar</a>
-                                        <a href="{{ route("confirmar_aprovar", ["id" => Crypt::encrypt($pedido->id)]) }}" class="btn btn-success border border-black focus-ring focus-ring-success">Aprovar</a>
+                                <th scope="col"><span class="fs-5 fw-bold">Nº</span></th>
+                                <th scope="col"><span class="fs-5 fw-bold">Cliente</span></th>
+                                <th scope="col"><span class="fs-5 fw-bold">Produto</span></th>
+                                <th scope="col"><span class="fs-5 fw-bold">Valor(R$)</span></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            @forelse ($pedidos as $pedido)
+                                <tr>
+                                    <th scope="row" class="align-content-center">{{ $loop->index + 1 }}</th>
+                                    <td class="align-content-center">{{ $pedido->user->name }}</td>
+                                    <td class="align-content-center">{{ $pedido->produto->nome }}</td>
+                                    <td class="align-content-center">{{ number_format($pedido->valor, 2, ",") }}</td>
+                                    <td class="align-middle">
+                                        <div class="admin gap-1">
+                                            <a href="{{ route("confirmar_cancelar", ["id" => Crypt::encrypt($pedido->id)]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Cancelar</a>
+                                            <a href="{{ route("confirmar_aprovar", ["id" => Crypt::encrypt($pedido->id)]) }}" class="btn btn-success border border-black focus-ring focus-ring-success">Aprovar</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td class="text-center" colspan="7">Nenhum pedido feito no momento.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    
+            <div class="fundo tabela card shadow overflow-auto">
+                <h3 class="card-header text-center">PESQUISAR PEDIDOS</h3>
+                <div class="overflow-auto pt-3">
+                    <form action="{{ route("pesquisar") }}" method="post">
+                        @csrf
+
+                        <div class="d-grid ps-1 pb-1 pe-1">
+                            <div class="form-group">
+                                <label><i class="bi bi-person"></i> Nome:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="cliente" placeholder="..." value="{{ old("cliente") }}">
+                                    <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger">Pesquisar</button>
+                                </div>
+                                @error('cliente')
+                                    <div class="form-control bg-danger-subtle">
+                                        <span class="text-danger">{{ $message }}</span>
                                     </div>
-                                </td>
-                            </tr>
-                        @empty
+                                @enderror
+                                @error('nao_existe')
+                                    <div class="form-control bg-danger-subtle">
+                                        <span class="text-danger">{{ $message }}</span>
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                    </form>
+                    <table class="table table-bordered table-warning table-hover border border-black text-center shadow">
+                        <thead class="table-dark border border-bottom-0 border-black">
                             <tr>
-                                <td class="text-center" colspan="7">Nenhum pedido feito no momento.</td>
+                                <th scope="col"><span class="fs-5 fw-bold">Nº</span></th>
+                                <th scope="col"><span class="fs-5 fw-bold">Cliente</span></th>
+                                <th scope="col"><span class="fs-5 fw-bold">Produto</span></th>
+                                <th scope="col"><span class="fs-5 fw-bold">Valor(R$)</span></th>
+                                <th scope="col"></th>
                             </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            @session ('cliente_pedidos')
+                                @forelse (session("cliente_pedidos") as $pedidos)
+                                    <tr>
+                                        <th scope="row" class="align-content-center">{{ $loop->index + 1 }}</th>
+                                        <td class="align-content-center">{{ $pedidos->user->name }}</td>
+                                        <td class="align-content-center">{{ $pedidos->produto->nome }}</td>
+                                        <td class="align-content-center">{{ number_format($pedidos->valor, 2, ",") }}</td>
+                                        <td class="align-middle">
+                                            <div class="admin gap-1">
+                                                <a href="{{ route("confirmar_cancelar", ["id" => Crypt::encrypt($pedidos->id)]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Cancelar</a>
+                                                <a href="{{ route("confirmar_aprovar", ["id" => Crypt::encrypt($pedidos->id)]) }}" class="btn btn-success border border-black focus-ring focus-ring-success">Aprovar</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td class="text-center" colspan="7">Nenhum pedido feito por esse cliente.</td>
+                                    </tr>
+                                @endforelse
+                            @else
+                                <tr>
+                                    <td class="text-center" colspan="7">Nenhum pesquisa realizada.</td>
+                                </tr>
+                            @endsession
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

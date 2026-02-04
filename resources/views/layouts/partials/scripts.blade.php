@@ -35,10 +35,6 @@
         }
     })
 
-    document.getElementById("cancelar").addEventListener("click", function () {
-        Swal.close();
-    })    
-
     function limparCampos() {
         document.getElementById("formulario").reset();
 

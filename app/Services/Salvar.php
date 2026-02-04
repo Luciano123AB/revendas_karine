@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\CompraStatus;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +12,7 @@ class Salvar
     public static function comprar($nova_compra, int $quantidade, $produto, float $valor_pagar) {
         $nova_compra->quantidade = $quantidade;
         $nova_compra->valor = $valor_pagar;
-        $nova_compra->status = "Pendente";
+        $nova_compra->status = CompraStatus::PENDENTE;
         $nova_compra->produto_id = $produto->id;
         $nova_compra->user_id = Auth::user()->id;
         $nova_compra->data_compra = Carbon::now();

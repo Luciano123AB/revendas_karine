@@ -30,7 +30,7 @@ class MainController extends Controller
         $ofertas = Produto::where("desconto", "!=", null)
                             ->orderBy("nome")
                             ->get();
-        $total = Produto::count();
+        $total = $ofertas->where("desconto", ">", 0)->count();
 
         return view("index")
             ->with("pagina", "Início")

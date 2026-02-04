@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\CompraStatus;
 use App\Models\Compra;
 use App\Models\Produto;
 use App\Services\GerarQRCode;
@@ -88,7 +89,7 @@ class Compras extends Controller
         $id = Crypt::decrypt($id);
         $compra = Compra::find($id);
 
-        $compra->status = "Cancelado";
+        $compra->status = CompraStatus::CANCELADO;
         $compra->data_efetuacao = Carbon::now();
         $compra->updated_at = Carbon::now();
         $compra->save();
