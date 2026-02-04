@@ -98,7 +98,7 @@
 
                     <div class="form-group">
                         <label><i class="bi bi-cash-stack"></i> Preço:</label>
-                        <input type="number" class="form-control focus-ring focus-ring-danger" name="preco" placeholder="000.00" step="0.01" min="0.01" value="{{ old('preco') }}">
+                        <input type="number" class="form-control focus-ring focus-ring-danger" name="preco" placeholder="000,00" step="0.01" min="0.01" value="{{ old('preco') }}">
                         @error('preco')
                             <div class="form-control bg-danger-subtle">
                                 <span class="text-danger">{{ $message }}</span>
