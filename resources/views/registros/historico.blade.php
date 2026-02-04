@@ -21,7 +21,14 @@
                         <td class="align-content-center">{{ number_format($compra->valor, 2, ",") }}</td>
                         <td class="align-content-center">{{ $compra->data_efetuacao }}</td>
                         <td class="align-content-center"><span class="badge text-bg-{{ $compra->status === \App\Enums\CompraStatus::CANCELADO ? "danger" : "success" }} fs-5">{{ $compra->status }}</span></td>
-                        <td class="align-content-center"><a href="{{ route("apagar", ["id" => Crypt::encrypt($compra->id)]) }}" class="btn btn-outline-danger border border-black focus-ring focus-ring-danger"><i class="bi bi-trash"></i></a></td>
+                        <td class="align-content-center">
+                            <form action="{{ route("apagar", ["id" => Crypt::encrypt($compra->id)]) }}" method="POST">
+                                @csrf
+                                @method("DELETE")
+
+                                <button type="submit" class="btn btn-outline-danger border border-black focus-ring focus-ring-danger"><i class="bi bi-trash"></i></button>
+                            </form>
+                        </td>
                     </tr>
                 @empty
                     <tr>

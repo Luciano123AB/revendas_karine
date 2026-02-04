@@ -61,6 +61,10 @@
         color: #fd7e14;
     }
 
+    #formulario_confirmacao {
+        display: none;
+    }
+
     #qrcode {
         width: 30%;
     }

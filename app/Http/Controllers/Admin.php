@@ -15,7 +15,7 @@ class Admin extends Controller
 {
     public function admin() {
 
-        $pedidos = Compra::where("status", "Pendente")
+        $pedidos = Compra::where("status", CompraStatus::PENDENTE)
                         ->orderBy("data_compra", "desc")
                         ->get();
         $categorias = Categoria::all();
@@ -151,7 +151,7 @@ class Admin extends Controller
             return redirect()->back()->withErrors(["nao_existe" => "Cliente não encontrado! Tente outro."]);
         }
 
-        $cliente_pedidos = $cliente->compras->where("status", "Pendente");
+        $cliente_pedidos = $cliente->compras->where("status", CompraStatus::PENDENTE);
 
         return redirect()->back()->with("cliente_pedidos", $cliente_pedidos);
     }

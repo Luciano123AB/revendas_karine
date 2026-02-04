@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\CompraStatus;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +12,7 @@ class Registros extends Controller
 
         $id = Auth::user()->id;
         $cliente = User::find($id);
-        $pedidos = $cliente->compras->where("status", "Pendente");
+        $pedidos = $cliente->compras->where("status", CompraStatus::PENDENTE);
 
         return view("registros.pedidos")
             ->with("pagina", "Pedidos")
@@ -22,7 +23,7 @@ class Registros extends Controller
 
         $id = Auth::user()->id;
         $cliente = User::find($id);
-        $compras = $cliente->compras->whereNotIn("status", ["Pendente"]);
+        $compras = $cliente->compras()->where('status', '!=', CompraStatus::PENDENTE)->get();
 
         return view("registros.historico")
             ->with("pagina", "Histórico")

@@ -126,28 +126,6 @@ class MainController extends Controller
         return redirect()->back()->with("sucesso", "Dados atualizados com sucesso!");
     }
 
-    public function pedidos() {
-
-        $id = Auth::user()->id;
-        $cliente = User::find($id);
-        $pedidos = $cliente->compras->where("status", "Pendente");
-
-        return view("pedidos")
-            ->with("pagina", "Pedidos")
-            ->with("pedidos", $pedidos);
-    }
-
-    public function historico() {
-
-        $id = Auth::user()->id;
-        $cliente = User::find($id);
-        $compras = $cliente->compras->whereNotIn("status", ["Pendente"]);
-
-        return view("historico")
-            ->with("pagina", "Histórico")
-            ->with("compras", $compras);
-    }
-
     public function apagar($id) {
 
         $id = Crypt::decrypt($id);
