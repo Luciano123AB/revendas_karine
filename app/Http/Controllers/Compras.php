@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\CompraStatus;
 use App\Models\Compra;
 use App\Models\Produto;
+use App\Services\Cancelar;
 use App\Services\GerarQRCode;
 use App\Services\Salvar;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
@@ -59,8 +58,20 @@ class Compras extends Controller
         $salvar = Salvar::comprar($nova_compra, $quantidade, $produto, $valor_pagar);
 
         if (!$salvar) {
-            return redirect()->back()->withErrors(['falha' => 'Falha ao realizar a compra! Tente novamente.']);
+            session()->flash("resultado", [
+                'titulo' => 'ERRO',
+                'menssagem' => 'Falha ao comprar o produto! Tente novamente.',
+                'icone' => 'error'
+            ]);
+
+            return redirect()->back();
         }
+
+        session()->flash("resultado", [
+            'titulo' => 'SUCESSO',
+            'menssagem' => 'Produto comprado com êxito.',
+            'icone' => 'success'
+        ]);
 
         return redirect()->route("qrcode", ["id" => Crypt::encrypt($nova_compra->id)]);
     }
@@ -88,18 +99,27 @@ class Compras extends Controller
 
         $id = Crypt::decrypt($id);
         $compra = Compra::find($id);
-
-        $compra->status = CompraStatus::CANCELADO;
-        $compra->data_efetuacao = Carbon::now();
-        $compra->updated_at = Carbon::now();
-        $compra->save();
-
         $id_produto = $compra->produto_id;
         $produto = Produto::find($id_produto);
 
-        $produto->estoque = $produto->estoque + 1;
-        $produto->save();
+        $cancelar = Cancelar::cancelarCompra($compra, $produto);
+
+        if (!$cancelar) {
+            session()->flash("resultado", [
+                'titulo' => 'ERRO',
+                'menssagem' => 'Falha ao cancelar a compra! Tente novamente.',
+                'icone' => 'error'
+            ]);
+
+            return redirect()->back();
+        }
+
+        session()->flash("resultado", [
+            'titulo' => 'SUCESSO',
+            'menssagem' => 'Compra cancelada com êxito.',
+            'icone' => 'success'
+        ]);
 
         return redirect()->back();
-    }    
+    }
 }

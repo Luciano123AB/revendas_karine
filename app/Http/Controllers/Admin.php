@@ -44,7 +44,22 @@ class Admin extends Controller
         $compra->status = CompraStatus::APROVADO;
         $compra->data_efetuacao = Carbon::now();
         $compra->updated_at = Carbon::now();
-        $compra->save();
+
+        if (!$compra->save()) {
+            session()->flash("resultado", [
+                'titulo' => 'ERRO',
+                'menssagem' => 'Falha ao aprovar a compra! Tente novamente.',
+                'icone' => 'error'
+            ]);
+
+            return redirect()->back();
+        }
+
+        session()->flash("resultado", [
+            'titulo' => 'SUCESSO',
+            'menssagem' => 'Compra aprovada com êxito.',
+            'icone' => 'success'
+        ]);
 
         return redirect()->back();
     }

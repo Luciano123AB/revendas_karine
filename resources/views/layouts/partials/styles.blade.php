@@ -56,7 +56,9 @@
         border-right: 1px solid black;
     }
 
-    .swal2-icon.swal2-warning {
+    .swal2-icon.swal2-warning,
+    .swal2-icon.swal2-success,
+    .swal2-icon.swal2-error {
         border-color: #fd7e14;
         color: #fd7e14;
     }

@@ -23,3 +23,20 @@
         });
     </script>
 @endif
+
+@if(session("resultado"))
+    <script>
+        Swal.fire({
+            title: "{{ session('resultado.titulo') }}!",
+            text: "{{ session('resultado.menssagem') }}",
+            icon: "{{ session('resultado.icone') }}",
+            background: "#ffc107",
+            showConfirmButton: true,
+            confirmButtonText: "OK",
+            customClass: {
+                confirmButton: "btn btn-success border border-black focus-ring focus-ring-success",
+                popup: "border border-black shadow"
+            }
+        });
+    </script>
+@endif
