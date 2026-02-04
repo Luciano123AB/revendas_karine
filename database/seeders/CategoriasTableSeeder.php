@@ -13,6 +13,7 @@ class CategoriasTableSeeder extends Seeder
     public function run(): void
     {
         DB::table("categorias")->insert([
+            ["nome" => "Todos"],
             ["nome" => "Moda e Acessórios"],
             ["nome" => "Eletrônicos"],
             ["nome" => "Casa e Decoração"],
