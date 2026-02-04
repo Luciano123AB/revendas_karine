@@ -5,7 +5,7 @@
         <table class="table table-bordered table-warning table-hover border border-black text-center shadow">
             <thead class="table-dark border border-bottom-0 border-black">
                 <tr>
-                    <th scope="col"><span class="fs-5 fw-bold">Nº</span></th>
+                    <th scope="col" class="numero"><span class="fs-5 fw-bold">Nº</span></th>
                     <th scope="col"><span class="fs-5 fw-bold">Produto</span></th>
                     <th scope="col"><span class="fs-5 fw-bold">Valor(R$)</span></th>
                     <th scope="col"><span class="fs-5 fw-bold">Data/Hora</span></th>

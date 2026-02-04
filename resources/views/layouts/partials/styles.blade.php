@@ -78,6 +78,10 @@
         max-height: 500px;
     }
 
+    .numero {
+        width: 1%;
+    }
+
     #pix {
         max-height: 50px;
     }

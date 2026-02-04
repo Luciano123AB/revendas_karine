@@ -50,7 +50,7 @@ class MainController extends Controller
                                 ->get();
         }
 
-        $categorias = Categoria::all();
+        $categorias = Categoria::where("nome", "!=", $categoria)->get();
         $total = $produtos->count();
 
         return view("home")

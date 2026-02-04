@@ -13,12 +13,10 @@
             </div>
             <button type="button" class="dropdown-toggle fundo btn btn-lg btn-warning border border-black focus-ring focus-ring-warning" data-bs-toggle="dropdown" aria-expanded="false"></button>
             <ul class="dropdown-menu dropdown-menu-end fundo">
-                <li class="fundo">
-                    <a href="{{ route("home", ["categoria" => "Todos"]) }}" class="dropdown-item btn btn-danger border-top border-bottom border-danger focus-ring focus-ring-warning">Todos</a>
-                </li>
+                <div class="border-bottom border-warning"></div>
                 @foreach ($categorias as $categoria)
                     <li class="fundo">
-                        <a href="{{ route("home", ["categoria" => $categoria->nome]) }}" class="dropdown-item btn btn-danger border-bottom border-danger focus-ring focus-ring-warning">{{ $categoria->nome }}</a>
+                        <a href="{{ route("home", ["categoria" => $categoria->nome]) }}" class="dropdown-item btn btn-warning border-bottom border-warning focus-ring focus-ring-warning">{{ $categoria->nome }}</a>
                     </li>
                 @endforeach
             </ul>
