@@ -82,7 +82,7 @@ class Admin extends Controller
         $imagem = $request->input("imagem");
         $nome = $request->input("nome");
         $descricao = $request->input("descricao");
-        $preco = str_replace(',', '.', str_replace('.', '', $request->input("preco")));
+        $preco = $request->input("preco");
         $desconto = $request->input("desconto");
         $estoque = $request->input("estoque");
         $categoria = $request->input("categoria");

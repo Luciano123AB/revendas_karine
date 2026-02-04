@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('imagem')->nullable();
             $table->string('nome', 150);
             $table->text('descricao')->nullable();
-            $table->decimal('preco', 9, 2);
+            $table->decimal('preco', 10, 2);
             $table->integer('desconto')->nullable();
             $table->integer('estoque');
             $table->foreignId("categoria_id")->constrained()->cascadeOnDelete();
