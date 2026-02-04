@@ -205,7 +205,7 @@
 
                         <div class="d-grid ps-1 pb-1 pe-1">
                             <div class="form-group">
-                                <label><i class="bi bi-person"></i> Nome:</label>
+                                <label><i class="bi bi-person"></i> Cliente:</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="cliente" placeholder="..." value="{{ old("cliente") }}">
                                     <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger">Pesquisar</button>
