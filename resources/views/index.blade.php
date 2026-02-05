@@ -59,15 +59,15 @@
                 <h5 class="card-header text-center">{{ $oferta->nome }}</h5>
 
                 <div class="card-body">
-                    <p class="text-decoration-line-through m-0">R$ {{ number_format($oferta->preco, 2, ',', '.') }}</p>
-                    <h4 class="card-text">R$ {{ number_format($oferta->preco - ($oferta->preco * $oferta->desconto / 100), 2, ',', '.') }} <span class="bg-success fs-5">-{{ $oferta->desconto }}%</span></h4>
+                    <p class="text-decoration-line-through m-0">R$ {{ $oferta->preco_base }}</p>
+                    <h4 class="card-text">R$ {{ $oferta->preco_formatado }} <span class="bg-success fs-5">-{{ $oferta->desconto }}%</span></h4>
                 </div>
 
                 <div class="card-footer text-center">
                     @auth
                         @if ($oferta->estoque > 0)
                             @if (!Auth::user()?->permissao)
-                                <a href="{{ route('escolher', ["id" => Crypt::encrypt($oferta->id)]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">ESCOLHER</a>
+                                <a href="{{ route('escolher', ["id" => $oferta->id_crypt]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">ESCOLHER</a>
                             @endif
                         @else
                             @if (!Auth::user()?->permissao)

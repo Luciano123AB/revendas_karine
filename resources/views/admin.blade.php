@@ -179,11 +179,11 @@
                                     <th scope="row" class="align-content-center">{{ $loop->index + 1 }}</th>
                                     <td class="align-content-center">{{ $pedido->user->name }}</td>
                                     <td class="align-content-center">{{ $pedido->produto->nome }}</td>
-                                    <td class="align-content-center">{{ number_format($pedido->valor, 2, ",") }}</td>
+                                    <td class="align-content-center">{{ $pedido->valor_formatado }}</td>
                                     <td class="align-middle">
                                         <div class="admin gap-1">
-                                            <a href="{{ route("confirmar_cancelar", ["id" => Crypt::encrypt($pedido->id)]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Cancelar</a>
-                                            <a href="{{ route("confirmar_aprovar", ["id" => Crypt::encrypt($pedido->id)]) }}" class="btn btn-success border border-black focus-ring focus-ring-success">Aprovar</a>
+                                            <a href="{{ route("confirmar_cancelar", ["id" => $pedido->id_crypt]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Cancelar</a>
+                                            <a href="{{ route("confirmar_aprovar", ["id" => $pedido->id_crypt]) }}" class="btn btn-success border border-black focus-ring focus-ring-success">Aprovar</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -240,11 +240,11 @@
                                         <th scope="row" class="align-content-center">{{ $loop->index + 1 }}</th>
                                         <td class="align-content-center">{{ $pedidos->user->name }}</td>
                                         <td class="align-content-center">{{ $pedidos->produto->nome }}</td>
-                                        <td class="align-content-center">{{ number_format($pedidos->valor, 2, ",") }}</td>
+                                        <td class="align-content-center">{{ $pedidos->valor_formatado }}</td>
                                         <td class="align-middle">
                                             <div class="admin gap-1">
-                                                <a href="{{ route("confirmar_cancelar", ["id" => Crypt::encrypt($pedidos->id)]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Cancelar</a>
-                                                <a href="{{ route("confirmar_aprovar", ["id" => Crypt::encrypt($pedidos->id)]) }}" class="btn btn-success border border-black focus-ring focus-ring-success">Aprovar</a>
+                                                <a href="{{ route("confirmar_cancelar", ["id" => $pedidos->id_crypt]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Cancelar</a>
+                                                <a href="{{ route("confirmar_aprovar", ["id" => $pedidos->id_crypt]) }}" class="btn btn-success border border-black focus-ring focus-ring-success">Aprovar</a>
                                             </div>
                                         </td>
                                     </tr>

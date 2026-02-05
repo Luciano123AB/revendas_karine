@@ -18,11 +18,11 @@
                     <tr>
                         <th scope="row" class="align-content-center">{{ $loop->index + 1 }}</th>
                         <td class="align-content-center">{{ $compra->produto->nome }}</td>
-                        <td class="align-content-center">{{ number_format($compra->valor, 2, ",") }}</td>
+                        <td class="align-content-center">{{ $compra->valor_formatado }}</td>
                         <td class="align-content-center">{{ $compra->data_efetuacao }}</td>
                         <td class="align-content-center"><span class="badge text-bg-{{ $compra->status === \App\Enums\CompraStatus::CANCELADO ? "danger" : "success" }} fs-5">{{ $compra->status }}</span></td>
                         <td class="align-content-center">
-                            <form action="{{ route("apagar", ["id" => Crypt::encrypt($compra->id)]) }}" method="POST">
+                            <form action="{{ route("apagar", ["id" => $compra->id_crypt]) }}" method="POST">
                                 @csrf
                                 @method("DELETE")
 

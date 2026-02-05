@@ -1,7 +1,7 @@
 @extends("layouts.main_layout")
 
 @section("content")
-    <form action="{{ route("confirmar_comprar", ["id" => Crypt::encrypt($produto->id), "estoque" => $produto->estoque]) }}" id="formulario" class="fundo card shadow w-100" method="POST">
+    <form action="{{ route("confirmar_comprar", ["id" => $produto->id_crypt, "estoque" => $produto->estoque]) }}" id="formulario" class="fundo card shadow w-100" method="POST">
         @csrf
 
         <div class="row g-0">
@@ -20,9 +20,9 @@
                         </div>
                         <div>
                             @if ($produto->desconto > 0)
-                                <p class="text-decoration-line-through m-0">R$ {{ number_format($produto->preco, 2, ',', '.') }}</p>
+                                <p class="text-decoration-line-through m-0">R$ {{ $produto->preco_base }}</p>
                             @endif
-                            <h4 class="card-text">R$ {{ number_format($produto->preco - ($produto->preco * $produto->desconto / 100), 2, ',', '.') }}
+                            <h4 class="card-text">R$ {{ $produto->preco_formatado }}
                                 @if ($produto->desconto > 0)
                                     <span class="bg-success fs-5">-{{ $produto->desconto }}%</span>
                                 @endif
@@ -33,7 +33,7 @@
                         <div class="align-content-center">
                             <h5>Quantidade:</h5>
                         </div>
-                        <input type="number" class="form-control focus-ring focus-ring-danger w-25" name="quantidade" placeholder="1" value="1" min="1" max="{{ $produto->estoque }}">
+                        <input type="number" class="form-control focus-ring focus-ring-danger w-25" name="quantidade" placeholder="1" value="{{ old("quantidade", 1) }}" min="1" max="{{ $produto->estoque }}">
                         @error('quantidade')
                             <div class="form-control bg-danger-subtle">
                                 <span class="text-danger">{{ $message }}</span>

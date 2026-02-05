@@ -28,7 +28,24 @@ class MainController extends Controller
 
         $ofertas = Produto::where("desconto", "!=", null)
                             ->orderBy("nome")
-                            ->get();
+                            ->get()
+                            ->map(function ($oferta) {
+                                $oferta->id_crypt = Crypt::encrypt($oferta->id);
+                                $oferta->preco_base = number_format(
+                                    $oferta->preco,
+                                    2,
+                                    ',',
+                                    '.'
+                                );
+                                $oferta->preco_formatado = number_format(
+                                    $oferta->preco - ($oferta->preco * $oferta->desconto / 100),
+                                    2,
+                                    ',',
+                                    '.'
+                                );
+
+                                return $oferta;
+                            });
         $total = $ofertas->where("desconto", ">", 0)->count();
 
         return view("index")
@@ -42,11 +59,46 @@ class MainController extends Controller
         $produtos = null;
 
         if ($categoria == "Todos") {
-            $produtos = Produto::orderBy("nome")->get();
+            $produtos = Produto::orderBy("nome")
+                                ->get()
+                                ->map(function ($produto) {
+                                    $produto->id_crypt = Crypt::encrypt($produto->id);
+                                    $produto->preco_base = number_format(
+                                        $produto->preco,
+                                        2,
+                                        ',',
+                                        '.'
+                                    );
+                                    $produto->preco_formatado = number_format(
+                                        $produto->preco - ($produto->preco * $produto->desconto / 100),
+                                        2,
+                                        ',',
+                                        '.'
+                                    );
+
+                                    return $produto;
+                                });
         } else {
             $produtos = Produto::whereRelation("categoria", "nome", $categoria)
                                 ->orderBy("nome")
-                                ->get();
+                                ->get()
+                                ->map(function ($produto) {
+                                    $produto->id_crypt = Crypt::encrypt($produto->id);
+                                    $produto->preco_base = number_format(
+                                        $produto->preco,
+                                        2,
+                                        ',',
+                                        '.'
+                                    );
+                                    $produto->preco_formatado = number_format(
+                                        $produto->preco - ($produto->preco * $produto->desconto / 100),
+                                        2,
+                                        ',',
+                                        '.'
+                                    );
+
+                                    return $produto;
+                                });
         }
 
         $categorias = Categoria::where("nome", "!=", $categoria)->get();

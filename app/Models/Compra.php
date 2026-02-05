@@ -26,7 +26,7 @@ class Compra extends Model
 
     protected $casts = [
         "quantidade" => "integer",
-        "valor" => "float",
+        "valor" => "decimal:2",
         "pix" => "string",
         "status" => CompraStatus::class,
         "produto_id" => "integer",

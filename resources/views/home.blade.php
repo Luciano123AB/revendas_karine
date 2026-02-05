@@ -31,9 +31,9 @@
 
                     <div class="card-body align-content-center">
                         @if ($produto->desconto > 0)
-                            <p class="text-decoration-line-through m-0">R$ {{ number_format($produto->preco, 2, ',', '.') }}</p>
+                            <p class="text-decoration-line-through m-0">R$ {{ $produto->preco_base }}</p>
                         @endif
-                        <h4 class="card-text">R$ {{ number_format($produto->preco - ($produto->preco * $produto->desconto / 100), 2, ',', '.') }}
+                        <h4 class="card-text">R$ {{ $produto->preco_formatado }}
                             @if ($produto->desconto > 0)
                                 <span class="bg-success fs-5">-{{ $produto->desconto }}%</span>
                             @endif
@@ -43,7 +43,7 @@
                     <div class="card-footer text-center">
                         @if ($produto->estoque > 0)
                             @if (!Auth::user()?->permissao)
-                                <a href="{{ route('escolher', ["id" => Crypt::encrypt($produto->id)]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">ESCOLHER</a>
+                                <a href="{{ route('escolher', ["id" => $produto->id_crypt]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">ESCOLHER</a>
                             @endif
                         @else
                             @if (!Auth::user()?->permissao)

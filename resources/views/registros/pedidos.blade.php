@@ -19,11 +19,11 @@
                     <tr>
                         <th scope="row" class="align-content-center">{{ $loop->index + 1 }}</th>
                         <td class="align-content-center">{{ $pedido->produto->nome }}</td>
-                        <td class="align-content-center">{{ number_format($pedido->valor, 2, ",") }}</td>
+                        <td class="align-content-center">{{ $pedido->valor_formatado }}</td>
                         <td class="align-content-center">{{ $pedido->data_compra }}</td>
                         <td class="align-content-center"><span class="badge text-bg-secondary fs-5">{{ $pedido->status }}</span></td>
-                        <td class="align-content-center"><a href="{{ route("qrcode", ["id" => Crypt::encrypt($pedido->id)]) }}" class="btn btn-warning border border-black focus-ring focus-ring-warning"><i class="bi bi-qr-code-scan"></i></a></td>
-                        <td class="align-content-center"><a href="{{ route("confirmar_cancelar", ["id" => Crypt::encrypt($pedido->id)]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Cancelar</a></td>
+                        <td class="align-content-center"><a href="{{ route("qrcode", ["id" => $pedido->id_crypt]) }}" class="btn btn-warning border border-black focus-ring focus-ring-warning"><i class="bi bi-qr-code-scan"></i></a></td>
+                        <td class="align-content-center"><a href="{{ route("confirmar_cancelar", ["id" => $pedido->id_crypt]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Cancelar</a></td>
                     </tr>
                 @empty
                     <tr>

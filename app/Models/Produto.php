@@ -26,7 +26,7 @@ class Produto extends Model
         "imagem" => "string",
         "nome" => "string",
         "descricao" => "string",
-        "preco" => "float",
+        "preco" => "decimal:2",
         "desconto" => "integer",
         "estoque" => "integer",
         "categoria_id" => "integer"

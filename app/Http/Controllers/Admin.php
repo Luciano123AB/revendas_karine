@@ -17,7 +17,18 @@ class Admin extends Controller
 
         $pedidos = Compra::where("status", CompraStatus::PENDENTE)
                         ->orderBy("data_compra", "desc")
-                        ->get();
+                        ->get()
+                        ->map(function ($pedido) {
+                            $pedido->id_crypt = Crypt::encrypt($pedido->id);
+                            $pedido->valor_formatado = number_format(
+                                $pedido->valor,
+                                2,
+                                ',',
+                                '.'
+                            );
+
+                            return $pedido;
+                        });
         $categorias = Categoria::all();
 
         return view("admin")
@@ -166,7 +177,19 @@ class Admin extends Controller
             return redirect()->back()->withErrors(["nao_existe" => "Cliente não encontrado! Tente outro."]);
         }
 
-        $cliente_pedidos = $cliente->compras->where("status", CompraStatus::PENDENTE);
+        $cliente_pedidos = $cliente->compras()->where("status", CompraStatus::PENDENTE)
+                                            ->get()
+                                            ->map(function ($cliente_pedido) {
+                                                $cliente_pedido->id_crypt = Crypt::encrypt($cliente_pedido->id);
+                                                $cliente_pedido->valor_formatado = number_format(
+                                                    $cliente_pedido->valor,
+                                                    2,
+                                                    ',',
+                                                    '.'
+                                                );
+
+                                                return $cliente_pedido;
+                                            });
 
         return redirect()->back()->with("cliente_pedidos", $cliente_pedidos);
     }

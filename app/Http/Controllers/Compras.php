@@ -15,6 +15,14 @@ class Compras extends Controller
 
         $id = Crypt::decrypt($id);
         $produto = Produto::find($id);
+        $produto->id_crypt = Crypt::encrypt($produto->id);
+        $produto->preco_base = number_format($produto->preco, 2, ',', '.');
+        $produto->preco_formatado = number_format(
+            $produto->preco - ($produto->preco * $produto->desconto / 100),
+            2,
+            ',',
+            '.'
+        );
 
         return view("produto")
             ->with("pagina", "Escolha")
@@ -43,7 +51,7 @@ class Compras extends Controller
             "quantidade" => $quantidade
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->withInput();
     }
 
     public function comprar($id, $quantidade) {
