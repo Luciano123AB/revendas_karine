@@ -7,7 +7,7 @@ use App\Models\Categoria;
 use App\Models\Compra;
 use App\Models\Produto;
 use App\Models\User;
-use Carbon\Carbon;
+use App\Services\Salvar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
@@ -41,11 +41,9 @@ class Admin extends Controller
         $id = Crypt::decrypt($id);
         $compra = Compra::find($id);
 
-        $compra->status = CompraStatus::APROVADO;
-        $compra->data_efetuacao = Carbon::now();
-        $compra->updated_at = Carbon::now();
+        $salvar = Salvar::aprovar($compra);
 
-        if (!$compra->save()) {
+        if (!$salvar) {
             session()->flash("resultado", [
                 'titulo' => 'ERRO',
                 'menssagem' => 'Falha ao aprovar a compra! Tente novamente.',
@@ -111,16 +109,18 @@ class Admin extends Controller
         }
 
         $novo_produto = new Produto();
-
-        $novo_produto->imagem = $imagem;
-        $novo_produto->nome = $nome;
-        $novo_produto->descricao = $descricao;
-        $novo_produto->preco = $preco;
-        $novo_produto->desconto = $desconto;
-        $novo_produto->estoque = $estoque;
-        $novo_produto->categoria_id = $categoria;
+        $salvar = Salvar::novoProduto(
+            $imagem,
+            $nome,
+            $descricao,
+            $preco,
+            $desconto,
+            $estoque,
+            $categoria,
+            $novo_produto
+        );
         
-        if (!$novo_produto->save()) {
+        if (!$salvar) {
             return redirect()->back()->withErrors(["falha" => "Falha ao tentar salvar o produto! Tente novamente."]);
         }
 

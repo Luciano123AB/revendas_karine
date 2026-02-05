@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Compra;
 use App\Models\Produto;
-use App\Services\Cancelar;
 use App\Services\GerarQRCode;
 use App\Services\Salvar;
 use Illuminate\Http\Request;
@@ -55,7 +54,12 @@ class Compras extends Controller
         $valor_pagar = $valor * $quantidade;
         $nova_compra = new Compra();
 
-        $salvar = Salvar::comprar($nova_compra, $quantidade, $produto, $valor_pagar);
+        $salvar = Salvar::comprar(
+            $nova_compra,
+            $quantidade,
+            $produto,
+            $valor_pagar
+        );
 
         if (!$salvar) {
             session()->flash("resultado", [
@@ -102,9 +106,9 @@ class Compras extends Controller
         $id_produto = $compra->produto_id;
         $produto = Produto::find($id_produto);
 
-        $cancelar = Cancelar::cancelarCompra($compra, $produto);
+        $salvar = Salvar::cancelar($compra, $produto);
 
-        if (!$cancelar) {
+        if (!$salvar) {
             session()->flash("resultado", [
                 'titulo' => 'ERRO',
                 'menssagem' => 'Falha ao cancelar a compra! Tente novamente.',

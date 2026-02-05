@@ -16,11 +16,19 @@
                         <span class="text-danger">{{ $message }}</span>
                     </div>
                 @enderror
+                @session('email')
+                    <div class="form-control bg-danger-subtle">
+                        <span class="text-danger">{{ session("email") }}</span>
+                    </div>
+                @endsession
             </div>
 
             <div class="form-group">
                 <label><i class="bi bi-key"></i> Senha:</label>
-                <input type="password" class="form-control focus-ring focus-ring-danger" name="senha" placeholder="***">
+                <div class="input-group">
+                    <input type="password" id="senha" class="form-control focus-ring focus-ring-danger" name="senha" placeholder="***">
+                    <button type="button" id="exibir_ocultar" class="btn btn-light border-start"><i id="botao" class="bi bi-eye"></i></button>
+                </div>
                 @error('senha')
                     <div class="form-control bg-danger-subtle">
                         <span class="text-danger">{{ $message }}</span>
@@ -46,6 +54,11 @@
                         <span class="text-danger">{{ $message }}</span>
                     </div>
                 @enderror
+                @session('telefone')
+                    <div class="form-control bg-danger-subtle">
+                        <span class="text-danger">{{ session("telefone") }}</span>
+                    </div>
+                @endsession
             </div>
         </div>
         @error('falha')

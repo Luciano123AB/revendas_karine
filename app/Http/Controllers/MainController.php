@@ -7,11 +7,10 @@ use App\Models\Compra;
 use App\Models\Produto;
 use App\Models\User;
 use App\Services\Boot;
-use Carbon\Carbon;
+use App\Services\Salvar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
 {
@@ -93,33 +92,23 @@ class MainController extends Controller
         $email = $request->input("email");
         $senha = $request->input("senha");
         $telefone = $request->input("telefone");
-        $email_existe = User::where("email", $email)->exists();
-        $telefone_existe = User::where("telefone", $telefone)->exists();
+        $email_existe = User::where("email", $email)
+                            ->where("id", "!=", $dados->id)
+                            ->exists();
+        $telefone_existe = User::where("telefone", preg_replace('/\D/', '', $telefone))
+                                ->where("id", "!=", $dados->id)
+                                ->exists();
 
-        if ($email == $dados->email) {
-            $dados->email = $email;
-        } else {
-            if ($email_existe) {
-                return redirect()->back()->withErrors(["email", "Esse email já está sendo usado! Tente outro."]);
-            }
+        $salvar = Salvar::atualizar(
+            $dados,
+            $email,
+            $senha,
+            $telefone,
+            $email_existe,
+            $telefone_existe
+        );
 
-            $dados->email = $email;
-        }
-
-        if ($telefone == $dados->telefone) {
-            $dados->telefone = $telefone;
-        } else {
-            if ($telefone_existe) {
-                return redirect()->back()->withErrors(["telefone", "Esse telefone já está sendo usado! Tente outro."]);                
-            }
-
-            $dados->telefone = preg_replace('/\D/', '', $request->telefone);
-        }
-
-        $dados->password = Hash::make($senha);
-        $dados->updated_at = Carbon::now();
-
-        if (!$dados->save()) {
+        if (!$salvar) {
             return redirect()->back()->withErrors(["falha", "Falha ao atualizar os dados! Tente novamente."]);
         }
 
