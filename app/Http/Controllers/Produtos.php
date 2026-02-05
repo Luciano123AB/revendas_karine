@@ -19,9 +19,11 @@ class Produtos extends Controller
             "arquivo.required" => "O campo arquivo é obrigatório.",
         ]);
 
+        $arquivo = $request->file("arquivo");
+
         $importar = Excel::import(
             new ProdutosImportar,
-            $request->file("arquivo"),
+            $arquivo,
             null,
             ExcelExcel::XLSX
         );
