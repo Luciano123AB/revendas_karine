@@ -79,12 +79,6 @@ class Compras extends Controller
             return redirect()->back();
         }
 
-        session()->flash("resultado", [
-            'titulo' => 'SUCESSO',
-            'menssagem' => 'Produto comprado com êxito.',
-            'icone' => 'success'
-        ]);
-
         return redirect()->route("qrcode", ["id" => Crypt::encrypt($nova_compra->id)]);
     }
 
