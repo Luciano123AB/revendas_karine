@@ -53,7 +53,6 @@
     .imagem {
         width: 500px;
         height: 500px;
-        border-right: 1px solid black;
     }
 
     .swal2-icon.swal2-warning,
@@ -109,11 +108,6 @@
 
         .produtos {
             grid-template-columns: 1fr 1fr;
-        }
-
-        .imagem {
-            border-right: none;
-            border-bottom: 1px solid black;
         }
 
         #qrcode {
