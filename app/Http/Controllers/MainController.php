@@ -126,7 +126,8 @@ class MainController extends Controller
             [
                 "email" => "required|email",
                 "telefone" => "required|min:10",
-                "senha" => "required|min:8|confirmed"
+                "senha" => "required|min:8|confirmed",
+                "senha_confirmation" => "required"
             ],
 
             [
