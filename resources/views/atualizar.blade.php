@@ -25,7 +25,7 @@
                 <label><i class="bi bi-key"></i> Senha:</label>
                 <div class="input-group">
                     <input type="password" id="senha" class="form-control focus-ring focus-ring-danger" name="senha" placeholder="***">
-                    <button type="button" id="exibir_ocultar" class="btn btn-light border-start"><i id="botao" class="bi bi-eye"></i></button>
+                    <button type="button" id="exibir_ocultar" class="btn btn-light border-start focus-ring focus-ring-danger"><i id="botao" class="bi bi-eye"></i></button>
                 </div>
                 @error('senha')
                     <span class="text-danger">{{ $message }}</span>

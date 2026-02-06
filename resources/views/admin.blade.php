@@ -185,28 +185,29 @@
     
             <div class="fundo tabela card shadow overflow-auto">
                 <h3 class="card-header text-center">PESQUISAR PEDIDOS</h3>
-                <div class="overflow-auto pt-3">
-                    <form action="{{ route("pesquisar") }}" method="post">
-                        @csrf
+                <form action="{{ route("pesquisar") }}" method="post">
+                    @csrf
 
-                        <div class="d-grid ps-1 pb-1 pe-1">
-                            <div class="form-group">
-                                <label><i class="bi bi-person"></i> Cliente:</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="cliente" placeholder="..." value="{{ old("cliente") }}">
-                                    <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger">Pesquisar</button>
-                                </div>
-                                @error('cliente')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                                @error('nao_existe')
-                                    <div class="form-control bg-danger-subtle">
-                                        <span class="text-danger">{{ $message }}</span>
-                                    </div>
-                                @enderror
+                    <div class="d-grid ps-1 pt-3 pe-1">
+                        <div class="form-group">
+                            <label><i class="bi bi-person"></i> Cliente:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="cliente" placeholder="..." value="{{ old("cliente") }}">
+                                <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger">Pesquisar</button>
                             </div>
+                            @error('cliente')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            @error('nao_existe')
+                                <div class="form-control bg-danger-subtle">
+                                    <span class="text-danger">{{ $message }}</span>
+                                </div>
+                            @enderror
                         </div>
-                    </form>
+                    </div>
+                </form>
+
+                <div class="overflow-auto pt-1">
                     <table class="table table-bordered table-warning table-hover border border-black text-center shadow">
                         <thead class="table-dark border border-bottom-0 border-black">
                             <tr>
