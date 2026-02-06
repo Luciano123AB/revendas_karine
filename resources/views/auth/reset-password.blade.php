@@ -15,9 +15,7 @@
                 <label><i class="bi bi-key"></i> Senha:</label>
                 <input type="password" class="form-control focus-ring focus-ring-danger" name="password" placeholder="***">
                 @error('password')
-                    <div class="form-control bg-danger-subtle">
-                        <span class="text-danger">{{ $message }}</span>
-                    </div>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -25,9 +23,7 @@
                 <label><i class="bi bi-key"></i> Confirmar Senha:</label>
                 <input type="password" class="form-control focus-ring focus-ring-danger" name="password_confirmation" placeholder="***">
                 @error('password_confirmation')
-                    <div class="form-control bg-danger-subtle">
-                        <span class="text-danger">{{ $message }}</span>
-                    </div>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
         </div>

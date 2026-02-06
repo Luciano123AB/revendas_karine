@@ -14,9 +14,7 @@
                             <div class="form-group">
                                 <input type="file" class="form-control focus-ring focus-ring-danger" name="arquivo">
                                 @error('arquivo')
-                                    <div class="form-control bg-danger-subtle">
-                                        <span class="text-danger">{{ $message }}</span>
-                                    </div>
+                                    <span class="text-danger">{{ $message }}</span>
                                 @enderror
                                 @error('falha_importar')
                                     <div class="form-control bg-danger-subtle">
@@ -75,9 +73,7 @@
                         <label><i class="bi bi-image"></i> Imagem:</label>
                         <input type="url" class="form-control focus-ring focus-ring-danger" name="imagem" placeholder="https://..." value="{{ old('imagem') }}">
                         @error('imagem')
-                            <div class="form-control bg-danger-subtle">
-                                <span class="text-danger">{{ $message }}</span>
-                            </div>
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -85,9 +81,7 @@
                         <label><i class="bi bi-box-seam"></i> Nome:</label>
                         <input type="text" class="form-control focus-ring focus-ring-danger" name="nome" placeholder="..." max="150" value="{{ old('nome') }}">
                         @error('nome')
-                            <div class="form-control bg-danger-subtle">
-                                <span class="text-danger">{{ $message }}</span>
-                            </div>
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -100,9 +94,7 @@
                         <label><i class="bi bi-cash-stack"></i> Preço:</label>
                         <input type="number" class="form-control focus-ring focus-ring-danger" name="preco" placeholder="000,00" step="0.01" min="0.01" value="{{ old('preco') }}">
                         @error('preco')
-                            <div class="form-control bg-danger-subtle">
-                                <span class="text-danger">{{ $message }}</span>
-                            </div>
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -110,9 +102,7 @@
                         <label><i class="bi bi-cash-coin"></i> Desconto:</label>
                         <input type="number" class="form-control focus-ring focus-ring-danger" name="desconto" placeholder="00" value="{{ old('desconto') }}">
                         @error('desconto')
-                            <div class="form-control bg-danger-subtle">
-                                <span class="text-danger">{{ $message }}</span>
-                            </div>
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -120,9 +110,7 @@
                         <label><i class="bi bi-boxes"></i> Estoque:</label>
                         <input type="number" class="form-control focus-ring focus-ring-danger" name="estoque" placeholder="000" min="1" value="{{ old('estoque') }}">
                         @error('estoque')
-                            <div class="form-control bg-danger-subtle">
-                                <span class="text-danger">{{ $message }}</span>
-                            </div>
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -135,9 +123,7 @@
                             @endforeach
                         </select>
                         @error('categoria')
-                            <div class="form-control bg-danger-subtle">
-                                <span class="text-danger">{{ $message }}</span>
-                            </div>
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
@@ -211,9 +197,7 @@
                                     <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger">Pesquisar</button>
                                 </div>
                                 @error('cliente')
-                                    <div class="form-control bg-danger-subtle">
-                                        <span class="text-danger">{{ $message }}</span>
-                                    </div>
+                                    <span class="text-danger">{{ $message }}</span>
                                 @enderror
                                 @error('nao_existe')
                                     <div class="form-control bg-danger-subtle">

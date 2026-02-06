@@ -12,9 +12,7 @@
                 <label><i class="bi bi-person"></i> Usuário:</label>
                 <input type="text" class="form-control focus-ring focus-ring-danger" name="name" placeholder="..." value="{{ old('name') }}" autofocus>
                 @error('name')
-                    <div class="form-control bg-danger-subtle">
-                        <span class="text-danger">{{ $message }}</span>
-                    </div>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -22,9 +20,7 @@
                 <label><i class="bi bi-envelope"></i> Email:</label>
                 <input type="email" class="form-control focus-ring focus-ring-danger" name="email" placeholder="endereco@gmail.com" value="{{ old('email') }}">
                 @error('email')
-                    <div class="form-control bg-danger-subtle">
-                        <span class="text-danger">{{ $message }}</span>
-                    </div>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -35,9 +31,7 @@
                     <button type="button" id="exibir_ocultar" class="btn btn-light border-start"><i id="botao" class="bi bi-eye"></i></button>
                 </div>
                 @error('password')
-                    <div class="form-control bg-danger-subtle">
-                        <span class="text-danger">{{ $message }}</span>
-                    </div>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -45,9 +39,7 @@
                 <label><i class="bi bi-key"></i> Confirmar Senha:</label>
                 <input type="password" class="form-control focus-ring focus-ring-danger" name="password_confirmation" placeholder="***">
                 @error('password_confirmation')
-                    <div class="form-control bg-danger-subtle">
-                        <span class="text-danger">{{ $message }}</span>
-                    </div>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -55,9 +47,7 @@
                 <label><i class="bi bi-telephone"></i> Telefone: DDD + Número</label>
                 <input type="text" id="telefone" class="form-control focus-ring focus-ring-danger" name="telefone" placeholder="(55) 99999-9999" value="{{ old('telefone') }}">
                 @error('telefone')
-                    <div class="form-control bg-danger-subtle">
-                        <span class="text-danger">{{ $message }}</span>
-                    </div>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
         </div>

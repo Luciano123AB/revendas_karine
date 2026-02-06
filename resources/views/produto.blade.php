@@ -35,9 +35,7 @@
                         </div>
                         <input type="number" class="form-control focus-ring focus-ring-danger w-25" name="quantidade" placeholder="1" value="{{ old("quantidade", 1) }}" min="1" max="{{ $produto->estoque }}">
                         @error('quantidade')
-                            <div class="form-control bg-danger-subtle">
-                                <span class="text-danger">{{ $message }}</span>
-                            </div>
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>

@@ -12,9 +12,7 @@
                 <label><i class="bi bi-envelope"></i> Email:</label>
                 <input type="email" class="form-control focus-ring focus-ring-danger" name="email" placeholder="endereco@gmail.com" value="{{ old('email') }}" autofocus>
                 @error('email')
-                    <div class="form-control bg-danger-subtle">
-                        <span class="text-danger">{{ $message }}</span>
-                    </div>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -25,9 +23,7 @@
                     <button type="button" id="exibir_ocultar" class="btn btn-light border-start"><i id="botao" class="bi bi-eye"></i></button>
                 </div>
                 @error('password')
-                    <div class="form-control bg-danger-subtle">
-                        <span class="text-danger">{{ $message }}</span>
-                    </div>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
         </div>
