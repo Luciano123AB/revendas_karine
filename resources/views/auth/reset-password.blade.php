@@ -13,7 +13,10 @@
 
             <div class="form-group">
                 <label><i class="bi bi-key"></i> Senha:</label>
-                <input type="password" class="form-control focus-ring focus-ring-danger" name="password" placeholder="***">
+                <div class="input-group">
+                    <input type="password" id="senha" class="form-control focus-ring focus-ring-danger" name="password" placeholder="***">
+                    <button type="button" id="exibir_ocultar" class="btn btn-light border-start"><i id="botao" class="bi bi-eye"></i></button>
+                </div>
                 @error('password')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
