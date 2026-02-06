@@ -58,7 +58,7 @@
                 <img src="{{ $oferta->imagem == null ? asset("assets/images/icons/icone_produtos.png") : "$oferta->imagem" }}" class="card-img-top bg-white w-100 p-3" height="200">
                 <h5 class="card-header text-center">{{ $oferta->nome }}</h5>
 
-                <div class="card-body">
+                <div class="card-body align-content-center">
                     <p class="text-decoration-line-through m-0">R$ {{ $oferta->preco_base }}</p>
                     <h4 class="card-text">R$ {{ $oferta->preco_formatado }} <span class="bg-success fs-5">-{{ $oferta->desconto }}%</span></h4>
                 </div>
