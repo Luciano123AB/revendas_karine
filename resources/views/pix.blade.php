@@ -7,6 +7,5 @@
         <div class="card-body">
             <p class="card-text">Após realizar o pagamento, envie o comprovante pelo nosso whatsapp que se encontra na barra inferior da página, informando seu nome de usuário.</p>
         </div>
-        <div class="card-footer"></div>
     </div>
 @endsection
