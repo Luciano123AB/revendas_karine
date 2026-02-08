@@ -14,6 +14,11 @@
             <button type="button" class="dropdown-toggle fundo btn btn-lg btn-warning border border-black focus-ring focus-ring-warning" data-bs-toggle="dropdown" aria-expanded="false"></button>
             <ul class="dropdown-menu dropdown-menu-end fundo">
                 <div class="border-bottom border-warning"></div>
+                @if ($categoria != "Todos")
+                    <li class="fundo">
+                        <a href="{{ route("home", ["categoria" => "Todos"]) }}" class="dropdown-item btn btn-warning border-bottom border-warning focus-ring focus-ring-warning">Todos</a>
+                    </li>
+                @endif
                 @foreach ($categorias as $categoria)
                     <li class="fundo">
                         <a href="{{ route("home", ["categoria" => $categoria->nome]) }}" class="dropdown-item btn btn-warning border-bottom border-warning focus-ring focus-ring-warning">{{ $categoria->nome }}</a>
