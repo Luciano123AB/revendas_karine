@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Services\Salvar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class Admin extends Controller
 {
@@ -153,9 +154,11 @@ class Admin extends Controller
 
         if (!$resetar_produtos) {
             return redirect()->back()->withErrors(["falha_resetar" => "Falha ao tentar resetar os produtos! Tente novamente."]);
+        } else {
+            DB::statement('ALTER TABLE produtos AUTO_INCREMENT = 1;');
+    
+            return redirect()->back()->with("sucesso_resetar", "Produtos resetados com sucesso!");
         }
-
-        return redirect()->back()->with("sucesso_resetar", "Produtos resetados com sucesso!");
     }
 
     public function pesquisar(Request $request) {
