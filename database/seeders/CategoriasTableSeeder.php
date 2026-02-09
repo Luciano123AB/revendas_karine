@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,19 +14,19 @@ class CategoriasTableSeeder extends Seeder
     public function run(): void
     {
         DB::table("categorias")->insert([
-            ["nome" => "Moda e Acessórios"],
-            ["nome" => "Eletrônicos"],
-            ["nome" => "Casa e Decoração"],
-            ["nome" => "Eletrodomésticos"],
-            ["nome" => "Beleza e Cuidados Pessoais"],
-            ["nome" => "Brinquedos e Jogos"],
-            ["nome" => "Esporte e Lazer"],
-            ["nome" => "Livros, Papelaria e Escritório"],
-            ["nome" => "Pet Shop"],
-            ["nome" => "Automotivo"],
-            ["nome" => "Ferramentas e Construção"],
-            ["nome" => "Presentes e Utilidades"],
-            ["nome" => "Saúde e Bem-estar"]
+            ["nome" => "Moda e Acessórios", "created_at" => Carbon::now()],
+            ["nome" => "Eletrônicos", "created_at" => Carbon::now()],
+            ["nome" => "Casa e Decoração", "created_at" => Carbon::now()],
+            ["nome" => "Eletrodomésticos", "created_at" => Carbon::now()],
+            ["nome" => "Beleza e Cuidados Pessoais", "created_at" => Carbon::now()],
+            ["nome" => "Brinquedos e Jogos", "created_at" => Carbon::now()],
+            ["nome" => "Esporte e Lazer", "created_at" => Carbon::now()],
+            ["nome" => "Livros, Papelaria e Escritório", "created_at" => Carbon::now()],
+            ["nome" => "Pet Shop", "created_at" => Carbon::now()],
+            ["nome" => "Automotivo", "created_at" => Carbon::now()],
+            ["nome" => "Ferramentas e Construção", "created_at" => Carbon::now()],
+            ["nome" => "Presentes e Utilidades", "created_at" => Carbon::now()],
+            ["nome" => "Saúde e Bem-estar", "created_at" => Carbon::now()]
         ]);
     }
 }
