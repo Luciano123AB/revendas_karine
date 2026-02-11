@@ -4,7 +4,6 @@ use App\Http\Controllers\Admin;
 use App\Http\Controllers\Compras;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Produtos;
-use App\Http\Controllers\Registros;
 use App\Http\Middleware\Permissao;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +14,9 @@ Route::middleware(["auth", "verified"])->group(function() {
         Route::controller(MainController::class)->group(function() {
             Route::get("home/{categoria}", "home")->name("home");
             Route::get("editar", "editar")->name("editar");
-            Route::post("atualizar", "atualizar")->name("atualizar");            
-            Route::delete("apagar/{id}", "apagar")->name("apagar");            
+            Route::post("atualizar", "atualizar")->name("atualizar");
+            Route::get("compras", "compras")->name("compras");
+            Route::delete("apagar/{id}", "apagar")->name("apagar");
         });
         Route::controller(Compras::class)->group(function() {
             Route::get("escolher/{id}", "escolher")->name("escolher");
@@ -25,10 +25,6 @@ Route::middleware(["auth", "verified"])->group(function() {
             Route::get("qrcode/{id}", "qrcode")->name("qrcode");
             Route::get("confirmar_cancelar/{id}", "confirmarCancelar")->name("confirmar_cancelar");
             Route::delete("cancelar_compra/{id}", "cancelarCompra")->name("cancelar_compra");            
-        });
-        Route::controller(Registros::class)->group(function() {
-            Route::get("pedidos", "pedidos")->name("pedidos");
-            Route::get("historico", "historico")->name("historico");
         });
         Route::controller(Produtos::class)->group(function() {
             Route::post("importar", "importar")->name("importar");

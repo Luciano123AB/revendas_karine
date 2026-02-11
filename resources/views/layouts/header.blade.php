@@ -1,7 +1,7 @@
 <nav id="barra" class="navbar bg-warning shadow-lg border-5 border-bottom border-black mb-5">
     <div class="container-fluid">
         <a href="{{ route("inicio") }}" class="navbar-brand text-decoration-none text-light fs-2 fw-bold">
-            <img src="{{ asset('assets/images/icons/icone.png') }}" width="70" height="70">
+            <img src="{{ asset('assets/images/icons/icone.png') }}" id="icone" width="70" height="70">
             <span>{{ config("app.name") }}</span>
             <span id="pagina">- {{ $pagina }}</span>
         </a>
@@ -25,14 +25,9 @@
                                 <a href="{{ route("editar") }}" class="dropdown-item btn btn-danger border-top border-danger focus-ring focus-ring-danger">Editar</a>
                             </li>
                         @endif
-                        @if ($pagina != "Pedidos" && !Auth::user()?->permissao)
+                        @if ($pagina != "Compras" && !Auth::user()?->permissao)
                             <li>
-                                <a href="{{ route("pedidos") }}" class="dropdown-item btn btn-danger border-top border-danger focus-ring focus-ring-danger">Pedidos</a>
-                            </li>
-                        @endif
-                        @if ($pagina != "Histórico" && !Auth::user()?->permissao)
-                            <li>
-                                <a href="{{ route("historico") }}" class="dropdown-item btn btn-danger border-top border-danger focus-ring focus-ring-danger">Histórico</a>
+                                <a href="{{ route("compras") }}" class="dropdown-item btn btn-danger border-top border-danger focus-ring focus-ring-danger">Minhas Compras</a>
                             </li>
                         @endif
                         <li>

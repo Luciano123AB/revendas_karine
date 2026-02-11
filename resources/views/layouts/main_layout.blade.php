@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config("app.name") }}</title>
+
+    <link rel="icon" href="{{ asset("favicon.ico") }}">
     
     @include("layouts.partials.links")
 
@@ -16,11 +18,11 @@
     @include("layouts.header")
 
     <div class="container">
-        @if ($pagina != "Início" && $pagina != "Lista" && $pagina != "Pedidos" && $pagina != "Histórico" && $pagina != "Administrador")
+        @if ($pagina != "Início" && $pagina != "Lista" && $pagina != "Minhas Compras" && $pagina != "Administrador")
             <div class="d-flex justify-content-center align-items-center vh-100">
         @endif
             @yield("content")
-        @if ($pagina != "Início" && $pagina != "Lista" && $pagina != "Pedidos" && $pagina != "Histórico" && $pagina != "Administrador")
+        @if ($pagina != "Início" && $pagina != "Lista" && $pagina != "Minhas Compras" && $pagina != "Administrador")
             </div>
         @endif
     </div>

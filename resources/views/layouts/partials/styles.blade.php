@@ -92,6 +92,11 @@
     }
 
     @media (max-width: 430px) {
+        #icone {
+            width: 50px;
+            height: 50px;
+        }
+
         #barra {
             padding-left: 0%;
             padding-right: 0%;

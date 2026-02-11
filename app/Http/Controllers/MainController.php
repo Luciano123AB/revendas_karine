@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\CompraStatus;
 use App\Models\Categoria;
 use App\Models\Compra;
 use App\Models\Produto;
@@ -166,6 +167,43 @@ class MainController extends Controller
         }
 
         return redirect()->back()->with("sucesso", "Dados atualizados com sucesso!");
+    }
+
+    public function compras() {
+
+        $id = Auth::user()->id;
+        $cliente = User::find($id);
+        $compras = $cliente->compras()->where("status", CompraStatus::PENDENTE)
+                                    ->get()
+                                    ->map(function ($compra) {
+                                        $compra->id_crypt = Crypt::encrypt($compra->id);
+                                        $compra->valor_formatado = number_format(
+                                            $compra->valor,
+                                            2,
+                                            ',',
+                                            '.'
+                                        );
+
+                                        return $compra;
+                                    });
+        $concluidos = $cliente->compras()->where("status", "!=", CompraStatus::PENDENTE)
+                                    ->get()
+                                    ->map(function ($concluido) {
+                                        $concluido->id_crypt = Crypt::encrypt($concluido->id);
+                                        $concluido->valor_formatado = number_format(
+                                            $concluido->valor,
+                                            2,
+                                            ',',
+                                            '.'
+                                        );
+
+                                        return $concluido;
+                                    });
+
+        return view("compras")
+            ->with("pagina", "Minhas Compras")
+            ->with("compras", $compras)
+            ->with("concluidos", $concluidos);
     }
 
     public function apagar($id) {
