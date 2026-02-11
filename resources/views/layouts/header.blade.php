@@ -30,6 +30,11 @@
                                 <a href="{{ route("compras") }}" class="dropdown-item btn btn-danger border-top border-danger focus-ring focus-ring-danger">Minhas Compras</a>
                             </li>
                         @endif
+                        @if (!Auth::user()?->permissao)
+                            <li>
+                                <a href="{{ route("confirmar_deletar") }}" class="dropdown-item btn btn-danger border-top border-danger focus-ring focus-ring-danger">Deletar Conta</a>
+                            </li>
+                        @endif
                         <li>
                             <form action="{{ route("logout") }}" method="POST">
                                 @csrf

@@ -9,6 +9,7 @@ use App\Models\Produto;
 use App\Models\User;
 use App\Services\Boot;
 use App\Services\Salvar;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -167,6 +168,38 @@ class MainController extends Controller
         }
 
         return redirect()->back()->with("sucesso", "Dados atualizados com sucesso!");
+    }
+
+    public function confirmarDeletar() {
+
+        session()->flash("confirmar", [
+            "acao" => "deletar"
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function deletarConta() {
+
+        $cliente = Auth::user();
+
+        if (!$cliente->delete()) {
+            session()->flash("resultado", [
+                'titulo' => 'ERRO',
+                'menssagem' => 'Falha ao tentar deletar a conta! Tente novamente.',
+                'icone' => 'error'
+            ]);
+
+            return redirect()->back();
+        }
+
+        Compra::where("user_id", Auth::user()->id)
+                ->update([
+                    "status" => CompraStatus::CANCELADO,
+                    "data_efetuacao" => Carbon::now()
+                ]);
+
+        return redirect()->route("logout");
     }
 
     public function compras() {

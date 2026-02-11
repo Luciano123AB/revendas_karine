@@ -4,7 +4,14 @@
     <script>
         Swal.fire({
             title: "{{ strtoupper(session('confirmar.acao')) }}?",
-            text: "Tem certeza que deseja {{ session('confirmar.acao') }} @if (session('confirmar.acao') == 'resetar') todos os produtos? @else esse {{ session('confirmar.acao') == 'comprar' ? 'produto' : 'pedido' }}? @endif",
+            text: "Tem certeza que deseja {{ session('confirmar.acao') }}" +
+                        "@if (session('confirmar.acao') == 'resetar')" +
+                            " todos os produtos?" +
+                        "@elseif (session('confirmar.acao') == 'deletar')" +
+                            " sua conta? (Todas as suas compras pendentes serão canceladas)" +
+                        "@else" +
+                            " esse {{ session('confirmar.acao') == 'comprar' ? 'produto' : 'pedido' }}?" +
+                        "@endif",
             icon: "warning",
             background: "#ffc107",
             showConfirmButton: true,

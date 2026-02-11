@@ -15,6 +15,8 @@ Route::middleware(["auth", "verified"])->group(function() {
             Route::get("home/{categoria}", "home")->name("home");
             Route::get("editar", "editar")->name("editar");
             Route::post("atualizar", "atualizar")->name("atualizar");
+            Route::get("confirmar_deletar", "confirmardeletar")->name("confirmar_deletar");
+            Route::delete("deletar_conta", "deletarConta")->name("deletar_conta");
             Route::get("compras", "compras")->name("compras");
             Route::delete("apagar/{id}", "apagar")->name("apagar");
         });

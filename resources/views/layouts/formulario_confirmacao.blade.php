@@ -13,4 +13,9 @@
         @csrf
         @method('DELETE')
     </form>
+@else
+    <form action='{{ route('deletar_conta') }}' id='formulario_confirmacao' method='POST'>
+        @csrf
+        @method('DELETE')
+    </form>
 @endif
