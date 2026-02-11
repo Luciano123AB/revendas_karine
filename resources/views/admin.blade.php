@@ -170,7 +170,7 @@
                     </div>
                 </form>
 
-                <div class="overflow-auto pt-1">
+                <div class="vh-100 overflow-auto pt-1">
                     <table class="table table-bordered table-warning table-hover border border-black text-center shadow">
                         <thead class="table-dark border border-bottom-0 border-black">
                             <tr>
