@@ -6,12 +6,14 @@ use App\Models\Compra;
 use App\Models\Produto;
 use App\Services\GerarQRCode;
 use App\Services\Salvar;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\View\View;
 
 class Compras extends Controller
 {
-    public function escolher($id) {
+    public function escolher($id): View {
 
         $id = Crypt::decrypt($id);
         $produto = Produto::find($id);
@@ -29,7 +31,11 @@ class Compras extends Controller
             ->with("produto", $produto);
     }
 
-    public function confirmarComprar($id, $estoque, Request $request) {
+    public function confirmarComprar($id, Request $request): RedirectResponse {
+
+        $id = Crypt::decrypt($id);
+        $estoque = Produto::find($id)->estoque;
+
         $request->validate(
             [
                 'quantidade' => 'required|integer|min:1|max:' . $estoque
@@ -54,7 +60,7 @@ class Compras extends Controller
         return redirect()->back()->withInput();
     }
 
-    public function comprar($id, $quantidade) {
+    public function comprar($id, $quantidade): RedirectResponse {
 
         $id = Crypt::decrypt($id);
         $produto = Produto::find($id);
@@ -82,7 +88,7 @@ class Compras extends Controller
         return redirect()->route("qrcode", ["id" => Crypt::encrypt($nova_compra->id)]);
     }
 
-    public function qrcode($id) {
+    public function qrcode($id): View {
 
         $id = Crypt::decrypt($id);
         $compra = Compra::find($id);
@@ -91,7 +97,7 @@ class Compras extends Controller
         return view("pix", ["qrcode" => $qrcode])->with("pagina", "Pagamento");
     }
 
-    public function confirmarCancelar($id) {
+    public function confirmarCancelar($id): RedirectResponse {
 
         session()->flash("confirmar", [
             "acao" => "cancelar",
@@ -101,7 +107,7 @@ class Compras extends Controller
         return redirect()->back();
     }
 
-    public function cancelarCompra($id) {
+    public function cancelarCompra($id): RedirectResponse {
 
         $id = Crypt::decrypt($id);
         $compra = Compra::find($id);

@@ -8,13 +8,15 @@ use App\Models\Compra;
 use App\Models\Produto;
 use App\Models\User;
 use App\Services\Salvar;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class Admin extends Controller
 {
-    public function admin() {
+    public function admin(): View {
 
         $categorias = Categoria::all();
 
@@ -23,7 +25,7 @@ class Admin extends Controller
             ->with("categorias", $categorias);
     }
 
-    public function confirmarAprovar($id) {
+    public function confirmarAprovar($id): RedirectResponse {
 
         session()->flash("confirmar", [
             "acao" => "aprovar",
@@ -33,7 +35,7 @@ class Admin extends Controller
         return redirect()->back();
     }
 
-    public function aprovar($id) {
+    public function aprovar($id): RedirectResponse {
 
         $id = Crypt::decrypt($id);
         $compra = Compra::find($id);
@@ -59,7 +61,7 @@ class Admin extends Controller
         return redirect()->back();
     }
 
-    public function novoProduto(Request $request) {
+    public function novoProduto(Request $request): RedirectResponse {
         $request->validate(
             [
                 "imagem" => "nullable|url",
@@ -124,7 +126,7 @@ class Admin extends Controller
         return redirect()->back()->with("sucesso", "Produto salvo com sucesso!");
     }
 
-    public function confirmarResetar() {
+    public function confirmarResetar(): RedirectResponse {
 
         session()->flash("confirmar", [
             "acao" => "resetar"
@@ -133,7 +135,7 @@ class Admin extends Controller
         return redirect()->back();
     }
 
-    public function resetar() {
+    public function resetar(): RedirectResponse {
 
         $resetar_produtos = Produto::query()->delete();
 
@@ -146,7 +148,7 @@ class Admin extends Controller
         }
     }
 
-    public function pesquisar(Request $request) {
+    public function pesquisar(Request $request): RedirectResponse {
         $request->validate(
             [
                 "cliente" => "required|string"

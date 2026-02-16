@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Exports\ProdutosExportar;
 use App\Imports\ProdutosImportar;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Excel as ExcelExcel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class Produtos extends Controller
 {
-    public function importar(Request $request) {
+    public function importar(Request $request): RedirectResponse {
         $request->validate([
             "arquivo" => "required"
         ],
@@ -35,7 +37,7 @@ class Produtos extends Controller
         return redirect()->back()->with("sucesso_importar", "Dados importados com sucesso!");;
     }
 
-    public function exportar() {
+    public function exportar(): BinaryFileResponse | RedirectResponse {
         try {
             return Excel::download(new ProdutosExportar, 'produtos.xlsx');
         } catch (\Exception $e) {

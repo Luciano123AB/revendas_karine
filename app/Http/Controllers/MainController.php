@@ -10,13 +10,15 @@ use App\Models\User;
 use App\Services\Boot;
 use App\Services\Salvar;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\View\View;
 
 class MainController extends Controller
 {
-    public function inicio() {
+    public function inicio(): View {
 
         $banco = Boot::testarConexao();
         
@@ -56,7 +58,7 @@ class MainController extends Controller
             ->with("total", $total);
     }
 
-    public function home($categoria) {
+    public function home($categoria): View {
 
         $produtos = null;
 
@@ -114,7 +116,7 @@ class MainController extends Controller
             ->with("total", $total);
     }
 
-    public function editar() {
+    public function editar(): View {
 
         $dados = Auth::user();
 
@@ -123,7 +125,7 @@ class MainController extends Controller
             ->with("dados", $dados);
     }
 
-    public function atualizar(Request $request) {
+    public function atualizar(Request $request): RedirectResponse {
         $request->validate(
             [
                 "email" => "required|email",
@@ -170,7 +172,7 @@ class MainController extends Controller
         return redirect()->back()->with("sucesso", "Dados atualizados com sucesso!");
     }
 
-    public function confirmarDeletar() {
+    public function confirmarDeletar(): RedirectResponse {
 
         session()->flash("confirmar", [
             "acao" => "deletar"
@@ -179,7 +181,7 @@ class MainController extends Controller
         return redirect()->back();
     }
 
-    public function deletarConta() {
+    public function deletarConta(): RedirectResponse {
 
         $cliente = Auth::user();
 
@@ -202,7 +204,7 @@ class MainController extends Controller
         return redirect()->route("logout");
     }
 
-    public function compras() {
+    public function compras(): View {
 
         $id = Auth::user()->id;
         $cliente = User::find($id);
@@ -239,7 +241,7 @@ class MainController extends Controller
             ->with("concluidos", $concluidos);
     }
 
-    public function apagar($id) {
+    public function apagar($id): RedirectResponse {
 
         $id = Crypt::decrypt($id);
         $compra = Compra::find($id);

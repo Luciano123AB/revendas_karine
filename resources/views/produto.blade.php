@@ -1,7 +1,7 @@
 @extends("layouts.main_layout")
 
 @section("content")
-    <form action="{{ route("confirmar_comprar", ["id" => $produto->id_crypt, "estoque" => $produto->estoque]) }}" id="formulario" class="fundo card shadow w-100" method="POST">
+    <form action="{{ route("confirmar_comprar", ["id" => $produto->id_crypt]) }}" id="formulario" class="fundo card shadow w-100" method="POST">
         @csrf
 
         <div class="row g-0">
