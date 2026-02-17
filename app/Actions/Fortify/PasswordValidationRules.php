@@ -17,9 +17,8 @@ trait PasswordValidationRules
             'required',
             'string',
             'max:255',
-            Password::min(8)
-                ->letters()
-                ->numbers(),
+            Password::min(8),
+            'regex:/(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
             'confirmed'
         ];
     }
