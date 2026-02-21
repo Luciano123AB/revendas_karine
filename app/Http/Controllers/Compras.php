@@ -61,8 +61,7 @@ class Compras extends Controller
     }
 
     public function comprar($id, $quantidade): RedirectResponse {
-
-        $id = Crypt::decrypt($id);
+        
         $produto = Produto::find($id);
         $valor = $produto->preco - ($produto->preco * $produto->desconto / 100);
         $valor_pagar = $valor * $quantidade;
