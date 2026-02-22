@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'failed' => 'Cliente não encontrado! Tente novamente.',
-    'password' => 'A senha fornecida está incorreta.',
-    'throttle' => 'Muitas tentativas de login. Por favor, tente novamente em :seconds segundos.',
+    'failed' => 'Cliente não encontrado.',
+    'password' => 'Senha inválida.',
+    'throttle' => 'Muitas tentativas seguidas. Tente novamente em :seconds segundos.',
 
 ];
