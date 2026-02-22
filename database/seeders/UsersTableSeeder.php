@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
                 "permissao" => true,
                 "name" => "Admin",
                 "email" => "admin@gmail.com",
-                "password" => Hash::make("admin123456"),
+                "password" => Hash::make("Admin123456"),
                 "telefone" => "55999999999",
                 "email_verified_at" => Carbon::now(),
                 "created_at" => Carbon::now()
@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
                 "permissao" => false,
                 "name" => "Luciano123AB",
                 "email" => "luciano@gmail.com",
-                "password" => Hash::make("luciano123456"),
+                "password" => Hash::make("Luciano123456"),
                 "telefone" => "55999999998",
                 "email_verified_at" => Carbon::now(),
                 "created_at" => Carbon::now()

@@ -37,7 +37,10 @@
 
             <div class="form-group">
                 <label><i class="bi bi-key"></i> Confirmar Senha:</label>
-                <input type="password" class="form-control focus-ring focus-ring-danger" name="password_confirmation" placeholder="***">
+                <div class="input-group">
+                    <input type="password" id="senha_confirmacao" class="form-control focus-ring focus-ring-danger" name="password_confirmation" placeholder="***">
+                    <button type="button" id="exibir_ocultar_confirmacao" class="btn btn-light border-start focus-ring focus-ring-danger"><i id="botao_confirmacao" class="bi bi-eye"></i></button>
+                </div>
                 @error('password_confirmation')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror

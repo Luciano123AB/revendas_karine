@@ -64,8 +64,6 @@ class Salvar
                 }
             }
 
-            $telefone = preg_replace('/\D/', '', $telefone);
-
             if ($telefone !== $dados->telefone) {
                 if ($telefone_existe) {
                     session()->flash("telefone", "Esse telefone já está sendo usado! Tente outro.");

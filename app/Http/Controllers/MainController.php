@@ -126,33 +126,41 @@ class MainController extends Controller
     }
 
     public function atualizar(Request $request): RedirectResponse {
+        $request->merge([
+            'telefone' => preg_replace('/\D/', '', $request->telefone)
+        ]);
+
         $request->validate(
             [
-                "email" => "required|email",
-                "telefone" => "required|min:10",
-                "senha" => "required|min:8|confirmed",
+                "email" => "required|email|max:255",
+                "telefone" => "required|regex:/^\d{10,11}$/",
+                "senha" => "required|min:8|max:255|regex:/(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/|confirmed",
                 "senha_confirmation" => "required"
             ],
 
             [
                 "email.required" => "O campo email é obrigatório.",
-                "email.email" => "O campo email deve ser um endereço de email.",
+                "email.email" => "O campo email deve ser um endereço de email válido.",
+                "email.max" => "O campo email deve ter no máximo :max caracteres.",
                 "telefone.required" => "O campo telefone é obrigatório.",
-                "telefone.min" => "O campo telefone deve ter no mínimo 10 caracteres.",
+                "telefone.regex" => "O telefone deve conter 10 ou 11 números.",
                 "senha.required" => "O campo senha é obrigatório.",
-                "senha.min" => "O campo senha deve ter no mínimo 8 caracteres.",
+                "senha.min" => "O campo senha deve ter no mínimo :min caracteres.",
+                "senha.max" => "O campo senha deve ter no máximo :max caracteres.",
+                "senha.regex" => "O campo senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número.",
+                "senha.confirmed" => "A confirmação da senha não corresponde.",
                 "senha_confirmation.required" => "O campo confirmar senha é obrigatório."
             ]
         );
 
         $dados = Auth::user();
         $email = $request->input("email");
+        $telefone = preg_replace('/\D/', '', $request->input("telefone"));
         $senha = $request->input("senha");
-        $telefone = $request->input("telefone");
         $email_existe = User::where("email", $email)
                             ->where("id", "!=", $dados->id)
                             ->exists();
-        $telefone_existe = User::where("telefone", preg_replace('/\D/', '', $telefone))
+        $telefone_existe = User::where("telefone", $telefone)
                                 ->where("id", "!=", $dados->id)
                                 ->exists();
 

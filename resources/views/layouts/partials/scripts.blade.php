@@ -35,6 +35,22 @@
         }
     })
 
+    document.getElementById("exibir_ocultar_confirmacao").addEventListener("click", function () {
+
+        let botao = document.getElementById("botao_confirmacao");
+        let senha = document.getElementById("senha_confirmacao");
+
+        if (senha.type == "password") {
+            senha.type = "text";
+            botao.classList.remove("bi-eye");
+            botao.classList.add("bi-eye-slash");
+        } else {
+            senha.type = "password";
+            botao.classList.remove("bi-eye-slash");
+            botao.classList.add("bi-eye");
+        }
+    })
+
     function limparCampos() {
         document.getElementById("formulario").reset();
 
