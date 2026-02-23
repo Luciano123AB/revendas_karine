@@ -3,23 +3,23 @@
 @section("content")
     <div class="d-grid gap-3 vh-100">
         <div class="fundo shadow overflow-auto">
-            <h4 class="bg-dark text-white mb-1">
-                <i class="bi bi-repeat"></i>
+            <h4 class="bg-warning border border-black text-white mb-1">
+                <i class="bi bi-repeat ms-1"></i>
                 <span class="fw-bold">PENDENTES:</span>
             </h4>
             <div class="overflow-auto">
                 <table class="table table-bordered table-warning table-hover border border-black text-center shadow">
                     <thead class="table-dark border border-bottom-0 border-black">
                         <tr>
-                            <th scope="col" class="numero"><span class="fs-5 fw-bold">Nº</span></th>
-                            <th scope="col"><span class="fs-5 fw-bold">Produto</span></th>
-                            <th scope="col"><span class="fs-5 fw-bold">Valor(R$)</span></th>
-                            <th scope="col"><span class="fs-5 fw-bold">Data/Hora</span></th>
-                            <th scope="col"><span class="fs-5 fw-bold">QRCode</span></th>                    
-                            <th scope="col"></th>
+                            <th scope="col" class="numero bg-warning"><span class="fs-5 fw-bold">Nº</span></th>
+                            <th scope="col" class="bg-warning"><span class="fs-5 fw-bold">Produto</span></th>
+                            <th scope="col" class="bg-warning"><span class="fs-5 fw-bold">Valor(R$)</span></th>
+                            <th scope="col" class="bg-warning"><span class="fs-5 fw-bold">Data/Hora</span></th>
+                            <th scope="col" class="bg-warning"><span class="fs-5 fw-bold">QRCode</span></th>                    
+                            <th scope="col" class="bg-warning"></th>
                         </tr>
                     </thead>
-                    <tbody class="table-group-divider">
+                    <tbody class="table-group-divider border-top-0">
                         @forelse ($compras as $compra)
                             <tr>
                                 <th scope="row" class="align-content-center">{{ $loop->index + 1 }}</th>
@@ -40,23 +40,23 @@
         </div>
     
         <div class="fundo shadow overflow-auto">
-            <h4 class="bg-dark text-white mb-1">
-                <i class="bi bi-check-circle"></i>
+            <h4 class="bg-warning border border-black text-white mb-1">
+                <i class="bi bi-check-circle ms-1"></i>
                 <span class="fw-bold">CONCLUÍDOS:</span>
             </h4>
             <div class="overflow-auto">
                 <table class="table table-bordered table-warning table-hover border border-black text-center shadow">
                     <thead class="table-dark border border-bottom-0 border-black">
                         <tr>
-                            <th scope="col" class="numero"><span class="fs-5 fw-bold">Nº</span></th>
-                            <th scope="col"><span class="fs-5 fw-bold">Produto</span></th>
-                            <th scope="col"><span class="fs-5 fw-bold">Valor(R$)</span></th>
-                            <th scope="col"><span class="fs-5 fw-bold">Data/Hora</span></th>
-                            <th scope="col"><span class="fs-5 fw-bold">Status</span></th>
-                            <th scope="col"></th>
+                            <th scope="col" class="numero bg-warning"><span class="fs-5 fw-bold">Nº</span></th>
+                            <th scope="col" class="bg-warning"><span class="fs-5 fw-bold">Produto</span></th>
+                            <th scope="col" class="bg-warning"><span class="fs-5 fw-bold">Valor(R$)</span></th>
+                            <th scope="col" class="bg-warning"><span class="fs-5 fw-bold">Data/Hora</span></th>
+                            <th scope="col" class="bg-warning"><span class="fs-5 fw-bold">Status</span></th>
+                            <th scope="col" class="bg-warning"></th>
                         </tr>
                     </thead>
-                    <tbody class="table-group-divider">
+                    <tbody class="table-group-divider border-top-0">
                         @forelse ($concluidos as $concluido)
                             <tr>
                                 <th scope="row" class="align-content-center">{{ $loop->index + 1 }}</th>
