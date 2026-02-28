@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class MainController extends Controller
@@ -116,7 +117,7 @@ class MainController extends Controller
             ->with("total", $total);
     }
 
-    public function editar(): View {
+    public function atualizarConta(): View {
 
         $dados = Auth::user();
 
@@ -133,9 +134,7 @@ class MainController extends Controller
         $request->validate(
             [
                 "email" => "required|email|max:255",
-                "telefone" => "required|regex:/^\d{10,11}$/",
-                "senha" => "required|min:8|max:255|regex:/(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/|confirmed",
-                "senha_confirmation" => "required"
+                "telefone" => "required|regex:/^\d{10,11}$/"
             ],
 
             [
@@ -143,20 +142,13 @@ class MainController extends Controller
                 "email.email" => "O campo email deve ser um endereço de email válido.",
                 "email.max" => "O campo email deve ter no máximo :max caracteres.",
                 "telefone.required" => "O campo telefone é obrigatório.",
-                "telefone.regex" => "O telefone deve conter 10 ou 11 números.",
-                "senha.required" => "O campo senha é obrigatório.",
-                "senha.min" => "O campo senha deve ter no mínimo :min caracteres.",
-                "senha.max" => "O campo senha deve ter no máximo :max caracteres.",
-                "senha.regex" => "O campo senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número.",
-                "senha.confirmed" => "A confirmação da senha não corresponde.",
-                "senha_confirmation.required" => "O campo confirmar senha é obrigatório."
+                "telefone.regex" => "O telefone deve conter 10 ou 11 números."
             ]
         );
 
         $dados = Auth::user();
         $email = $request->input("email");
         $telefone = preg_replace('/\D/', '', $request->input("telefone"));
-        $senha = $request->input("senha");
         $email_existe = User::where("email", $email)
                             ->where("id", "!=", $dados->id)
                             ->exists();
@@ -167,7 +159,6 @@ class MainController extends Controller
         $salvar = Salvar::atualizar(
             $dados,
             $email,
-            $senha,
             $telefone,
             $email_existe,
             $telefone_existe
@@ -178,6 +169,46 @@ class MainController extends Controller
         }
 
         return redirect()->back()->with("sucesso", "Dados atualizados com sucesso!");
+    }
+
+    public function redefinirSenha(): View {
+        return view("auth.redefinir_senha")->with("pagina", "Redefinir Senha");
+    }
+
+    public function redefinir(Request $request): RedirectResponse {
+        $request->validate(
+            [
+                "senha_atual" => "required",
+                "senha" => "required|min:8|max:255|regex:/(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/|confirmed",
+                "senha_confirmation" => "required"
+            ],
+
+            [
+                "senha_atual.required" => "O campo senha atual é obrigatório.",
+                "senha.required" => "O campo nova senha é obrigatório.",
+                "senha.min" => "O campo nova senha deve ter no mínimo :min caracteres.",
+                "senha.max" => "O campo nova senha deve ter no máximo :max caracteres.",
+                "senha.regex" => "O campo nova senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número.",
+                "senha.confirmed" => "A confirmação da nova senha não corresponde.",
+                "senha_confirmation.required" => "O campo confirmar nova senha é obrigatório."
+            ]
+        );
+
+        $dados = Auth::user();
+        $senha_atual = $request->input("senha_atual");
+        $nova_senha = $request->input("senha");
+
+        if (!password_verify($senha_atual, $dados->password)) {
+            return redirect()->back()->withErrors(["senha_atual" => "A senha atual está incorreta!"]);
+        }
+
+        $dados->password = Hash::make($nova_senha);
+
+        if (!$dados->save()) {
+            return redirect()->back()->withErrors(["falha", "Falha ao redefinir a senha! Tente novamente."]);
+        }
+
+        return redirect()->route("atualizar_conta")->with("sucesso_redefinir", "Senha redefinida com sucesso!");
     }
 
     public function confirmarDeletar(): RedirectResponse {

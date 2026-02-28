@@ -54,7 +54,7 @@ class Salvar
         }
     }
 
-    public static function atualizar($dados, $email, $senha, $telefone, $email_existe, $telefone_existe) {
+    public static function atualizar($dados, $email, $telefone, $email_existe, $telefone_existe) {
         try {            
             if ($email !== $dados->email) {
                 if ($email_existe) {
@@ -72,10 +72,9 @@ class Salvar
                 }
             }
 
-            DB::transaction(function () use ($dados, $email, $senha, $telefone) {
+            DB::transaction(function () use ($dados, $email, $telefone) {
                 $dados->email = $email;
                 $dados->telefone = $telefone;
-                $dados->password = Hash::make($senha);
                 $dados->updated_at = Carbon::now();
                 $dados->saveOrFail();
             });

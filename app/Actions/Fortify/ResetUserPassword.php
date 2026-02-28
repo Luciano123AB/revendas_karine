@@ -20,6 +20,9 @@ class ResetUserPassword implements ResetsUserPasswords
     {
         Validator::make($input, [
             'password' => $this->passwordRules(),
+            'password_confirmation' => 'required'
+        ], [
+            'password_confirmation.required' => 'O campo confirmar nova senha é obrigatório.'
         ])->validate();
 
         $user->forceFill([

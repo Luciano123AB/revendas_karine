@@ -12,6 +12,7 @@
                 <label><i class="bi bi-envelope"></i> Email:</label>
                 <div class="d-flex gap-2">
                     <input type="email" class="form-control" name="email" placeholder="endereco@gmail.com" autofocus required>
+                    <a href="{{ route("login") }}" type="button" class="btn btn-warning border border-black focus-ring focus-ring-warning">Voltar</a>
                     <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger">Enviar</button>
                 </div>
                 <div>

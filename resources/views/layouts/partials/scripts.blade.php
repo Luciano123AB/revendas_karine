@@ -51,6 +51,22 @@
         }
     })
 
+    document.getElementById("exibir_ocultar_atual").addEventListener("click", function () {
+
+        let botao = document.getElementById("botao_atual");
+        let senha = document.getElementById("senha_atual");
+
+        if (senha.type == "password") {
+            senha.type = "text";
+            botao.classList.remove("bi-eye");
+            botao.classList.add("bi-eye-slash");
+        } else {
+            senha.type = "password";
+            botao.classList.remove("bi-eye-slash");
+            botao.classList.add("bi-eye");
+        }
+    })
+
     function limparCampos() {
         document.getElementById("formulario").reset();
 

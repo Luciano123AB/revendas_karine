@@ -56,7 +56,7 @@ class CreateNewUser implements CreatesNewUsers
             "password.max" => "O campo senha deve ter no máximo :max caracteres.",
             "password.regex" => "O campo senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número.",
             "password.confirmed" => "A confirmação da senha não corresponde.",
-            "password_confirmation.required" => "O campo de confirmação de senha é obrigatório.",
+            "password_confirmation.required" => "O campo confirmar senha é obrigatório.",
             "telefone.required" => "O campo telefone é obrigatório.",
             "telefone.regex" => "O telefone deve conter 10 ou 11 números.",
             "telefone.unique" => "O telefone informado já está em uso."

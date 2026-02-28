@@ -14,8 +14,11 @@ Route::middleware(["auth", "verified"])->group(function() {
         Route::controller(MainController::class)->group(function() {
             Route::get("home/{categoria}", "home")->name("home");
 
-            Route::get("editar", "editar")->name("editar");
+            Route::get("atualizar_conta", "atualizarConta")->name("atualizar_conta");
             Route::post("atualizar", "atualizar")->name("atualizar");
+
+            Route::get("redefinir_senha", "redefinirSenha")->name("redefinir_senha");
+            Route::post("redefinir", "redefinir")->name("redefinir");
 
             Route::get("confirmar_deletar", "confirmardeletar")->name("confirmar_deletar");
             Route::delete("deletar_conta", "deletarConta")->name("deletar_conta");
