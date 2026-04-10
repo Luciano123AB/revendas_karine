@@ -11,6 +11,10 @@
     @include("layouts.partials.links")
 
     @include("layouts.partials.styles")
+    @vite([
+        "resources/css/app.css",
+        "resources/js/app.js"
+    ])
 </head>
 <body class="bg-danger fst-italic">
     @include("layouts.alertas")
