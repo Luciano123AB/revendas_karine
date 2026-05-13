@@ -1,4 +1,4 @@
-<footer class="bg-warning border-5 border-top border-black text-center mt-5 py-3">
+<footer class="bg-warning progress-bar-striped border-5 border-top border-black text-center mt-5 py-3">
     <div id="direitos" class="justify-content-center align-items-center gap-3">
         <div>
             <span>

@@ -6,7 +6,7 @@ class DadosPix
 {
     public static function dados(float $valor_pagar, int $numero) {
 
-        $dadosPix = [
+        $dados_pix = [
             'chave_pix' => '12109801930',
             'nome' => strtoupper(substr(config('app.name'), 0, 25)),
             'cidade' => 'RIO GRANDE DO SUL',
@@ -14,6 +14,6 @@ class DadosPix
             'txid' => 'PEDIDO' . $numero
         ];
 
-        return $dadosPix;
+        return $dados_pix;
     }
 }

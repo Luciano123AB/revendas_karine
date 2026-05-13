@@ -5,8 +5,9 @@ namespace Database\Seeders;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
-class CategoriasTableSeeder extends Seeder
+class DatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -27,6 +28,28 @@ class CategoriasTableSeeder extends Seeder
             ["nome" => "Ferramentas e Construção", "created_at" => Carbon::now()],
             ["nome" => "Presentes e Utilidades", "created_at" => Carbon::now()],
             ["nome" => "Saúde e Bem-estar", "created_at" => Carbon::now()]
+        ]);
+
+        DB::table("users")->insert([
+            [
+                "permissao" => true,
+                "name" => "Admin",
+                "email" => "admin@gmail.com",
+                "password" => Hash::make("24032004ABcd123"),
+                "telefone" => "55999999999",
+                "email_verified_at" => Carbon::now(),
+                "created_at" => Carbon::now()
+            ],
+
+            [
+                "permissao" => false,
+                "name" => "Luciano123AB",
+                "email" => "luciano@gmail.com",
+                "password" => Hash::make("24032004ABcd123"),
+                "telefone" => "55999999998",
+                "email_verified_at" => Carbon::now(),
+                "created_at" => Carbon::now()
+            ]
         ]);
     }
 }

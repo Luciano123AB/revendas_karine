@@ -1,4 +1,4 @@
-<nav id="barra" class="navbar bg-warning shadow-lg border-5 border-bottom border-black mb-5">
+<nav id="barra" class="navbar bg-warning progress-bar-striped shadow-lg border-5 border-bottom border-black mb-5">
     <div class="container-fluid">
         <a href="{{ route("inicio") }}" class="navbar-brand text-decoration-none text-light fs-2 fw-bold">
             <img src="{{ asset('assets/images/icons/icone.png') }}" id="icone" width="70" height="70">

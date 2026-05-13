@@ -9,13 +9,13 @@ class GerarQRCode
 {
     public function gerar(float $valor_pagar, int $numero) {
 
-        $dadosPix = DadosPix::dados($valor_pagar, $numero);
-        $payloadPix = (new GerarPayload())->gerarPixPayload($dadosPix);
+        $dados_pix = DadosPix::dados($valor_pagar, $numero);
+        $payload_pix = (new GerarPayload())->gerarPixPayload($dados_pix);
         $options = new QROptions([
             'outputType' => QRCode::OUTPUT_IMAGE_PNG,
             'scale' => 5,
         ]);
-        $qrcode = (new QRCode($options))->render($payloadPix);
+        $qrcode = (new QRCode($options))->render($payload_pix);
 
         return $qrcode;
     }    

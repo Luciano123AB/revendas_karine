@@ -11,10 +11,10 @@ class GerarPayload
         $payload .= $this->pixField('00', '01');
         $payload .= $this->pixField('01', '11');
 
-        $merchantInfo  = $this->pixField('00', 'BR.GOV.BCB.PIX');
+        $merchant_info  = $this->pixField('00', 'BR.GOV.BCB.PIX');
 
-        $merchantInfo .= $this->pixField('01', $dados['chave_pix']);
-        $payload .= $this->pixField('26', $merchantInfo);
+        $merchant_info .= $this->pixField('01', $dados['chave_pix']);
+        $payload .= $this->pixField('26', $merchant_info);
         $payload .= $this->pixField('52', '0000');
         $payload .= $this->pixField('53', '986');
 

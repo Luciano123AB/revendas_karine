@@ -20,10 +20,7 @@ use Illuminate\View\View;
 class MainController extends Controller
 {
     public function inicio(): View {
-
-        $banco = Boot::testarConexao();
-        
-        if ($banco == false) {
+        if (Boot::testarConexao() == false) {
             Boot::criarPovoarBanco();
         }
 

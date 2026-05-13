@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\DB;
 class Boot
 {
     public static function testarConexao() {
-        
-        $banco = null;
-
         try {
             DB::connection()->getPdo();
 
@@ -30,13 +27,9 @@ class Boot
             "--force" => true
         ]);
         Artisan::call("db:seed", [
-            "--class" => "CategoriasTableSeeder",
+            "--class" => "DatabaseSeeder",
             "--force" => true
         ]);
-        Artisan::call("db:seed", [
-            "--class" => "UsersTableSeeder",
-            "--force" => true
-        ]);        
     }
 
     public static function dependencias() {

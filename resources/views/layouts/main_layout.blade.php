@@ -16,18 +16,23 @@
         "resources/js/app.js"
     ])
 </head>
-<body class="bg-danger fst-italic">
+<body class="bg-danger fst-italic d-flex flex-column min-vh-100">
     @include("layouts.alertas")
     
     @include("layouts.header")
 
-    <div class="container">
-        @if ($pagina != "Início" && $pagina != "Lista" && $pagina != "Minhas Compras" && $pagina != "Administrador")
-            <div class="d-flex justify-content-center align-items-center vh-100">
-        @endif
-            @yield("content")
-        @if ($pagina != "Início" && $pagina != "Lista" && $pagina != "Minhas Compras" && $pagina != "Administrador")
+    <div class="container my-auto">
+        @if (
+            $pagina != "Início" &&
+            $pagina != "Lista" &&
+            $pagina != "Minhas Compras" &&
+            $pagina != "Administrador"
+        )
+            <div class="d-flex justify-content-center align-items-center">
+                @yield("content")
             </div>
+        @else
+            @yield("content")
         @endif
     </div>
 
