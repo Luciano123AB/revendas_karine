@@ -1,4 +1,4 @@
-![Laravel](https://img.shields.io/badge/Laravel-13-red)
+![Laravel](https://img.shields.io/badge/Laravel-12-red)
 ![PHP](https://img.shields.io/badge/PHP-8.5-blue)
 
 # 🌐 Revendas Karine
@@ -16,7 +16,7 @@ Aplicação web partida com **Laravel**, com foco em:
 
 ## ✨ Funcionalidades
 
-- Página home, cadastro, login, verificação, página de mais informações, atualização de dados, envio de arquivos, deleção de conta.
+- Página home(Ofertas), cadastro, login, verificação, página de todos os produtos, atualização de dados, histórico(Pendentes/Concluídos), escolha(Produto/Quantidade), gerar QRCode, página de administrador, deleção de conta.
 
 ---
 
