@@ -16,7 +16,14 @@ Aplicação web partida com **Laravel**, com foco em:
 
 ## ✨ Funcionalidades
 
-- Página home(Ofertas), cadastro, login, verificação, página de todos os produtos, atualização de dados, histórico(Pendentes/Concluídos), escolha(Produto/Quantidade), gerar QRCode, página de administrador, deleção de conta.
+- Página home(Ofertas)
+- Cadastro, login, verificação
+- Página de todos os produtos
+- Escolha(Produto/Quantidade)
+- Gerar QRCode
+- Histórico(Pendentes/Concluídos)
+- Página de administrador
+- Atualização de dados, deleção de conta.
 
 ---
 
