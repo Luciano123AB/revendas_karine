@@ -5,7 +5,7 @@
 
 ## 📜 Sobre
 
-Aplicação web partida com **Laravel**, com foco em:
+Aplicação web para revenda de produto com **Laravel**, com foco em:
 
 - Escolher produto.
 - Gerar QRCode.
