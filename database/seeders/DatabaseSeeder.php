@@ -42,7 +42,5 @@ class DatabaseSeeder extends Seeder
                 'created_at' => Carbon::now()
             ]
         ]);
-
-        User::factory(10)->create();
     }
 }

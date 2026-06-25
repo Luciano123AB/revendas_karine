@@ -7,7 +7,6 @@ use App\Models\Categoria;
 use App\Models\Compra;
 use App\Models\Produto;
 use App\Models\User;
-use App\Services\Boot;
 use App\Services\Salvar;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
@@ -20,13 +19,6 @@ use Illuminate\View\View;
 class MainController extends Controller
 {
     public function inicio(): View {
-        if (Boot::testarConexao() == false) {
-            Boot::criarPovoarBanco();
-        }
-
-        if (!is_dir(base_path('node_modules'))) {
-            Boot::dependencias();
-        }
 
         $ofertas = Produto::where('desconto', '!=', null)
                             ->orderBy('nome')
