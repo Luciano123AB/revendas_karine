@@ -1,5 +1,5 @@
 @if(session("confirmar"))
-    @include("layouts.formulario_confirmacao")
+    @include("layouts.partials.formulario_confirmacao")
 
     <script>
         Swal.fire({

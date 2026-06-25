@@ -26,9 +26,9 @@ class Compras extends Controller
             '.'
         );
 
-        return view("produto")
-            ->with("pagina", "Escolha")
-            ->with("produto", $produto);
+        return view('produto')
+            ->with('pagina', 'Escolha')
+            ->with('produto', $produto);
     }
 
     public function confirmarComprar($id, Request $request): RedirectResponse {
@@ -42,19 +42,19 @@ class Compras extends Controller
             ],
 
             [
-                'quantidade.required' => "O campo quantidade é obrigatório.",
-                'quantidade.integer' => "O campo quantidade só deve conter números.",
-                'quantidade.min' => "A quantidade deve ser no mínimo :min",
-                'quantidade.max' => "A quantidade deve ser no máximo :max"
+                'quantidade.required' => 'O campo quantidade é obrigatório.',
+                'quantidade.integer' => 'O campo quantidade só deve conter números.',
+                'quantidade.min' => 'A quantidade deve ser no mínimo :min',
+                'quantidade.max' => 'A quantidade deve ser no máximo :max'
             ]
         );
 
-        $quantidade = $request->input("quantidade");
+        $quantidade = $request->input('quantidade');
 
-        session()->flash("confirmar", [
-            "acao" => "comprar",
-            "id" => $id,
-            "quantidade" => $quantidade
+        session()->flash('confirmar', [
+            'acao' => 'comprar',
+            'id' => $id,
+            'quantidade' => $quantidade
         ]);
 
         return redirect()->back()->withInput();
@@ -75,7 +75,7 @@ class Compras extends Controller
         );
 
         if (!$salvar) {
-            session()->flash("resultado", [
+            session()->flash('resultado', [
                 'titulo' => 'ERRO',
                 'menssagem' => 'Falha ao comprar o produto! Tente novamente.',
                 'icone' => 'error'
@@ -84,7 +84,7 @@ class Compras extends Controller
             return redirect()->back();
         }
 
-        return redirect()->route("qrcode", ["id" => Crypt::encrypt($nova_compra->id)]);
+        return redirect()->route('qrcode', ['id' => Crypt::encrypt($nova_compra->id)]);
     }
 
     public function qrcode($id): View {
@@ -93,14 +93,14 @@ class Compras extends Controller
         $compra = Compra::find($id);
         $qrcode = (new GerarQRCode())->gerar($compra->valor, $compra->id);
 
-        return view("pix", ["qrcode" => $qrcode])->with("pagina", "Pagamento");
+        return view('pix', ['qrcode' => $qrcode])->with('pagina', 'Pagamento');
     }
 
     public function confirmarCancelar($id): RedirectResponse {
 
-        session()->flash("confirmar", [
-            "acao" => "cancelar",
-            "id" => $id
+        session()->flash('confirmar', [
+            'acao' => 'cancelar',
+            'id' => $id
         ]);
 
         return redirect()->back();
@@ -116,7 +116,7 @@ class Compras extends Controller
         $salvar = Salvar::cancelar($compra, $produto);
 
         if (!$salvar) {
-            session()->flash("resultado", [
+            session()->flash('resultado', [
                 'titulo' => 'ERRO',
                 'menssagem' => 'Falha ao cancelar a compra! Tente novamente.',
                 'icone' => 'error'
@@ -125,7 +125,7 @@ class Compras extends Controller
             return redirect()->back();
         }
 
-        session()->flash("resultado", [
+        session()->flash('resultado', [
             'titulo' => 'SUCESSO',
             'menssagem' => 'Compra cancelada com êxito.',
             'icone' => 'success'

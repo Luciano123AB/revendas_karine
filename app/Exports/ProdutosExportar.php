@@ -11,18 +11,18 @@ class ProdutosExportar implements
     WithHeadings
 {
     public function collection() {
-        return Produto::select("imagem", "nome", "descricao", "preco", "desconto", "estoque", "categoria_id")->get();
+        return Produto::select('imagem', 'nome', 'descricao', 'preco', 'desconto', 'estoque', 'categoria_id')->get();
     }
 
     public function headings(): array {
         return [
-            "Imagem",
-            "Nome",
-            "Descrição",
-            "Preço",
-            "Desconto",
-            "Estoque",
-            "Categoria ID"
+            'Imagem',
+            'Nome',
+            'Descrição',
+            'Preço',
+            'Desconto',
+            'Estoque',
+            'Categoria ID'
         ];
     }
 }

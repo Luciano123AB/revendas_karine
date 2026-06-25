@@ -14,10 +14,10 @@ class ProdutosImportar implements
     SkipsEmptyRows
 {
     public function model(array $row) {
-        if (empty($row["nome"]) &&
-            empty($row["preco"]) &&
-            empty($row["estoque"]) &&
-            empty($row["categoria_id"])
+        if (empty($row['nome']) &&
+            empty($row['preco']) &&
+            empty($row['estoque']) &&
+            empty($row['categoria_id'])
         ) {
             return null;
         }
@@ -30,12 +30,12 @@ class ProdutosImportar implements
             return new Produto(
                 [
                     'imagem' => $row['imagem'] ?? null,
-                    'nome' => $row["nome"],
+                    'nome' => $row['nome'],
                     'descricao' => $row['descricao'] ?? null,
                     'preco' => $row['preco'],
                     'desconto' => $row['desconto'] ?? null,
                     'estoque' => $row['estoque'],
-                    'categoria_id' => $row["categoria_id"]
+                    'categoria_id' => $row['categoria_id']
                 ]
             );
         }

@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label><i class="bi bi-key"></i> Senha:</label>
                 <div class="input-group">
-                    <input type="password" id="senha" class="form-control focus-ring focus-ring-danger" name="password" placeholder="***">
+                    <input type="password" id="senha" class="form-control focus-ring focus-ring-danger" name="password" placeholder="@Example123">
                     <button type="button" id="exibir_ocultar" class="btn btn-light border-start focus-ring focus-ring-danger"><i id="botao" class="bi bi-eye"></i></button>
                 </div>
                 @error('password')

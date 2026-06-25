@@ -158,7 +158,7 @@ return [
         'string' => 'O campo :attribute deve ter :size caracteres.',
     ],
     'starts_with' => 'O campo :attribute deve começar com um dos seguintes valores: :values.',
-    'string' => 'O campo :attribute deve ser uma string.',
+    'string' => 'O campo :attribute deve ser um texto.',
     'timezone' => 'O campo :attribute deve ser um fuso horário válido.',
     'unique' => 'O campo :attribute já foi utilizado.',
     'uploaded' => 'O campo :attribute falhou ao ser carregado.',

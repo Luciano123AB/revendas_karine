@@ -42,8 +42,8 @@ class VerificacaoEmail extends Notification
         );
 
         return (new MailMessage)
-            ->subject("📧 " . env('APP_NAME') . ' - Confirme seu Email')
-            ->view('email', [
+            ->subject('📧 ' . config('app.name') . ' - Confirme seu Email')
+            ->view('mail.email', [
                 'url' => $verificationUrl,
                 'user' => $notifiable
             ]);

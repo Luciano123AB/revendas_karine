@@ -14,25 +14,25 @@ class Compra extends Model
     const UPDATED_AT = null;
 
     protected $fillable = [
-        "quantidade",
-        "valor",
-        "pix",
-        "status",
-        "produto_id",
-        "user_id",
-        "data_compra",
-        "data_efetuacao"
+        'quantidade',
+        'valor',
+        'pix',
+        'status',
+        'produto_id',
+        'user_id',
+        'data_compra',
+        'data_efetuacao'
     ];
 
     protected $casts = [
-        "quantidade" => "integer",
-        "valor" => "decimal:2",
-        "pix" => "string",
-        "status" => CompraStatus::class,
-        "produto_id" => "integer",
-        "user_id" => "integer",
-        "data_compra" => "datetime",
-        "data_efetuacao" => "datetime"
+        'quantidade' => 'integer',
+        'valor' => 'decimal:2',
+        'pix' => 'string',
+        'status' => CompraStatus::class,
+        'produto_id' => 'integer',
+        'user_id' => 'integer',
+        'data_compra' => 'datetime',
+        'data_efetuacao' => 'datetime'
     ];
 
     public function produto(): BelongsTo {

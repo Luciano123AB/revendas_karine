@@ -14,14 +14,14 @@ class Produtos extends Controller
 {
     public function importar(Request $request): RedirectResponse {
         $request->validate([
-            "arquivo" => "required"
+            'arquivo' => 'required'
         ],
     
         [
-            "arquivo.required" => "O campo arquivo é obrigatório.",
+            'arquivo.required' => 'O campo arquivo é obrigatório.',
         ]);
 
-        $arquivo = $request->file("arquivo");
+        $arquivo = $request->file('arquivo');
 
         $importar = Excel::import(
             new ProdutosImportar,
@@ -31,17 +31,17 @@ class Produtos extends Controller
         );
 
         if (!$importar) {
-            return redirect()->back()->withErrors("falha_importar", "Falha ao tentar importar os produtos! Tente novamente.");
+            return redirect()->back()->withErrors('falha_importar', 'Falha ao tentar importar os produtos! Tente novamente.');
         }
 
-        return redirect()->back()->with("sucesso_importar", "Dados importados com sucesso!");;
+        return redirect()->back()->with('sucesso_importar', 'Dados importados com sucesso!');;
     }
 
     public function exportar(): BinaryFileResponse | RedirectResponse {
         try {
             return Excel::download(new ProdutosExportar, 'produtos.xlsx');
         } catch (\Exception $e) {
-            return redirect()->back()->withErrors("falha_exportar", "Falha ao tentar exportar os produtos! Tente novamente.");
+            return redirect()->back()->withErrors('falha_exportar', 'Falha ao tentar exportar os produtos! Tente novamente.');
         }
     }
 }

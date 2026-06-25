@@ -3,7 +3,7 @@
         @csrf
     </form>
 @elseif(session("confirmar.acao") == "cancelar")
-    <form action='{{ route('cancelar_compra', ['id' => session('confirmar.id')]) }}' id='formulario_confirmacao' method='POST'>
+    <form action='{{ route('cancelar.compra', ['id' => session('confirmar.id')]) }}' id='formulario_confirmacao' method='POST'>
         @csrf
         @method('DELETE')
     </form>
@@ -14,7 +14,7 @@
         @method('DELETE')
     </form>
 @else
-    <form action='{{ route('deletar_conta') }}' id='formulario_confirmacao' method='POST'>
+    <form action='{{ route('deletar.conta') }}' id='formulario_confirmacao' method='POST'>
         @csrf
         @method('DELETE')
     </form>

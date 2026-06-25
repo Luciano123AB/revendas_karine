@@ -20,13 +20,13 @@ class Produto extends Model
     ];
 
     protected $casts = [
-        "imagem" => "string",
-        "nome" => "string",
-        "descricao" => "string",
-        "preco" => "decimal:2",
-        "desconto" => "integer",
-        "estoque" => "integer",
-        "categoria_id" => "integer"
+        'imagem' => 'string',
+        'nome' => 'string',
+        'descricao' => 'string',
+        'preco' => 'decimal:2',
+        'desconto' => 'integer',
+        'estoque' => 'integer',
+        'categoria_id' => 'integer'
     ];
 
     public function categoria(): BelongsTo {

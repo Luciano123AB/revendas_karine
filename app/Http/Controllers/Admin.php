@@ -20,16 +20,16 @@ class Admin extends Controller
 
         $categorias = Categoria::all();
 
-        return view("admin")
-            ->with("pagina", "Administrador")
-            ->with("categorias", $categorias);
+        return view('admin')
+            ->with('pagina', 'Administrador')
+            ->with('categorias', $categorias);
     }
 
     public function confirmarAprovar($id): RedirectResponse {
 
-        session()->flash("confirmar", [
-            "acao" => "aprovar",
-            "id" => $id
+        session()->flash('confirmar', [
+            'acao' => 'aprovar',
+            'id' => $id
         ]);
 
         return redirect()->back();
@@ -43,7 +43,7 @@ class Admin extends Controller
         $salvar = Salvar::aprovar($compra);
 
         if (!$salvar) {
-            session()->flash("resultado", [
+            session()->flash('resultado', [
                 'titulo' => 'ERRO',
                 'menssagem' => 'Falha ao aprovar a compra! Tente novamente.',
                 'icone' => 'error'
@@ -52,7 +52,7 @@ class Admin extends Controller
             return redirect()->back();
         }
 
-        session()->flash("resultado", [
+        session()->flash('resultado', [
             'titulo' => 'SUCESSO',
             'menssagem' => 'Compra aprovada com êxito.',
             'icone' => 'success'
@@ -64,47 +64,47 @@ class Admin extends Controller
     public function novoProduto(Request $request): RedirectResponse {
         $request->validate(
             [
-                "imagem" => "nullable|url",
-                "nome" => "required|string|max:150",
-                "descricao" => "nullable|string",
-                "preco" => "required|numeric|min:1",
-                "desconto" => "nullable|numeric",
-                "estoque" => "required|numeric|min:1",
-                "categoria" => "required|exists:categorias,id"
+                'imagem' => 'nullable|url',
+                'nome' => 'required|string|max:150',
+                'descricao' => 'nullable|string',
+                'preco' => 'required|numeric|min:1',
+                'desconto' => 'nullable|numeric',
+                'estoque' => 'required|numeric|min:1',
+                'categoria' => 'required|exists:categorias,id'
             ],
 
             [
-                "imagem.url" => "O campo imagem deve ser um link.",
-                "nome.required" => "O campo nome é obrigatório.",
-                "nome.string" => "O campo nome deve ser um texto.",
-                "nome.max" => "O campo nome deve conter no máximo :max caracteres.",
-                "descricao.string" => "O campo descrição deve ser um texto.",
-                "preco.required" => "O campo preço é obrigatório.",
-                "preco.numeric" => "O campo preco deve conter só números.",
-                "preco.min" => "O campo preco deve ser no mínimo :min.",
-                "desconto.numeric" => "O campo desconto deve conter só números.",
-                "estoque.required" => "O campo estoque é obrigatório.",
-                "estoque.numeric" => "O campo estoque deve conter só números.",
-                "estoque.min" => "O campo estoque deve ser no mínimo :min.",
-                "categoria.required" => "O campo categoria é obrigatório.",
-                "categoria.exists" => "Selecione a categoria do produto."
+                'imagem.url' => 'O campo imagem deve ser um link.',
+                'nome.required' => 'O campo nome é obrigatório.',
+                'nome.string' => 'O campo nome deve ser um texto.',
+                'nome.max' => 'O campo nome deve conter no máximo :max caracteres.',
+                'descricao.string' => 'O campo descrição deve ser um texto.',
+                'preco.required' => 'O campo preço é obrigatório.',
+                'preco.numeric' => 'O campo preco deve conter só números.',
+                'preco.min' => 'O campo preco deve ser no mínimo :min.',
+                'desconto.numeric' => 'O campo desconto deve conter só números.',
+                'estoque.required' => 'O campo estoque é obrigatório.',
+                'estoque.numeric' => 'O campo estoque deve conter só números.',
+                'estoque.min' => 'O campo estoque deve ser no mínimo :min.',
+                'categoria.required' => 'O campo categoria é obrigatório.',
+                'categoria.exists' => 'Selecione a categoria do produto.'
             ]
         );
         
-        $imagem = $request->input("imagem");
-        $nome = $request->input("nome");
-        $descricao = $request->input("descricao");
-        $preco = $request->input("preco");
-        $desconto = $request->input("desconto");
-        $estoque = $request->input("estoque");
-        $categoria = $request->input("categoria");
+        $imagem = $request->input('imagem');
+        $nome = $request->input('nome');
+        $descricao = $request->input('descricao');
+        $preco = $request->input('preco');
+        $desconto = $request->input('desconto');
+        $estoque = $request->input('estoque');
+        $categoria = $request->input('categoria');
 
-        $produto_existe = Produto::where("nome", $nome)
-                                ->where("categoria_id", $categoria)
+        $produto_existe = Produto::where('nome', $nome)
+                                ->where('categoria_id', $categoria)
                                 ->first();
 
         if ($produto_existe) {
-            return redirect()->back()->withErrors(["existe" => "Esse produto já existe! Tente outro."]);
+            return redirect()->back()->withErrors(['existe' => 'Esse produto já existe! Tente outro.']);
         }
 
         $novo_produto = new Produto();
@@ -120,16 +120,16 @@ class Admin extends Controller
         );
         
         if (!$salvar) {
-            return redirect()->back()->withErrors(["falha" => "Falha ao tentar salvar o produto! Tente novamente."]);
+            return redirect()->back()->withErrors(['falha' => 'Falha ao tentar salvar o produto! Tente novamente.']);
         }
 
-        return redirect()->back()->with("sucesso", "Produto salvo com sucesso!");
+        return redirect()->back()->with('sucesso', 'Produto salvo com sucesso!');
     }
 
     public function confirmarResetar(): RedirectResponse {
 
-        session()->flash("confirmar", [
-            "acao" => "resetar"
+        session()->flash('confirmar', [
+            'acao' => 'resetar'
         ]);
 
         return redirect()->back();
@@ -140,34 +140,34 @@ class Admin extends Controller
         $resetar_produtos = Produto::query()->delete();
 
         if (!$resetar_produtos) {
-            return redirect()->back()->withErrors(["falha_resetar" => "Falha ao tentar resetar os produtos! Tente novamente."]);
+            return redirect()->back()->withErrors(['falha_resetar' => 'Falha ao tentar resetar os produtos! Tente novamente.']);
         } else {
             DB::statement('ALTER TABLE produtos AUTO_INCREMENT = 1;');
     
-            return redirect()->back()->with("sucesso_resetar", "Produtos resetados com sucesso!");
+            return redirect()->back()->with('sucesso_resetar', 'Produtos resetados com sucesso!');
         }
     }
 
     public function pesquisar(Request $request): RedirectResponse {
         $request->validate(
             [
-                "cliente" => "required|string"
+                'cliente' => 'required|string'
             ],
 
             [
-                "cliente.required" => "O campo cliente é obrigatório.",
-                "cliente.string" => "O campo cliente deve ser um texto."
+                'cliente.required' => 'O campo cliente é obrigatório.',
+                'cliente.string' => 'O campo cliente deve ser um texto.'
             ]
         );
         
-        $cliente_informado = $request->input("cliente");
-        $cliente = User::where("name", $cliente_informado)->first();
+        $cliente_informado = $request->input('cliente');
+        $cliente = User::where('name', $cliente_informado)->first();
 
         if (!$cliente) {
-            return redirect()->back()->withInput()->withErrors(["nao_existe" => "Cliente não encontrado! Tente outro."]);
+            return redirect()->back()->withInput()->withErrors(['nao_existe' => 'Cliente não encontrado! Tente outro.']);
         }
 
-        $cliente_pedidos = $cliente->compras()->where("status", CompraStatus::PENDENTE)
+        $cliente_pedidos = $cliente->compras()->where('status', CompraStatus::PENDENTE)
                                             ->get()
                                             ->map(function ($cliente_pedido) {
                                                 $cliente_pedido->id_crypt = Crypt::encrypt($cliente_pedido->id);
@@ -181,6 +181,6 @@ class Admin extends Controller
                                                 return $cliente_pedido;
                                             });
 
-        return redirect()->back()->withInput()->with("cliente_pedidos", $cliente_pedidos);
+        return redirect()->back()->withInput()->with('cliente_pedidos', $cliente_pedidos);
     }
 }

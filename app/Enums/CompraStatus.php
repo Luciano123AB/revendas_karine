@@ -6,5 +6,5 @@ enum CompraStatus: string
 {
     case PENDENTE = 'Pendente';
     case APROVADO = 'Aprovado';
-    case CANCELADO = 'Cancelado';
+    case CANCELADO = 'Cancelado';    
 }

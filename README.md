@@ -30,7 +30,7 @@ Aplicação web para revendas com **Laravel**, com foco em:
 ## 🧱 Stack
 
 - **Backend:** PHP 8.5.3 + Laravel 13
-- **Frontend build:** Vite + Livewire/CSS
+- **Frontend build:** Vite + CSS
 - **Banco de dados:** MySQL 8
 - **Testes:** Não
 - **Containerização:** Docker
@@ -41,24 +41,35 @@ Aplicação web para revendas com **Laravel**, com foco em:
 
 ```text
 app/
+  Exports/                # Classes de exportação. (Excel)
   Http/    
     Controllers/          # Controladores da aplicação. (MainController, Compras, etc.)
     Middleware/           # Regras de acesso.
+  Imports/                # Classes de importação. (Excel)
   Models/                 # Modelos Eloquent. (User, Produto, etc.)
+  Notifications/          # Notificações (Email)
+  Providers/              # Service Providers.
+  Services/               # Regras de negócio auxiliares.
 database/
+  factories/              # Geração de dados fictícios para seeders. (UserFactory)
   migrations/             # Estrutura do banco.
   seeders/                # População inicial do banco de dados. (DatabaseSeeder)
+docs/                     # Imagens usadas pelo site. (Documentação do projeto)
+lang/                     # Arquivos de tradução.
 public/
-  assets/                 # Imagens usadas pelo site. (Banners, Ícones, etc.)
+  assets/
+    images/               # Imagens usadas pelo site. (Banners, Ícones, etc.)
+    js/                   # Scripts carregados diretamente.
 resources/
-  views/                  # Telas Blade
+  views/                  # Telas Blade.
 routes/
-  web.php                 # Rotas da aplicação
+  web.php                 # Rotas da aplicação.
 ```
 
 ## 📸 Demonstração
 
-![Tela](docs/home.png)
+![Tela Home](docs/home.png)
+![Tela Lista](docs/lista.png)
 
 ---
 

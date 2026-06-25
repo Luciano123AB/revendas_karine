@@ -42,24 +42,6 @@ class CreateNewUser implements CreatesNewUsers
                 'regex:/^\d{10,11}$/',
                 Rule::unique(User::class)
             ]
-        ], [
-            "name.required" => "O campo nome é obrigatório.",
-            "name.string" => "O campo nome deve ser um texto.",
-            "name.max" => "O campo nome deve ter no máximo :max caracteres.",
-            "name.unique" => "O nome informado já está em uso.",
-            "email.required" => "O campo email é obrigatório.",
-            "email.email" => "O campo email deve ser um endereço de email válido.",
-            "email.max" => "O campo email deve ter no máximo :max caracteres.",
-            "email.unique" => "O email informado já está em uso.",
-            "password.required" => "O campo senha é obrigatório.",
-            "password.min" => "O campo senha deve ter no mínimo :min caracteres.",
-            "password.max" => "O campo senha deve ter no máximo :max caracteres.",
-            "password.regex" => "O campo senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número.",
-            "password.confirmed" => "A confirmação da senha não corresponde.",
-            "password_confirmation.required" => "O campo confirmar senha é obrigatório.",
-            "telefone.required" => "O campo telefone é obrigatório.",
-            "telefone.regex" => "O telefone deve conter 10 ou 11 números.",
-            "telefone.unique" => "O telefone informado já está em uso."
         ])->validate();
 
         return User::create([

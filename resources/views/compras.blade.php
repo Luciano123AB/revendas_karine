@@ -27,7 +27,7 @@
                                 <td class="align-content-center">{{ $compra->valor_formatado }}</td>
                                 <td class="align-content-center">{{ $compra->data_compra }}</td>
                                 <td class="align-content-center"><a href="{{ route("qrcode", ["id" => $compra->id_crypt]) }}" class="btn btn-warning border border-black focus-ring focus-ring-warning"><i class="bi bi-qr-code-scan"></i></a></td>
-                                <td class="align-content-center"><a href="{{ route("confirmar_cancelar", ["id" => $compra->id_crypt]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Cancelar</a></td>
+                                <td class="align-content-center"><a href="{{ route("confirmar.cancelar", ["id" => $compra->id_crypt]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Cancelar</a></td>
                             </tr>
                         @empty
                             <tr>

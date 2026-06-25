@@ -8,7 +8,7 @@
 
         <div class="d-flex align-items-center gap-2">
             @auth
-                @if (Auth::user()->permissao && $pagina != "Administrador")
+                @if (auth()->user()->permissao && $pagina != "Administrador")
                     <a href="{{ route("admin") }}" class="btn btn-danger border border-black focus-ring focus-ring-danger"><i class="bi bi-gear"></i></a>
                 @endif
             @endauth
@@ -16,16 +16,16 @@
             @auth
                 <div class="btn-group">
                     <div class="d-grid bg-danger btn border border-black">
-                        <span class="text-white overflow-auto">Cliente: {{ Auth::user()->email }}</span>
+                        <span class="text-white overflow-auto">Cliente: {{ auth()->user()->email }}</span>
                     </div>
                     <button type="button" class="dropdown-toggle btn btn-danger border border-black focus-ring focus-ring-danger" data-bs-toggle="dropdown" aria-expanded="false"></button>
                     <ul class="dropdown-menu dropdown-menu-end bg-warning">
-                        @if ($pagina != "Atualizar Dados" && !Auth::user()?->permissao)
+                        @if ($pagina != "Atualizar Dados" && !auth()->user()?->permissao)
                             <li>
-                                <a href="{{ route("atualizar_conta") }}" class="dropdown-item btn btn-danger border-top border-danger focus-ring focus-ring-danger">Editar</a>
+                                <a href="{{ route("atualizar.conta") }}" class="dropdown-item btn btn-danger border-top border-danger focus-ring focus-ring-danger">Editar</a>
                             </li>
                         @endif
-                        @if ($pagina != "Compras" && !Auth::user()?->permissao)
+                        @if ($pagina != "Compras" && !auth()->user()?->permissao)
                             <li>
                                 <a href="{{ route("compras") }}" class="dropdown-item btn btn-danger border-top border-danger focus-ring focus-ring-danger">Minhas Compras</a>
                             </li>

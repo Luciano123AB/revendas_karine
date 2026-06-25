@@ -25,11 +25,13 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'permissao' => (bool) random_int(0, 1),
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'password' => Hash::make('password'),
+            'telefone' => '5599999' . $this->faker->unique()->numberBetween(0, 9999),
             'email_verified_at' => Carbon::now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'remember_token' => Str::random(10)
         ];
     }
 

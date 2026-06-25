@@ -55,8 +55,8 @@
         <div class="fundo card shadow">
             <div class="card-body">
                 <div class="d-flex justify-content-center gap-2">
-                    <a href="{{ route("redefinir_senha") }}" class="btn btn-warning border border-black focus-ring focus-ring-warning">Redefinir Senha</a>
-                    <a href="{{ route("confirmar_deletar") }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Deletar Conta</a>
+                    <a href="{{ route("redefinir.senha") }}" class="btn btn-warning border border-black focus-ring focus-ring-warning">Redefinir Senha</a>
+                    <a href="{{ route("confirmar.deletar") }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Deletar Conta</a>
                 </div>
             </div>
 

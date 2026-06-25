@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Categoria extends Model
 {
     protected $fillable = [
-        "nome"
+        'nome'
     ];
 
     protected $casts = [
-        "nome" => "string",
+        'nome' => 'string',
     ];
 
     public function produtos(): HasMany {

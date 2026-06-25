@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label><i class="bi bi-key"></i> Nova Senha:</label>
                 <div class="input-group">
-                    <input type="password" id="senha" class="form-control focus-ring focus-ring-danger" name="senha" placeholder="***">
+                    <input type="password" id="senha" class="form-control focus-ring focus-ring-danger" name="senha" placeholder="@Example123">
                     <button type="button" id="exibir_ocultar" class="btn btn-light border-start focus-ring focus-ring-danger"><i id="botao" class="bi bi-eye"></i></button>
                 </div>
                 @error('senha')
@@ -49,7 +49,7 @@
 
         <div class="card-footer d-flex justify-content-between">
             <div class="d-flex gap-2">
-                <a href="{{ route("atualizar_conta") }}" type="button" class="btn btn-warning border border-black focus-ring focus-ring-warning">Voltar</a>
+                <a href="{{ route("atualizar.conta") }}" type="button" class="btn btn-warning border border-black focus-ring focus-ring-warning">Voltar</a>
                 <button type="button" class="btn btn-secondary border border-black focus-ring focus-ring-secondary" onclick="limparCampos()">Limpar</button>
             </div>
             <button type="submit" class="btn btn-danger border border-black focus-ring focus-ring-danger">Confirmar</button>

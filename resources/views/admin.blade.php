@@ -40,7 +40,7 @@
                                 <a href="{{ route("exportar") }}" class="btn btn-danger border border-black focus-ring focus-ring-danger w-100">Exportar</a>                                
                             </div>
                             <div class="d-grid">
-                                <a href="{{ route("confirmar_resetar") }}" class="btn btn-danger border border-black focus-ring focus-ring-danger w-100">Resetar</a>
+                                <a href="{{ route("confirmar.resetar") }}" class="btn btn-danger border border-black focus-ring focus-ring-danger w-100">Resetar</a>
                             </div>
                         </div>
                         @error('falha_exportar')
@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <form action="{{ route('novo_produto') }}" id="formulario" class="fundo card shadow h-100" method="POST">
+            <form action="{{ route('novo.produto') }}" id="formulario" class="fundo card shadow h-100" method="POST">
                 @csrf
 
                 <div class="card-header text-center">
@@ -191,8 +191,8 @@
                                         <td class="align-content-center">{{ $pedidos->valor_formatado }}</td>
                                         <td class="align-middle">
                                             <div class="admin gap-1">
-                                                <a href="{{ route("confirmar_cancelar", ["id" => $pedidos->id_crypt]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Cancelar</a>
-                                                <a href="{{ route("confirmar_aprovar", ["id" => $pedidos->id_crypt]) }}" class="btn btn-success border border-black focus-ring focus-ring-success">Aprovar</a>
+                                                <a href="{{ route("confirmar.cancelar", ["id" => $pedidos->id_crypt]) }}" class="btn btn-danger border border-black focus-ring focus-ring-danger">Cancelar</a>
+                                                <a href="{{ route("confirmar.aprovar", ["id" => $pedidos->id_crypt]) }}" class="btn btn-success border border-black focus-ring focus-ring-success">Aprovar</a>
                                             </div>
                                         </td>
                                     </tr>
