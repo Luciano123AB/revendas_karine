@@ -16,12 +16,12 @@ Aplicação web para revendas com **Laravel**, com foco em:
 
 ## ✨ Funcionalidades
 
-- Página home(Ofertas)
+- Página home (Ofertas)
 - Cadastro, login, verificação
 - Página de todos os produtos
-- Escolha(Produto/Quantidade)
+- Escolha (Produto/Quantidade)
 - Gerar QRCode
-- Histórico(Pendentes/Concluídos)
+- Histórico (Pendentes/Concluídos)
 - Página de administrador
 - Atualização de dados, deleção de conta.
 
