@@ -221,15 +221,16 @@ Checklist recomendado:
  
 ---
 
+```md
 ## 🗺️ Roadmap Técnico Sugerido (Melhorias)
 
 - [ ] Nenhuma.
+```
 
 ---
 
 ## 📄 Licença
 
-Ex:
 Este projeto está licenciado sob a licença MIT.
 
 ---
