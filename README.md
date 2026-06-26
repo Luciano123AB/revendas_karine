@@ -160,22 +160,6 @@ composer run dev
 > O comando acima executa `php artisan serve`, `queue:listen` e `npm run dev` em paralelo.
 
 ---
- 
-## 🧪 Testes
-
-Rodar suíte de testes:
- 
-```bash
-php artisan test
-```
-
-Ou via Composer:
- 
-```bash
-composer test
-```
- 
----
 
 ## ⚙️ Variáveis de Ambiente Importantes
 
