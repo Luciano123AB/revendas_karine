@@ -1,7 +1,29 @@
 ![Laravel](https://img.shields.io/badge/Laravel-12-red)
 ![PHP](https://img.shields.io/badge/PHP-8.5-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 # 📦 Revendas Karine
+- Status: 🟢 Concluído
+
+---
+
+## 📑 Índice
+
+- Sobre
+- Funcionalidades
+- Stack
+- Estrutura
+- Demonstração
+- Pré-Requisitos
+- Instalação
+- Variáveis
+- Docker
+- Deploy
+- Roadmap
+- Licença
+- Autor
+
+---
 
 ## 📜 Sobre
 
@@ -41,35 +63,35 @@ Aplicação web para revendas com **Laravel**, com foco em:
 
 ```text
 app/
-  Exports/                # Classes de exportação. (Excel)
-  Http/    
-    Controllers/          # Controladores da aplicação. (MainController, Compras, etc.)
-    Middleware/           # Regras de acesso.
-  Imports/                # Classes de importação. (Excel)
-  Models/                 # Modelos Eloquent. (User, Produto, etc.)
-  Notifications/          # Notificações (Email)
-  Providers/              # Service Providers.
-  Services/               # Regras de negócio auxiliares.
+├── Exports/              # Classes de exportação. (Excel)
+├── Http/    
+    ├── Controllers/      # Controladores da aplicação. (MainController, Compras, etc.)
+    └── Middleware/       # Regras de acesso.
+├── Imports/              # Classes de importação. (Excel)
+├── Models/               # Modelos Eloquent. (User, Produto, etc.)
+├── Notifications/        # Notificações (Email)
+├── Providers/            # Service Providers.
+└── Services/             # Regras de negócio auxiliares.
 database/
-  factories/              # Geração de dados fictícios para seeders. (UserFactory)
-  migrations/             # Estrutura do banco.
-  seeders/                # População inicial do banco de dados. (DatabaseSeeder)
+├── factories/            # Geração de dados fictícios para seeders. (UserFactory)
+├── migrations/           # Estrutura do banco.
+└── seeders/              # População inicial do banco de dados. (DatabaseSeeder)
 docs/                     # Imagens usadas pelo site. (Documentação do projeto)
 lang/                     # Arquivos de tradução.
 public/
-  assets/
-    images/               # Imagens usadas pelo site. (Banners, Ícones, etc.)
-    js/                   # Scripts carregados diretamente.
+└── assets/
+    ├── images/           # Imagens usadas pelo site. (Banners, Ícones, etc.)
+    └── js/               # Scripts carregados diretamente.
 resources/
-  views/                  # Telas Blade.
+└── views/                # Telas Blade.
 routes/
-  web.php                 # Rotas da aplicação.
+└── web.php               # Rotas da aplicação.
 ```
 
 ## 📸 Demonstração
-
-![Tela Home](docs/home.png)
-![Tela Lista](docs/lista.png)
+| Tela Home | Tela Lista |
+|-------------|-----------|
+| ![](docs/home.png) | ![](docs/lista.png) |
 
 ---
 
@@ -201,7 +223,14 @@ Checklist recomendado:
 
 ## 🗺️ Roadmap Técnico Sugerido (Melhorias)
 
-- Nenhuma.
+- [ ] Nenhuma.
+
+---
+
+## 📄 Licença
+
+Ex:
+Este projeto está licenciado sob a licença MIT.
 
 ---
 
