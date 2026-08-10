@@ -54,7 +54,7 @@ Aplicação web para revendas com **Laravel**, com foco em:
 - **Backend:** PHP 8.5.3 + Laravel 13
 - **Frontend build:** Vite + CSS
 - **Banco de dados:** MySQL 8
-- **Testes:** Não
+- **Testes:** Sim
 - **Containerização:** Docker
 
 ---
